@@ -1,6 +1,4 @@
-// ─── main.js — Global Scripts ─────────────────────────
 
-// AOS Init
 document.addEventListener('DOMContentLoaded', () => {
   if (typeof AOS !== 'undefined') {
     AOS.init({
@@ -11,7 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Navbar scroll effect
   const navbar = document.getElementById('navbar');
   if (navbar) {
     window.addEventListener('scroll', () => {
@@ -19,7 +16,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Mobile hamburger
   const hamburger = document.getElementById('hamburger');
   const navMenu   = document.getElementById('navMenu');
   if (hamburger && navMenu) {
@@ -27,7 +23,6 @@ document.addEventListener('DOMContentLoaded', () => {
       hamburger.classList.toggle('active');
       navMenu.classList.toggle('open');
     });
-    // Close on link click
     navMenu.querySelectorAll('.navbar__link').forEach(link => {
       link.addEventListener('click', () => {
         hamburger.classList.remove('active');
@@ -36,7 +31,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Smooth scroll for anchor links
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', e => {
       const target = document.querySelector(anchor.getAttribute('href'));

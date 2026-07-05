@@ -405,6 +405,10 @@
   border-radius: var(--radius-lg);
   padding: var(--space-xl) var(--space-lg);
   transition: all var(--transition);
+  /* Pastikan selalu visible, GSAP hanya enhance */
+  opacity: 1 !important;
+  transform: none;
+  visibility: visible !important;
 }
 .features__card:hover {
   transform: translateY(-4px);
@@ -551,13 +555,47 @@
   flex-shrink: 0;
 }
 .map-preview__map {
-  background: var(--clr-surface);
-  border: 1px solid var(--clr-border);
+  background: var(--clr-dark-bg);
+  border: 1px solid #1E3A2A;
   border-radius: var(--radius-xl);
-  padding: var(--space-xl);
-  box-shadow: var(--shadow-md);
+  padding: 0;
+  box-shadow: var(--shadow-lg), 0 0 60px rgba(26,107,60,0.12);
+  overflow: hidden;
 }
+.map-hud {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px var(--space-lg);
+  border-bottom: 1px solid #1E3A2A;
+  background: #0A1A10;
+}
+.map-hud__dot { width: 8px; height: 8px; border-radius: 50%; }
+.map-hud__title {
+  font-size: 12px;
+  color: #5A8A6A;
+  flex: 1;
+}
+.map-hud__live {
+  font-size: 11px;
+  font-family: var(--font-mono);
+  color: var(--clr-accent);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.map-hud__live i { animation: blink 1.5s ease-in-out infinite; }
+.map-svg-wrap { padding: var(--space-xl); }
 .indonesia-map { width: 100%; height: auto; }
+.indonesia-map path {
+  fill: rgba(46, 163, 107, 0.08);
+  stroke: #1E3A2A;
+  stroke-width: 1;
+}
+.map-connector {
+  stroke-dasharray: 4 4;
+  animation: dashFlow 1.2s linear infinite;
+}
 
 /* ═══════════════════════════════════════════
    TESTIMONIALS
@@ -763,9 +801,6 @@
 }
 .footer__bottom-links a:hover { color: var(--clr-accent); }
 
-/* ═══════════════════════════════════════════
-   RESPONSIVE — TABLET (≤1024px)
-═══════════════════════════════════════════ */
 @media (max-width: 1024px) {
   .hero__inner {
     grid-template-columns: 1fr;
@@ -796,9 +831,6 @@
   .footer__brand-desc { max-width: 100%; }
 }
 
-/* ═══════════════════════════════════════════
-   RESPONSIVE — MOBILE (≤640px)
-═══════════════════════════════════════════ */
 @media (max-width: 640px) {
   :root {
     --container-pad: 16px;
@@ -844,4 +876,15 @@
   .footer__links { grid-template-columns: repeat(2,1fr); }
   .footer__bottom { flex-direction: column; text-align: center; }
   .footer__bottom-links { flex-wrap: wrap; justify-content: center; }
+}
+
+.features__card,
+.features__grid,
+.hiw__step,
+.testi__card,
+.map-preview__inner,
+.stats-banner__item,
+.section-header {
+  opacity: 1 !important;
+  visibility: visible !important;
 }
