@@ -4,17 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Nexara — Dashboard Monitoring</title>
-
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
-  <!-- Libraries -->
   <link rel="stylesheet" href="lib/boxicons/css/boxicons.min.css" />
   <link rel="stylesheet" href="lib/swiper/swiper-bundle.min.css" />
 
-  <!-- App CSS -->
   <link rel="stylesheet" href="css/variables.css" />
   <link rel="stylesheet" href="css/dashboard.css" />
 </head>
@@ -84,7 +80,6 @@
 
   <main class="main" id="main">
 
-    <!-- TOPBAR -->
     <header class="topbar">
       <div class="topbar__left">
         <button class="topbar__menu-btn" id="mobileMenuBtn" onclick="toggleMobileSidebar()">
@@ -96,24 +91,20 @@
         </div>
       </div>
       <div class="topbar__right">
-        <!-- Weather badge (dari Open-Meteo API) -->
         <div class="topbar__weather" id="weatherBadge">
           <i class="bx bx-loader-alt bx-spin"></i>
           <span>Memuat cuaca...</span>
         </div>
 
-        <!-- Notifikasi -->
         <div class="topbar__notif" id="notifBtn" onclick="toggleNotifPanel()">
           <i class="bx bx-bell"></i>
           <span class="topbar__notif-badge" id="notifBadge">0</span>
         </div>
 
-        <!-- User avatar -->
         <div class="topbar__avatar" id="topbarAvatar">--</div>
       </div>
     </header>
 
-    <!-- NOTIFICATION PANEL -->
     <div class="notif-panel" id="notifPanel" style="display:none">
       <div class="notif-panel__header">
         <span>Notifikasi</span>
@@ -125,10 +116,8 @@
     </div>
     <div class="notif-overlay" id="notifOverlay" onclick="toggleNotifPanel()" style="display:none"></div>
 
-    <!-- PAGE CONTENT -->
     <div class="page-content">
 
-      <!-- ── SUMMARY CARDS ── -->
       <div class="summary-cards" id="summaryCards">
         <div class="summary-card summary-card--loading">
           <div class="skeleton skeleton--sm"></div>
@@ -350,14 +339,11 @@
     </div>
   </main>
 
-  <!-- Mobile sidebar overlay -->
   <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleMobileSidebar()"></div>
 
-  <!-- Libraries JS -->
   <script src="lib/swiper/swiper-bundle.min.js"></script>
   <script src="lib/gsap/gsap.min.js"></script>
 
-  <!-- App JS -->
   <script src="js/province-coords.js"></script>
   <script src="js/dashboard.js"></script>
 </body>

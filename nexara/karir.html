@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Lowongan kerja di Nexara — bergabung dengan tim yang mempercepat transisi energi hijau Indonesia." />
+  <title>Karir — Nexara</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../lib/boxicons/css/boxicons.min.css" />
+  <link rel="stylesheet" href="../lib/aos/aos.css" />
+  <link rel="stylesheet" href="../css/variables.css" />
+  <link rel="stylesheet" href="../css/index.css" />
+  <link rel="stylesheet" href="../css/support.css" />
+  <link rel="stylesheet" href="../css/company.css" />
+</head>
+<body>
+
+  <header class="navbar" id="navbar">
+    <div class="container navbar__inner">
+      <a href="../index.html" class="navbar__logo">
+        <div class="navbar__logo-icon">
+          <svg width="20" height="20" viewBox="0 0 22 22" fill="none">
+            <path d="M11 2 L20 7 L20 15 L11 20 L2 15 L2 7 Z" stroke="#4ADE80" stroke-width="1.5" fill="none"/>
+            <path d="M11 6 L16 9 L16 15 L11 18 L6 15 L6 9 Z" fill="#4ADE80" opacity="0.25"/>
+            <circle cx="11" cy="11" r="2.5" fill="#4ADE80"/>
+          </svg>
+        </div>
+        <span class="navbar__logo-text">Nex<span>ara</span></span>
+      </a>
+      <nav class="navbar__menu" id="navMenu">
+        <a href="../index.html#features" class="navbar__link">Fitur</a>
+        <a href="../tentang.html" class="navbar__link">Tentang</a>
+        <a href="karir.html" class="navbar__link">Karir</a>
+        <a href="dukungan/faq.html" class="navbar__link">FAQ</a>
+      </nav>
+      <div class="navbar__actions">
+        <a href="../auth.html" class="btn btn-outline navbar__btn-login">Masuk</a>
+        <a href="../auth.html#register" class="btn btn-primary navbar__btn-register">Daftar Gratis</a>
+        <button class="navbar__hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <section class="page-header">
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="index.html">Beranda</a> <i class="bx bx-chevron-right"></i>
+        <span style="color:#fff">Karir</span>
+      </div>
+      <h1 class="page-header__title">Bangun masa depan energi hijau bareng kami</h1>
+      <p class="page-header__desc">Tim kecil, dampak besar. Kami cari orang-orang yang peduli sama data yang akurat dan energi yang berkelanjutan.</p>
+    </div>
+  </section>
+
+  <!-- ═══════════ CULTURE ═══════════ -->
+  <div class="container">
+    <div class="culture-grid" data-aos="fade-up">
+      <div class="card culture-card">
+        <div class="culture-card__icon"><i class="bx bx-home-heart"></i></div>
+        <strong>Remote-first</strong>
+        <span>Kerja dari mana saja di Indonesia, sinkron lewat async check-in</span>
+      </div>
+      <div class="card culture-card">
+        <div class="culture-card__icon"><i class="bx bx-time-five"></i></div>
+        <strong>Jam Kerja Fleksibel</strong>
+        <span>Yang penting output, bukan jam duduk di depan layar</span>
+      </div>
+      <div class="card culture-card">
+        <div class="culture-card__icon"><i class="bx bx-book-reader"></i></div>
+        <strong>Anggaran Belajar</strong>
+        <span>Tunjangan tahunan untuk kursus, buku, atau konferensi</span>
+      </div>
+      <div class="card culture-card">
+        <div class="culture-card__icon"><i class="bx bx-heart"></i></div>
+        <strong>Asuransi Kesehatan</strong>
+        <span>Perlindungan kesehatan penuh untuk kamu dan keluarga</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════ JOB LISTINGS ═══════════ -->
+  <div class="container jobs-wrap">
+    <div class="section-header" data-aos="fade-up">
+      <span class="section-label">Lowongan Terbuka</span>
+      <h2 class="section-title">Posisi yang sedang kami cari</h2>
+    </div>
+
+    <div class="jobs-filter" data-aos="fade-up">
+      <button class="active" onclick="filterJobs('all', this)">Semua</button>
+      <button onclick="filterJobs('engineering', this)">Engineering</button>
+      <button onclick="filterJobs('produk', this)">Produk & Desain</button>
+      <button onclick="filterJobs('operasi', this)">Operasi</button>
+    </div>
+
+    <div id="jobList">
+      <div class="card job-card" data-dept="engineering">
+        <div class="job-card__info">
+          <h3>Frontend Engineer</h3>
+          <div class="job-card__meta">
+            <span><i class="bx bx-briefcase"></i> Engineering</span>
+            <span><i class="bx bx-map-pin"></i> Remote (Indonesia)</span>
+            <span><i class="bx bx-time"></i> Penuh waktu</span>
+          </div>
+        </div>
+        <a href="dukungan/kontak.html" class="btn btn-outline">Lamar</a>
+      </div>
+
+      <div class="card job-card" data-dept="engineering">
+        <div class="job-card__info">
+          <h3>Backend Engineer (Data Real-time)</h3>
+          <div class="job-card__meta">
+            <span><i class="bx bx-briefcase"></i> Engineering</span>
+            <span><i class="bx bx-map-pin"></i> Remote (Indonesia)</span>
+            <span><i class="bx bx-time"></i> Penuh waktu</span>
+          </div>
+        </div>
+        <a href="dukungan/kontak.html" class="btn btn-outline">Lamar</a>
+      </div>
+
+      <div class="card job-card" data-dept="produk">
+        <div class="job-card__info">
+          <h3>Product Designer</h3>
+          <div class="job-card__meta">
+            <span><i class="bx bx-briefcase"></i> Produk & Desain</span>
+            <span><i class="bx bx-map-pin"></i> Jakarta / Remote</span>
+            <span><i class="bx bx-time"></i> Penuh waktu</span>
+          </div>
+        </div>
+        <a href="dukungan/kontak.html" class="btn btn-outline">Lamar</a>
+      </div>
+
+      <div class="card job-card" data-dept="operasi">
+        <div class="job-card__info">
+          <h3>Customer Success Specialist</h3>
+          <div class="job-card__meta">
+            <span><i class="bx bx-briefcase"></i> Operasi</span>
+            <span><i class="bx bx-map-pin"></i> Jakarta</span>
+            <span><i class="bx bx-time"></i> Penuh waktu</span>
+          </div>
+        </div>
+        <a href="dukungan/kontak.html" class="btn btn-outline">Lamar</a>
+      </div>
+
+      <div class="card job-card" data-dept="operasi">
+        <div class="job-card__info">
+          <h3>Partnership Manager (Energi Terbarukan)</h3>
+          <div class="job-card__meta">
+            <span><i class="bx bx-briefcase"></i> Operasi</span>
+            <span><i class="bx bx-map-pin"></i> Jakarta / Hybrid</span>
+            <span><i class="bx bx-time"></i> Penuh waktu</span>
+          </div>
+        </div>
+        <a href="dukungan/kontak.html" class="btn btn-outline">Lamar</a>
+      </div>
+    </div>
+
+    <p class="job-empty" id="jobEmpty">Belum ada lowongan terbuka di kategori ini saat ini. Coba kategori lain, atau kirim CV umum ke <a href="dukungan/kontak.html">halaman kontak</a> kami.</p>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <div class="navbar__logo">
+            <div class="navbar__logo-icon">
+              <svg width="18" height="18" viewBox="0 0 22 22" fill="none">
+                <path d="M11 2 L20 7 L20 15 L11 20 L2 15 L2 7 Z" stroke="#4ADE80" stroke-width="1.5" fill="none"/>
+                <circle cx="11" cy="11" r="2.5" fill="#4ADE80"/>
+              </svg>
+            </div>
+            <span class="navbar__logo-text">Nex<span>ara</span></span>
+          </div>
+          <p class="footer__brand-desc">Platform monitoring energi terbarukan berbasis teknologi cerdas untuk Indonesia yang lebih hijau dan berkelanjutan.</p>
+          <div class="footer__socials">
+            <a href="#" aria-label="Instagram"><i class="bx bxl-instagram"></i></a>
+            <a href="#" aria-label="Twitter"><i class="bx bxl-twitter"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="bx bxl-linkedin"></i></a>
+            <a href="#" aria-label="GitHub"><i class="bx bxl-github"></i></a>
+          </div>
+        </div>
+        <div class="footer__links">
+          <div class="footer__col">
+            <h4>Platform</h4>
+            <a href="../dashboard.html">Dashboard</a>
+            <a href="../detail.html">Detail Panel</a>
+            <a href="../riwayat.html">Riwayat</a>
+          </div>
+          <div class="footer__col">
+            <h4>Perusahaan</h4>
+            <a href="tentang.html">Tentang Kami</a>
+            <a href="syarat.html">Syarat dan Ketentuan</a>
+            <a href="privasi.html">Kebijakan Privasi</a>
+            <a href="karir.html">Karir</a>
+          </div>
+          <div class="footer__col">
+            <h4>Dukungan</h4>
+            <a href="../dukungan/panduan.html">Panduan Pengguna</a>
+            <a href="../dukungan/faq.html">FAQ</a>
+            <a href="../dukungan/status.html">Status Sistem</a>
+            <a href="../dukungan/kontak.html">Hubungi Support</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>© 2026 Nexara. Dibuat dengan <i class="bx bx-heart" style="color:#E53935"></i> untuk Indonesia yang lebih hijau.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../lib/aos/aos.js"></script>
+  <script src="../js/main.js"></script>
+  <script>
+    function filterJobs(dept, btn) {
+      document.querySelectorAll('.jobs-filter button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const cards = document.querySelectorAll('.job-card');
+      let visibleCount = 0;
+      cards.forEach(card => {
+        const match = dept === 'all' || card.dataset.dept === dept;
+        card.style.display = match ? 'flex' : 'none';
+        if (match) visibleCount++;
+      });
+
+      document.getElementById('jobEmpty').classList.toggle('show', visibleCount === 0);
+    }
+  </script>
+</body>
+</html>

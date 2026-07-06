@@ -1,0 +1,184 @@
+/* ══════════════════════════════════════════════════════
+   COMPANY PAGES — Tentang Kami, Karir
+   Dipakai bareng: variables.css + index.css + support.css
+   (Syarat & Privasi cukup pakai support.css punya guide-layout)
+   ══════════════════════════════════════════════════════ */
+
+/* ── Mission / Story section ───────────────────────── */
+.mission-section { padding: 72px 0; }
+.mission-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: center;
+}
+.mission-grid p {
+  font-size: 15px;
+  color: var(--clr-text-secondary);
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+.mission-visual {
+  background: var(--clr-dark-bg);
+  border-radius: var(--radius-lg);
+  padding: 40px;
+  text-align: center;
+}
+.mission-visual__icon {
+  font-size: 48px;
+  color: var(--clr-accent);
+  margin-bottom: 16px;
+}
+.mission-visual h3 {
+  font-family: var(--font-heading);
+  color: #fff;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+.mission-visual p {
+  color: #8AB89A;
+  font-size: 14px;
+  line-height: 1.7;
+  margin-bottom: 0;
+}
+
+/* ── Values cards ───────────────────────────────────── */
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 32px;
+}
+.value-card { text-align: center; padding: 28px 20px; }
+.value-card__icon {
+  width: 52px; height: 52px;
+  border-radius: var(--radius-md);
+  background: #DCF5E7;
+  color: var(--clr-primary);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px;
+  margin: 0 auto 14px;
+}
+.value-card h3 { font-family: var(--font-heading); font-size: 16px; margin-bottom: 8px; color: var(--clr-text); }
+.value-card p { font-size: 13.5px; color: var(--clr-text-secondary); line-height: 1.6; }
+
+/* ── Timeline ───────────────────────────────────────── */
+.timeline { position: relative; margin-top: 32px; padding-left: 32px; }
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 6px; top: 6px; bottom: 6px;
+  width: 2px;
+  background: var(--clr-border);
+}
+.timeline-item { position: relative; padding-bottom: 32px; }
+.timeline-item:last-child { padding-bottom: 0; }
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -32px; top: 4px;
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  background: var(--clr-primary);
+  border: 3px solid #DCF5E7;
+}
+.timeline-item__year {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--clr-primary);
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.timeline-item h4 { font-family: var(--font-heading); font-size: 16px; margin-bottom: 6px; color: var(--clr-text); }
+.timeline-item p { font-size: 13.5px; color: var(--clr-text-secondary); line-height: 1.6; }
+
+/* ── Team ───────────────────────────────────────────── */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-top: 32px;
+}
+.team-card { text-align: center; padding: 24px 16px; }
+.team-card__avatar {
+  width: 64px; height: 64px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; font-weight: 600; font-size: 20px;
+  margin: 0 auto 12px;
+}
+.team-card strong { display: block; font-size: 14px; color: var(--clr-text); margin-bottom: 2px; }
+.team-card span { font-size: 12px; color: var(--clr-text-muted); }
+
+/* ══════════════════════════════════════════════════════
+   KARIR — Careers
+   ══════════════════════════════════════════════════════ */
+.culture-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin: 40px 0;
+}
+.culture-card { text-align: center; padding: 24px 16px; }
+.culture-card__icon { font-size: 28px; color: var(--clr-primary); margin-bottom: 10px; }
+.culture-card strong { display: block; font-size: 14px; color: var(--clr-text); margin-bottom: 4px; }
+.culture-card span { font-size: 12.5px; color: var(--clr-text-secondary); line-height: 1.5; }
+
+.jobs-wrap { padding: 20px 0 72px; }
+.jobs-filter {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+.jobs-filter button {
+  padding: 8px 16px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--clr-border);
+  background: var(--clr-surface);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--clr-text-secondary);
+  cursor: pointer;
+  transition: all var(--transition);
+}
+.jobs-filter button.active,
+.jobs-filter button:hover {
+  background: var(--clr-primary);
+  border-color: var(--clr-primary);
+  color: #fff;
+}
+.job-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.job-card__info h3 { font-family: var(--font-heading); font-size: 16px; color: var(--clr-text); margin-bottom: 6px; }
+.job-card__meta { display: flex; gap: 14px; flex-wrap: wrap; }
+.job-card__meta span {
+  display: flex; align-items: center; gap: 5px;
+  font-size: 12.5px; color: var(--clr-text-muted);
+}
+.job-empty {
+  display: none;
+  text-align: center;
+  padding: 40px 0;
+  color: var(--clr-text-muted);
+}
+.job-empty.show { display: block; }
+
+@media (max-width: 900px) {
+  .mission-grid { grid-template-columns: 1fr; }
+  .values-grid { grid-template-columns: 1fr; }
+  .team-grid { grid-template-columns: repeat(2, 1fr); }
+  .culture-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  .team-grid { grid-template-columns: 1fr; }
+  .culture-grid { grid-template-columns: 1fr; }
+  .job-card { flex-direction: column; align-items: flex-start; }
+}

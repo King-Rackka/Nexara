@@ -304,11 +304,15 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  row-gap: 10px;
   padding: 16px 20px;
 }
-.status-row__name { display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 500; color: var(--clr-text); }
-.status-row__name i { font-size: 18px; color: var(--clr-primary); }
-.status-row__uptime { font-size: 12px; color: var(--clr-text-muted); font-family: var(--font-mono); margin-right: 16px; }
+.status-row__name { display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 500; color: var(--clr-text); min-width: 0; }
+.status-row__name i { font-size: 18px; color: var(--clr-primary); flex-shrink: 0; }
+.status-row__uptime { font-size: 12px; color: var(--clr-text-muted); font-family: var(--font-mono); margin-right: 16px; white-space: nowrap; }
+.status-row__meta { display: flex; align-items: center; flex-shrink: 0; }
 
 .status-history h3 {
   font-family: var(--font-heading);
@@ -435,4 +439,12 @@
   .status-subscribe { flex-direction: column; text-align: center; }
   .status-subscribe__form { width: 100%; }
   .status-subscribe__form input { flex: 1; min-width: 0; }
+
+  .status-row { align-items: flex-start; padding: 14px 16px; }
+  .status-row__name { flex: 1 1 100%; font-size: 13.5px; }
+  .status-row__meta { flex: 1 1 100%; justify-content: space-between; }
+  .status-row__uptime { margin-right: 0; }
+
+  .status-stat { padding: 16px 10px; }
+  .status-stat__val { font-size: 22px; }
 }

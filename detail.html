@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nexara — Detail Panel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="lib/boxicons/css/boxicons.min.css" />
+  <link rel="stylesheet" href="lib/fancybox/fancybox.css" />
+
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/detail.css" />
+</head>
+<body>
+
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar__top">
+      <a href="../index.html" class="sidebar__logo">
+        <div class="sidebar__logo-icon">
+          <svg width="20" height="20" viewBox="0 0 22 22" fill="none">
+            <path d="M11 2 L20 7 L20 15 L11 20 L2 15 L2 7 Z" stroke="#4ADE80" stroke-width="1.5" fill="none"/>
+            <path d="M11 6 L16 9 L16 15 L11 18 L6 15 L6 9 Z" fill="#4ADE80" opacity="0.25"/>
+            <circle cx="11" cy="11" r="2.5" fill="#4ADE80"/>
+          </svg>
+        </div>
+        <span class="sidebar__logo-text">Nex<em>ara</em></span>
+      </a>
+      <button class="sidebar__collapse" id="sidebarCollapse">
+        <i class="bx bx-chevrons-left"></i>
+      </button>
+    </div>
+    <nav class="sidebar__nav">
+      <div class="sidebar__nav-label">Menu Utama</div>
+      <a href="dashboard.html" class="sidebar__link" data-tooltip="Dashboard"><i class="bx bx-home-alt-2"></i><span>Dashboard</span></a>
+      <a href="detail.html"    class="sidebar__link active" data-tooltip="Detail Panel"><i class="bx bx-chip"></i><span>Detail Panel</span></a>
+      <a href="riwayat.html"   class="sidebar__link" data-tooltip="Riwayat"><i class="bx bx-history"></i><span>Riwayat</span></a>
+      <div class="sidebar__nav-label" style="margin-top:12px">Lainnya</div>
+      <a href="#" class="sidebar__link" data-tooltip="Peta"><i class="bx bx-map-alt"></i><span>Peta</span></a>
+      <a href="#" class="sidebar__link" data-tooltip="Laporan"><i class="bx bx-bar-chart-alt-2"></i><span>Laporan</span></a>
+      <a href="#" class="sidebar__link" data-tooltip="Pengaturan"><i class="bx bx-cog"></i><span>Pengaturan</span></a>
+    </nav>
+    <div class="sidebar__bottom">
+      <div class="sidebar__user">
+        <div class="sidebar__user-avatar" id="sidebarAvatar">--</div>
+        <div class="sidebar__user-info">
+          <strong id="sidebarName">--</strong>
+          <span id="sidebarOrg">--</span>
+        </div>
+      </div>
+      <button class="sidebar__logout" onclick="handleLogout()">
+        <i class="bx bx-log-out"></i><span>Keluar</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- ═══ MAIN ═══ -->
+  <main class="main" id="main">
+
+    <header class="topbar">
+      <div class="topbar__left">
+        <button class="topbar__menu-btn" onclick="toggleMobileSidebar()"><i class="bx bx-menu"></i></button>
+        <nav class="breadcrumb">
+          <a href="dashboard.html"><i class="bx bx-home-alt-2"></i> Dashboard</a>
+          <i class="bx bx-chevron-right"></i>
+          <span id="breadcrumbName">Detail Panel</span>
+        </nav>
+      </div>
+      <div class="topbar__right">
+        <div class="topbar__weather" id="weatherBadge">
+          <i class="bx bx-loader-alt bx-spin"></i><span>Memuat...</span>
+        </div>
+        <a href="dashboard.html" class="topbar__back-btn">
+          <i class="bx bx-arrow-back"></i> Kembali
+        </a>
+        <div class="topbar__avatar" id="topbarAvatar">--</div>
+      </div>
+    </header>
+
+    <!-- PAGE CONTENT -->
+    <div class="page-content">
+
+      <!-- ── PANEL HEADER ── -->
+      <div class="panel-header" id="panelHeader">
+        <div class="panel-header__left">
+          <div class="panel-header__icon" id="panelIcon">
+            <i class="bx bx-sun"></i>
+          </div>
+          <div>
+            <div class="panel-header__top">
+              <h1 id="panelName">Memuat...</h1>
+              <span class="panel-header__status" id="panelStatus">--</span>
+            </div>
+            <div class="panel-header__meta">
+              <span><i class="bx bx-map-pin"></i> <span id="panelLocation">--</span></span>
+              <span><i class="bx bx-calendar"></i> Dipasang: <span id="panelInstalled">--</span></span>
+              <span><i class="bx bx-chip"></i> Kapasitas: <span id="panelCapacity">--</span> kWp</span>
+            </div>
+          </div>
+        </div>
+        <div class="panel-header__actions">
+          <button class="btn-action btn-action--secondary" onclick="exportReport()">
+            <i class="bx bx-download"></i> Export Laporan
+          </button>
+          <button class="btn-action btn-action--primary" onclick="scheduleMaintenance()">
+            <i class="bx bx-wrench"></i> Jadwalkan Maintenance
+          </button>
+        </div>
+      </div>
+
+      <!-- ── METRIC CARDS ── -->
+      <div class="metric-cards" id="metricCards">
+        <div class="metric-card metric-card--loading">
+          <div class="skeleton skeleton--sm"></div>
+          <div class="skeleton skeleton--lg"></div>
+        </div>
+        <div class="metric-card metric-card--loading">
+          <div class="skeleton skeleton--sm"></div>
+          <div class="skeleton skeleton--lg"></div>
+        </div>
+        <div class="metric-card metric-card--loading">
+          <div class="skeleton skeleton--sm"></div>
+          <div class="skeleton skeleton--lg"></div>
+        </div>
+        <div class="metric-card metric-card--loading">
+          <div class="skeleton skeleton--sm"></div>
+          <div class="skeleton skeleton--lg"></div>
+        </div>
+      </div>
+
+      <!-- ── CHART + KOMPONEN ROW ── -->
+      <div class="detail-row">
+
+        <!-- Chart -->
+        <div class="chart-card">
+          <div class="chart-card__header">
+            <div>
+              <h3>Grafik Produksi Energi</h3>
+              <p id="chartSubtitle">Data real-time dari Open-Meteo API</p>
+            </div>
+            <div class="chart-tabs">
+              <button class="chart-tab active" onclick="switchChart('hourly', this)">Per Jam</button>
+              <button class="chart-tab" onclick="switchChart('daily', this)">Per Hari</button>
+              <button class="chart-tab" onclick="switchChart('weekly', this)">Per Minggu</button>
+            </div>
+          </div>
+          <div class="chart-wrap">
+            <canvas id="detailChart"></canvas>
+            <div class="chart-loading" id="chartLoading">
+              <i class="bx bx-loader-alt bx-spin"></i>
+              <span>Mengambil data Open-Meteo...</span>
+            </div>
+          </div>
+          <div class="chart-footer">
+            <div class="chart-legend">
+              <span><em style="background:#4ADE80"></em> Output Energi (kWh)</span>
+              <span><em style="background:#F4A623"></em> Radiasi Matahari (W/m²)</span>
+            </div>
+            <div class="chart-api-badge"><i class="bx bx-wifi"></i> Open-Meteo API</div>
+          </div>
+        </div>
+
+        <!-- Komponen Status -->
+        <div class="komponen-card">
+          <div class="komponen-card__header">
+            <h3><i class="bx bx-chip"></i> Status Komponen</h3>
+            <span class="komponen-card__updated">Update: <span id="lastUpdate">--</span></span>
+          </div>
+          <div class="komponen-list" id="komponenList">
+            <div class="komponen-item komponen-item--loading">
+              <div class="skeleton skeleton--sm"></div>
+              <div class="skeleton skeleton--sm"></div>
+            </div>
+          </div>
+
+          <!-- Efisiensi gauge -->
+          <div class="efficiency-gauge" id="efficiencyGauge">
+            <div class="efficiency-gauge__label">Efisiensi Keseluruhan</div>
+            <div class="efficiency-gauge__bar">
+              <div class="efficiency-gauge__fill" id="effFill" style="width:0%"></div>
+            </div>
+            <div class="efficiency-gauge__nums">
+              <span>0%</span>
+              <span id="effValue" class="efficiency-gauge__val">--%</span>
+              <span>100%</span>
+            </div>
+          </div>
+
+          <!-- CO2 saved -->
+          <div class="co2-box" id="co2Box">
+            <div class="co2-box__icon"><i class="bx bx-leaf"></i></div>
+            <div>
+              <div class="co2-box__val" id="co2Val">-- kg</div>
+              <div class="co2-box__lbl">CO₂ Dihemat Hari Ini</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ── GALERI FOTO ── -->
+      <div class="gallery-section">
+        <div class="gallery-section__header">
+          <h3><i class="bx bx-images"></i> Foto Instalasi</h3>
+          <span class="gallery-section__note">Klik foto untuk memperbesar</span>
+        </div>
+        <div class="gallery-grid" id="galleryGrid">
+          <!-- Dirender oleh JS dengan Fancybox -->
+        </div>
+      </div>
+
+      <!-- ── LOG AKTIVITAS ── -->
+      <div class="log-section">
+        <div class="log-section__header">
+          <div>
+            <h3><i class="bx bx-list-ul"></i> Log Aktivitas</h3>
+            <p id="logSubtitle">Riwayat event instalasi ini</p>
+          </div>
+          <div class="log-filters">
+            <button class="log-filter active" onclick="setLogFilter('all', this)">Semua</button>
+            <button class="log-filter" onclick="setLogFilter('maintenance', this)">Maintenance</button>
+            <button class="log-filter" onclick="setLogFilter('anomali', this)">Anomali</button>
+            <button class="log-filter" onclick="setLogFilter('update', this)">Update</button>
+          </div>
+        </div>
+        <div class="log-table-wrap">
+          <table class="log-table">
+            <thead>
+              <tr>
+                <th>Waktu</th>
+                <th>Tipe</th>
+                <th>Deskripsi</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="logTableBody">
+              <tr><td colspan="4" class="log-table__loading">Memuat log...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div><!-- /page-content -->
+  </main>
+
+  <!-- Mobile overlay -->
+  <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleMobileSidebar()"></div>
+
+  <!-- Maintenance Modal -->
+  <div class="modal-overlay" id="maintenanceModal" style="display:none">
+    <div class="modal">
+      <div class="modal__header">
+        <h3><i class="bx bx-wrench"></i> Jadwalkan Maintenance</h3>
+        <button class="modal__close" onclick="closeModal('maintenanceModal')"><i class="bx bx-x"></i></button>
+      </div>
+      <div class="modal__body">
+        <div class="modal-field">
+          <label>Tanggal Maintenance</label>
+          <input type="date" id="maintDate" />
+        </div>
+        <div class="modal-field">
+          <label>Tipe Maintenance</label>
+          <select id="maintType">
+            <option value="rutin">Pemeriksaan Rutin</option>
+            <option value="panel">Pembersihan Panel</option>
+            <option value="inverter">Pengecekan Inverter</option>
+            <option value="baterai">Penggantian Baterai</option>
+            <option value="lainnya">Lainnya</option>
+          </select>
+        </div>
+        <div class="modal-field">
+          <label>Catatan</label>
+          <textarea id="maintNote" placeholder="Catatan tambahan..." rows="3"></textarea>
+        </div>
+      </div>
+      <div class="modal__footer">
+        <button class="btn-action btn-action--secondary" onclick="closeModal('maintenanceModal')">Batal</button>
+        <button class="btn-action btn-action--primary" onclick="saveMaintenance()">
+          <i class="bx bx-save"></i> Simpan Jadwal
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="lib/gsap/gsap.min.js"></script>
+  <script src="lib/fancybox/fancybox.umd.js"></script>
+  <script src="lib/jquery/jquery-3.7.1.min.js"></script>
+
+  <script src="js/detail.js"></script>
+</body>
+</html>
