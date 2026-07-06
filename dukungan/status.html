@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Status sistem dan uptime layanan Nexara secara real-time." />
+  <title>Status Sistem — Nexara</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.2/dist/aos.css" />
+  <link rel="stylesheet" href="../css/variables.css" />
+  <link rel="stylesheet" href="../css/index.css" />
+  <link rel="stylesheet" href="../css/support.css" />
+</head>
+<body>
+
+  <header class="navbar" id="navbar">
+    <div class="container navbar__inner">
+      <a href="index.html" class="navbar__logo">
+        <div class="navbar__logo-icon">
+          <svg width="20" height="20" viewBox="0 0 22 22" fill="none">
+            <path d="M11 2 L20 7 L20 15 L11 20 L2 15 L2 7 Z" stroke="#4ADE80" stroke-width="1.5" fill="none"/>
+            <path d="M11 6 L16 9 L16 15 L11 18 L6 15 L6 9 Z" fill="#4ADE80" opacity="0.25"/>
+            <circle cx="11" cy="11" r="2.5" fill="#4ADE80"/>
+          </svg>
+        </div>
+        <span class="navbar__logo-text">Nex<span>ara</span></span>
+      </a>
+      <nav class="navbar__menu" id="navMenu">
+        <a href="index.html#features" class="navbar__link">Fitur</a>
+        <a href="panduan.html" class="navbar__link">Panduan</a>
+        <a href="faq.html" class="navbar__link">FAQ</a>
+        <a href="status.html" class="navbar__link">Status</a>
+      </nav>
+      <div class="navbar__actions">
+        <a href="auth.html" class="btn btn-outline navbar__btn-login">Masuk</a>
+        <a href="auth.html#register" class="btn btn-primary navbar__btn-register">Daftar Gratis</a>
+        <button class="navbar__hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ═══════════ HEADER ═══════════ -->
+  <section class="page-header">
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="index.html">Beranda</a> <i class="bx bx-chevron-right"></i>
+        <span>Dukungan</span> <i class="bx bx-chevron-right"></i>
+        <span style="color:#fff">Status Sistem</span>
+      </div>
+      <h1 class="page-header__title">Status Sistem</h1>
+      <p class="page-header__desc">Transparansi penuh soal keandalan platform Nexara — dipantau dengan cara yang sama seperti kami memantau instalasi energi kamu.</p>
+    </div>
+  </section>
+
+  <div class="container status-wrap">
+
+    <div class="status-overview all-good">
+      <div class="status-overview__icon"><i class="bx bx-check"></i></div>
+      <div class="status-overview__text">
+        <strong>Semua Sistem Beroperasi Normal</strong>
+        <span>Terakhir diperbarui: 5 Juli 2026, 14:32 WIB</span>
+      </div>
+    </div>
+
+    <div class="status-stats">
+      <div class="card status-stat">
+        <div class="status-stat__val">99.97%</div>
+        <div class="status-stat__lbl">Uptime 30 hari terakhir</div>
+      </div>
+      <div class="card status-stat">
+        <div class="status-stat__val">142ms</div>
+        <div class="status-stat__lbl">Rata-rata waktu respons API</div>
+      </div>
+      <div class="card status-stat">
+        <div class="status-stat__val">0</div>
+        <div class="status-stat__lbl">Insiden aktif saat ini</div>
+      </div>
+    </div>
+
+    <div class="status-list">
+      <div class="card status-row">
+        <div class="status-row__name"><i class="bx bx-grid-alt"></i> Dashboard Web</div>
+        <div style="display:flex;align-items:center">
+          <span class="status-row__uptime">99.99% uptime</span>
+          <span class="badge badge-green"><i class="bx bx-check-circle"></i> Normal</span>
+        </div>
+      </div>
+      <div class="card status-row">
+        <div class="status-row__name"><i class="bx bx-data"></i> API Data Instalasi</div>
+        <div style="display:flex;align-items:center">
+          <span class="status-row__uptime">99.95% uptime</span>
+          <span class="badge badge-green"><i class="bx bx-check-circle"></i> Normal</span>
+        </div>
+      </div>
+      <div class="card status-row">
+        <div class="status-row__name"><i class="bx bx-cloud"></i> Integrasi Data Cuaca (Open-Meteo)</div>
+        <div style="display:flex;align-items:center">
+          <span class="status-row__uptime">99.90% uptime</span>
+          <span class="badge badge-green"><i class="bx bx-check-circle"></i> Normal</span>
+        </div>
+      </div>
+      <div class="card status-row">
+        <div class="status-row__name"><i class="bx bx-bell"></i> Sistem Notifikasi</div>
+        <div style="display:flex;align-items:center">
+          <span class="status-row__uptime">99.98% uptime</span>
+          <span class="badge badge-green"><i class="bx bx-check-circle"></i> Normal</span>
+        </div>
+      </div>
+      <div class="card status-row">
+        <div class="status-row__name"><i class="bx bx-lock-alt"></i> Autentikasi & Akun</div>
+        <div style="display:flex;align-items:center">
+          <span class="status-row__uptime">100% uptime</span>
+          <span class="badge badge-green"><i class="bx bx-check-circle"></i> Normal</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="status-history">
+      <h3>Riwayat Insiden</h3>
+
+      <div class="incident">
+        <div class="incident__date">28 Jun 2026</div>
+        <div class="incident__body">
+          <strong>Keterlambatan sinkronisasi data cuaca <span class="badge badge-green" style="margin-left:6px">Selesai</span></strong>
+          <p>Integrasi Open-Meteo API mengalami keterlambatan respons selama ±40 menit akibat gangguan di sisi penyedia layanan. Grafik radiasi matahari sempat menampilkan data yang tertunda.</p>
+        </div>
+      </div>
+
+      <div class="incident">
+        <div class="incident__date">14 Mei 2026</div>
+        <div class="incident__body">
+          <strong>Notifikasi terlambat terkirim <span class="badge badge-green" style="margin-left:6px">Selesai</span></strong>
+          <p>Sebagian pengguna menerima notifikasi status instalasi dengan keterlambatan hingga 15 menit karena antrian proses yang menumpuk. Sudah diperbaiki dengan penambahan kapasitas server notifikasi.</p>
+        </div>
+      </div>
+
+      <div class="incident">
+        <div class="incident__date">2 Apr 2026</div>
+        <div class="incident__body">
+          <strong>Maintenance terjadwal <span class="badge badge-amber" style="margin-left:6px">Terjadwal</span></strong>
+          <p>Pemeliharaan rutin server dashboard selama 30 menit pada pukul 02:00–02:30 WIB. Tidak ada dampak pada pengumpulan data instalasi.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="status-subscribe">
+      <div class="status-subscribe__text">
+        <h3>Dapatkan update status</h3>
+        <p>Kami akan email kamu kalau ada insiden atau maintenance terjadwal.</p>
+      </div>
+      <form class="status-subscribe__form" onsubmit="return handleSubscribe(event)">
+        <input type="email" placeholder="email@perusahaan.com" required />
+        <button type="submit" class="btn btn-primary">Subscribe</button>
+      </form>
+    </div>
+
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <div class="navbar__logo">
+            <div class="navbar__logo-icon">
+              <svg width="18" height="18" viewBox="0 0 22 22" fill="none">
+                <path d="M11 2 L20 7 L20 15 L11 20 L2 15 L2 7 Z" stroke="#4ADE80" stroke-width="1.5" fill="none"/>
+                <circle cx="11" cy="11" r="2.5" fill="#4ADE80"/>
+              </svg>
+            </div>
+            <span class="navbar__logo-text">Nex<span>ara</span></span>
+          </div>
+          <p class="footer__brand-desc">Platform monitoring energi terbarukan berbasis teknologi cerdas untuk Indonesia yang lebih hijau dan berkelanjutan.</p>
+          <div class="footer__socials">
+            <a href="#" aria-label="Instagram"><i class="bx bxl-instagram"></i></a>
+            <a href="#" aria-label="Twitter"><i class="bx bxl-twitter"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="bx bxl-linkedin"></i></a>
+            <a href="#" aria-label="GitHub"><i class="bx bxl-github"></i></a>
+          </div>
+        </div>
+        <div class="footer__links">
+          <div class="footer__col">
+            <h4>Platform</h4>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="detail.html">Detail Panel</a>
+            <a href="riwayat.html">Riwayat</a>
+            <a href="#">API Docs</a>
+          </div>
+          <div class="footer__col">
+            <h4>Perusahaan</h4>
+            <a href="#">Tentang Kami</a>
+            <a href="#">Blog</a>
+            <a href="#">Karir</a>
+            <a href="kontak.html">Kontak</a>
+          </div>
+          <div class="footer__col">
+            <h4>Dukungan</h4>
+            <a href="panduan.html">Panduan Pengguna</a>
+            <a href="faq.html">FAQ</a>
+            <a href="status.html">Status Sistem</a>
+            <a href="kontak.html">Hubungi Support</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>© 2026 Nexara. Dibuat dengan <i class="bx bx-heart" style="color:#E53935"></i> untuk Indonesia yang lebih hijau.</p>
+        <div class="footer__bottom-links">
+          <a href="#">Privasi</a>
+          <a href="#">Syarat & Ketentuan</a>
+          <a href="#">Cookie</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.2/dist/aos.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/support.js"></script>
+</body>
+</html>

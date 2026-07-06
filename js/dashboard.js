@@ -143,12 +143,11 @@ function renderSummaryCards() {
     </div>
   `).join('');
 
-  // GSAP entrance
-  if (typeof gsap !== 'undefined') {
-    gsap.from('.summary-card', {
-      y: 20, opacity: 0, duration: 0.5, stagger: 0.1, ease: 'power2.out',
-    });
-  }
+  // Catatan: sengaja TANPA animasi fade-in di sini.
+  // Sebelumnya pakai GSAP, tapi rAF-nya bisa "macet" kalau browser
+  // idle/tab nggak ada interaksi — animasinya nyangkut di opacity
+  // rendah sampai ada gerakan mouse yang mancing render frame baru.
+  // Card sekarang langsung tampil penuh begitu data siap, tanpa delay.
 }
 
 // ── Weather + Energy API (Open-Meteo) ─────────────────
@@ -181,9 +180,13 @@ async function fetchWeatherAndEnergy() {
     const todayHours = data.hourly.shortwave_radiation.slice(0, 24);
     apiEnergyData = todayHours.map(r => +(r * 0.25 * 0.18).toFixed(1)); // 250kWp * 18% eff
 
-    // Render chart
-    renderChart('daily');
-    document.getElementById('chartLoading').style.display = 'none';
+    // Render chart — ditunda 1 frame biar layout udah "settle" dulu,
+    // biar chartCanvas.parentElement.offsetWidth kebaca akurat
+    // (celah ini yang bikin chart kadang blank di HP)
+    requestAnimationFrame(() => {
+      renderChart('daily');
+      document.getElementById('chartLoading').style.display = 'none';
+    });
 
   } catch (err) {
     console.warn('Open-Meteo API gagal, pakai dummy data:', err);
@@ -192,8 +195,10 @@ async function fetchWeatherAndEnergy() {
     }
     // Fallback ke dummy data
     apiEnergyData = generateDummyEnergy('daily');
-    renderChart('daily');
-    document.getElementById('chartLoading').style.display = 'none';
+    requestAnimationFrame(() => {
+      renderChart('daily');
+      document.getElementById('chartLoading').style.display = 'none';
+    });
 
     const subtitle = document.getElementById('chartSubtitle');
     if (subtitle) subtitle.textContent = 'Data estimasi (mode offline)';
@@ -239,7 +244,8 @@ function renderChart(mode) {
     labels        = Array.from({ length: 30 }, (_, i) => `${i + 1}`);
   }
 
-  const W = chartCanvas.width  = chartCanvas.parentElement.offsetWidth;
+  const measuredWidth = chartCanvas.parentElement.offsetWidth;
+  const W = chartCanvas.width  = measuredWidth > 0 ? measuredWidth : window.innerWidth - 40;
   const H = chartCanvas.height = 200;
   const pad = { top: 20, right: 20, bottom: 40, left: 40 };
   const cW  = W - pad.left - pad.right;
@@ -442,6 +448,8 @@ function renderPanelCards(panels) {
       slidesPerView: 'auto',
       spaceBetween: 12,
       freeMode: true,
+      observer: true,        // re-calc kalau container-nya berubah ukuran/visibility
+      observeParents: true,  // termasuk kalau parent-nya yang berubah (misal display:none -> block)
       scrollbar: { el: '.panel-scrollbar', draggable: true },
     });
   }
