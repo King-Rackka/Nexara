@@ -1,6 +1,4 @@
-/* ═══════════════════════════════════════════
-   DASHBOARD BASE
-═══════════════════════════════════════════ */
+
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { font-size: 16px; }
 body {
@@ -12,9 +10,6 @@ body {
   overflow-x: hidden;
 }
 
-/* ═══════════════════════════════════════════
-   SIDEBAR
-═══════════════════════════════════════════ */
 .sidebar {
   width: 240px;
   min-height: 100vh;
@@ -82,7 +77,6 @@ body {
 .sidebar__collapse i { transition: transform var(--transition); }
 .sidebar__collapse:hover { color: var(--clr-accent); background: rgba(74,222,128,0.1); }
 
-/* Nav */
 .sidebar__nav {
   flex: 1;
   padding: 16px 10px;
@@ -120,7 +114,6 @@ body {
   border-left: 2px solid var(--clr-accent);
 }
 
-/* User + Logout */
 .sidebar__bottom {
   padding: 12px 10px;
   border-top: 1px solid #1E3A2A;
@@ -183,9 +176,6 @@ body {
 .sidebar__logout i { font-size: 18px; flex-shrink: 0; }
 .sidebar__logout:hover { background: rgba(229,57,53,0.1); color: var(--clr-danger); }
 
-/* ═══════════════════════════════════════════
-   MAIN
-═══════════════════════════════════════════ */
 .main {
   flex: 1;
   margin-left: 240px;
@@ -196,7 +186,6 @@ body {
 }
 .main.sidebar-collapsed { margin-left: 64px; }
 
-/* ── Topbar ─────────────────────────────── */
 .topbar {
   height: 68px;
   background: var(--clr-surface);
@@ -285,7 +274,6 @@ body {
   cursor: pointer;
 }
 
-/* ── Notification Panel ─────────────────── */
 .notif-panel {
   position: fixed;
   top: 72px; right: 16px;
@@ -343,7 +331,6 @@ body {
   background: transparent;
 }
 
-/* ── Page Content ───────────────────────── */
 .page-content {
   padding: 24px;
   flex: 1;
@@ -355,7 +342,6 @@ body {
   width: 100%;
 }
 
-/* ── Skeleton Loading ───────────────────── */
 .skeleton {
   background: linear-gradient(90deg, #e8f0ea 25%, #d4e6d8 50%, #e8f0ea 75%);
   background-size: 200% 100%;
@@ -370,9 +356,6 @@ body {
 .skeleton--md  { height: 16px; width: 80%; margin-bottom: 8px; }
 .skeleton--lg  { height: 32px; width: 50%; margin-bottom: 12px; }
 
-/* ═══════════════════════════════════════════
-   SUMMARY CARDS
-═══════════════════════════════════════════ */
 .summary-cards {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -426,9 +409,6 @@ body {
 .summary-card__change.up   { color: var(--clr-success); }
 .summary-card__change.down { color: var(--clr-danger); }
 
-/* ═══════════════════════════════════════════
-   DASHBOARD ROW (Chart + Map)
-═══════════════════════════════════════════ */
 .dashboard-row {
   display: grid;
   grid-template-columns: 1.6fr 1fr;
@@ -436,7 +416,6 @@ body {
   align-items: start;
 }
 
-/* ── Chart Card ─────────────────────────── */
 .chart-card {
   background: var(--clr-surface);
   border: 1px solid var(--clr-border);
@@ -541,7 +520,6 @@ body {
   border-radius: var(--radius-full);
 }
 
-/* ── Map Card ───────────────────────────── */
 .map-card {
   background: var(--clr-dark-bg);
   border: 1px solid #1E3A2A;
@@ -599,7 +577,6 @@ body {
   stroke-width: 1;
 }
 
-/* Map marker tooltip */
 .map-marker { cursor: pointer; }
 .map-marker circle { transition: r 0.2s ease; }
 .map-marker:hover circle:first-child { r: 8; }
@@ -623,9 +600,6 @@ body {
   font-style: normal;
 }
 
-/* ═══════════════════════════════════════════
-   PANEL SECTION
-═══════════════════════════════════════════ */
 .panel-section {
   background: var(--clr-surface);
   border: 1px solid var(--clr-border);
@@ -704,11 +678,10 @@ body {
   flex-shrink: 0;
 }
 
-/* Panel Swiper Cards */
 .panel-swiper {
   margin-bottom: 20px;
   padding-bottom: 20px !important;
-  display: none; /* default: hidden on desktop, table takes over (see below) */
+  display: none; 
 }
 @media (max-width: 768px) {
   .panel-swiper { display: block; }
@@ -797,7 +770,6 @@ body {
   color: var(--clr-text-muted);
 }
 
-/* Panel Table */
 .panel-table-wrap {
   overflow-x: auto;
   border-radius: var(--radius-md);
@@ -888,16 +860,13 @@ body {
   .summary-card__icon  { width: 34px; height: 34px; font-size: 18px; }
 }
  
-/* ── Tablet landscape 1024–1200px ────────── */
 @media (max-width: 1200px) {
   .dashboard-row { grid-template-columns: 1fr; }
   .map-card__body { max-height: 220px; }
   .summary-cards { grid-template-columns: repeat(2, 1fr); }
 }
  
-/* ── Tablet portrait ≤1024px ─────────────── */
 @media (max-width: 1024px) {
-  /* Sidebar jadi drawer */
   .sidebar {
     transform: translateX(-100%);
     width: var(--sidebar-w) !important;
@@ -905,21 +874,20 @@ body {
   }
   .sidebar.mobile-open { transform: translateX(0); }
   .sidebar-overlay.show { display: block; }
-  .sidebar__collapse { display: none; } /* sembunyikan toggle di mobile */
+  .sidebar__collapse { display: none; } 
   .main { margin-left: 0 !important; width: 100% !important; }
   .topbar__menu-btn { display: flex; }
 }
  
-/* ── Mobile ≤768px ───────────────────────── */
+
 @media (max-width: 768px) {
-  /* Swap: swiper muncul, tabel hilang */
+
   .panel-swiper { display: block; }
   .panel-table-wrap { display: none; }
   .summary-cards { grid-template-columns: repeat(2, 1fr); gap: 10px; }
   .page-content { padding: 14px; gap: 12px; }
 }
  
-/* ── Mobile kecil ≤480px ─────────────────── */
 @media (max-width: 480px) {
   .summary-cards { grid-template-columns: 1fr 1fr; gap: 8px; }
   .summary-card { padding: 12px; }

@@ -1,6 +1,4 @@
-/* ═══════════════════════════════════════════
-   BASE — inherit dari dashboard pattern
-═══════════════════════════════════════════ */
+
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { font-size: 16px; }
 body {
@@ -14,7 +12,6 @@ body {
 
 :root { --sidebar-w: 240px; --sidebar-w-collapsed: 60px; }
 
-/* ── Sidebar (sama persis dashboard) ────── */
 .sidebar {
   width: 240px;
   min-height: 100vh;
@@ -82,7 +79,6 @@ body {
 .sidebar__collapse i { transition: transform var(--transition); }
 .sidebar__collapse:hover { color: var(--clr-accent); background: rgba(74,222,128,0.1); }
 
-/* Nav */
 .sidebar__nav {
   flex: 1;
   padding: 16px 10px;
@@ -120,7 +116,6 @@ body {
   border-left: 2px solid var(--clr-accent);
 }
 
-/* User + Logout */
 .sidebar__bottom {
   padding: 12px 10px;
   border-top: 1px solid #1E3A2A;
@@ -183,7 +178,6 @@ body {
 .sidebar__logout i { font-size: 18px; flex-shrink: 0; }
 .sidebar__logout:hover { background: rgba(229,57,53,0.1); color: var(--clr-danger); }
 
-/* ── Main ────────────────────────────────── */
 .main {
   margin-left: var(--sidebar-w);
   min-height: 100vh; display: flex; flex-direction: column;
@@ -192,7 +186,6 @@ body {
 }
 .main.sidebar-collapsed { margin-left: var(--sidebar-w-collapsed); width: calc(100% - var(--sidebar-w-collapsed)); }
 
-/* ── Topbar ─────────────────────────────── */
 .topbar {
   height: 60px; background: var(--clr-surface);
   border-bottom: 1px solid var(--clr-border);
@@ -205,7 +198,6 @@ body {
 .topbar__menu-btn { display: none; background: none; border: none; font-size: 22px; color: var(--clr-text-secondary); cursor: pointer; padding: 4px; flex-shrink: 0; }
 .topbar__right { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
 
-/* Breadcrumb */
 .breadcrumb {
   display: flex; align-items: center; gap: 6px;
   font-size: 13px; color: var(--clr-text-muted);
@@ -241,18 +233,13 @@ body {
   display: flex; align-items: center; justify-content: center; cursor: pointer;
 }
 
-/* ── Page Content ───────────────────────── */
 .page-content { padding: 20px; display: flex; flex-direction: column; gap: 16px; min-width: 0; }
 
-/* Skeleton */
 .skeleton { background: linear-gradient(90deg, #e8f0ea 25%, #d4e6d8 50%, #e8f0ea 75%); background-size: 200% 100%; animation: shimmer 1.5s infinite; border-radius: 6px; }
 @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
 .skeleton--sm { height: 11px; width: 55%; margin-bottom: 6px; }
 .skeleton--lg { height: 28px; width: 45%; margin-bottom: 10px; }
 
-/* ═══════════════════════════════════════════
-   PANEL HEADER
-═══════════════════════════════════════════ */
 .panel-header {
   background: var(--clr-surface);
   border: 1px solid var(--clr-border);
@@ -301,9 +288,6 @@ body {
 .btn-action--secondary { background: var(--clr-bg); color: var(--clr-text); border: 1px solid var(--clr-border); }
 .btn-action--secondary:hover { border-color: var(--clr-primary); color: var(--clr-primary); }
 
-/* ═══════════════════════════════════════════
-   METRIC CARDS
-═══════════════════════════════════════════ */
 .metric-cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -326,16 +310,11 @@ body {
 .metric-card__sub.warn { color: var(--clr-warning); }
 .metric-card__sub.err  { color: var(--clr-danger); }
 
-/* ═══════════════════════════════════════════
-   DETAIL ROW (Chart + Komponen)
-═══════════════════════════════════════════ */
 .detail-row {
   display: grid;
   grid-template-columns: 1.6fr 1fr;
   gap: 14px; align-items: start;
 }
-
-/* Chart */
 .chart-card {
   background: var(--clr-surface);
   border: 1px solid var(--clr-border);
@@ -360,8 +339,6 @@ body {
 .chart-legend span { display: flex; align-items: center; gap: 5px; }
 .chart-legend em { display: inline-block; width: 10px; height: 3px; border-radius: 2px; font-style: normal; }
 .chart-api-badge { display: flex; align-items: center; gap: 3px; font-size: 10px; color: var(--clr-primary); background: #E8F5E9; padding: 3px 8px; border-radius: 20px; }
-
-/* Komponen Card */
 .komponen-card {
   background: var(--clr-surface);
   border: 1px solid var(--clr-border);
@@ -398,7 +375,6 @@ body {
 .komponen-badge.warning { background: #FEF3DC; color: #B8750A; }
 .komponen-badge.error   { background: #FDECEC; color: #C0392B; }
 
-/* Efficiency gauge */
 .efficiency-gauge { padding: 12px 0 0; }
 .efficiency-gauge__label { font-size: 12px; font-weight: 500; color: var(--clr-text-secondary); margin-bottom: 6px; }
 .efficiency-gauge__bar { height: 8px; background: var(--clr-border); border-radius: 4px; overflow: hidden; margin-bottom: 4px; }
@@ -406,7 +382,6 @@ body {
 .efficiency-gauge__nums { display: flex; justify-content: space-between; font-size: 10px; color: var(--clr-text-muted); }
 .efficiency-gauge__val { font-family: var(--font-mono); font-size: 13px; font-weight: 600; color: var(--clr-primary); }
 
-/* CO2 box */
 .co2-box {
   display: flex; align-items: center; gap: 12px;
   padding: 12px 14px;
@@ -418,9 +393,6 @@ body {
 .co2-box__val { font-family: var(--font-heading); font-size: 20px; font-weight: 700; color: var(--clr-primary); }
 .co2-box__lbl { font-size: 11px; color: var(--clr-text-secondary); margin-top: 1px; }
 
-/* ═══════════════════════════════════════════
-   GALLERY SECTION
-═══════════════════════════════════════════ */
 .gallery-section {
   background: var(--clr-surface);
   border: 1px solid var(--clr-border);
@@ -481,9 +453,6 @@ body {
 }
 .gallery-item:hover .gallery-item__caption { transform: translateY(0); }
 
-/* ═══════════════════════════════════════════
-   LOG AKTIVITAS
-═══════════════════════════════════════════ */
 .log-section {
   background: var(--clr-surface);
   border: 1px solid var(--clr-border);
@@ -523,9 +492,6 @@ body {
 .log-badge.info        { background: var(--clr-bg); color: var(--clr-text-muted); }
 .log-status-dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; margin-right: 5px; }
 
-/* ═══════════════════════════════════════════
-   MODAL
-═══════════════════════════════════════════ */
 .modal-overlay {
   position: fixed; inset: 0; z-index: 500;
   background: rgba(0,0,0,0.5); backdrop-filter: blur(4px);
@@ -555,12 +521,8 @@ body {
 .modal-field input:focus, .modal-field select:focus, .modal-field textarea:focus { border-color: var(--clr-primary); box-shadow: 0 0 0 3px rgba(26,107,60,0.1); }
 .modal__footer { padding: 14px 20px; border-top: 1px solid var(--clr-border); display: flex; justify-content: flex-end; gap: 8px; }
 
-/* Sidebar overlay mobile */
 .sidebar-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 199; }
 
-/* ═══════════════════════════════════════════
-   RESPONSIVE
-═══════════════════════════════════════════ */
 @media (max-width: 1200px) {
   .detail-row { grid-template-columns: 1fr; }
 }

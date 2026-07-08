@@ -1,6 +1,4 @@
-/* ═══════════════════════════════════════════
-   NAVBAR
-═══════════════════════════════════════════ */
+
 .navbar {
   position: fixed;
   top: 0; left: 0; right: 0;
@@ -94,9 +92,6 @@
 .navbar__hamburger.active span:nth-child(2) { opacity: 0; }
 .navbar__hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
 
-/* ═══════════════════════════════════════════
-   HERO
-═══════════════════════════════════════════ */
 .hero {
   min-height: 100vh;
   padding: 120px 0 80px;
@@ -183,8 +178,12 @@
   display: flex; align-items: center; justify-content: center;
   font-size: 10px; font-weight: 600; color: #fff;
   margin-left: -8px;
-  first-child: { margin-left: 0; }
 }
+
+.avatar-stack span:first-child {
+    margin-left: 0;
+}
+
 .avatar-stack span:first-child { margin-left: 0; }
 .hero__trust-text {
   font-size: 13px;
@@ -192,7 +191,6 @@
 }
 .hero__trust-text strong { color: var(--clr-primary); }
 
-/* Dashboard Card */
 .hero__visual {
   position: relative;
 }
@@ -294,7 +292,6 @@
 .hdc__panel-fill { height: 100%; border-radius: 2px; }
 .hdc__panel-pct { font-size: 11px; color: #5A8A6A; font-family: var(--font-mono); min-width: 32px; text-align: right; }
 
-/* Floating badges */
 .hero__float {
   position: absolute;
   background: var(--clr-surface);
@@ -340,9 +337,6 @@
   50% { opacity: 0.4; transform: scaleY(0.6); }
 }
 
-/* ═══════════════════════════════════════════
-   STATS BANNER
-═══════════════════════════════════════════ */
 .stats-banner {
   background: var(--clr-primary);
   padding: var(--space-xl) 0;
@@ -387,9 +381,6 @@
   flex-shrink: 0;
 }
 
-/* ═══════════════════════════════════════════
-   FEATURES
-═══════════════════════════════════════════ */
 .features {
   padding: var(--space-2xl) 0;
 }
@@ -405,7 +396,6 @@
   border-radius: var(--radius-lg);
   padding: var(--space-xl) var(--space-lg);
   transition: all var(--transition);
-  /* Pastikan selalu visible, GSAP hanya enhance */
   opacity: 1 !important;
   transform: none;
   visibility: visible !important;
@@ -454,9 +444,6 @@
 }
 .features__link:hover { gap: 8px; }
 
-/* ═══════════════════════════════════════════
-   HOW IT WORKS
-═══════════════════════════════════════════ */
 .how-it-works {
   padding: var(--space-2xl) 0;
   background: var(--clr-surface);
@@ -523,9 +510,6 @@
   background: var(--clr-border);
 }
 
-/* ═══════════════════════════════════════════
-   MAP PREVIEW
-═══════════════════════════════════════════ */
 .map-preview {
   padding: var(--space-2xl) 0;
   background: var(--clr-bg);
@@ -597,9 +581,6 @@
   animation: dashFlow 1.2s linear infinite;
 }
 
-/* ═══════════════════════════════════════════
-   TESTIMONIALS
-═══════════════════════════════════════════ */
 .testimonials {
   padding: var(--space-2xl) 0;
   background: var(--clr-surface);
@@ -656,9 +637,6 @@
 .testi-prev, .testi-next { color: var(--clr-primary) !important; }
 .testi-prev::after, .testi-next::after { font-size: 18px !important; }
 
-/* ═══════════════════════════════════════════
-   CTA SECTION
-═══════════════════════════════════════════ */
 .cta-section {
   padding: var(--space-2xl) 0;
   background: var(--clr-bg);
@@ -718,9 +696,6 @@
 }
 .cta-section__note i { color: var(--clr-accent); }
 
-/* ═══════════════════════════════════════════
-   FOOTER
-═══════════════════════════════════════════ */
 .footer {
   background: var(--clr-dark-bg);
   padding: var(--space-2xl) 0 var(--space-lg);

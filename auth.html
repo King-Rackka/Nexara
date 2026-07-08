@@ -18,9 +18,6 @@
 </head>
 <body>
 
-  <!-- ═══════════════════════════════════════
-       BACKGROUND
-  ════════════════════════════════════════ -->
   <div class="auth-bg">
     <div class="auth-bg__grid"></div>
     <div class="auth-bg__glow auth-bg__glow--1"></div>
@@ -35,7 +32,6 @@
 
   <div class="auth-layout">
 
-    <!-- LEFT PANEL -->
     <div class="auth-panel auth-panel--left" data-aos="fade-right" data-aos-duration="800">
       <div class="auth-panel__inner">
 
@@ -55,7 +51,6 @@
           <p>Gabungkan seluruh data instalasi panel surya dan turbin angin kamu dalam satu ekosistem cerdas.</p>
         </div>
 
-        <!-- Stats -->
         <div class="auth-stats">
           <div class="auth-stat">
             <span class="auth-stat__val">500+</span>
@@ -73,7 +68,6 @@
           </div>
         </div>
 
-        <!-- Testimonial -->
         <div class="auth-testi">
           <p class="auth-testi__text">"Nexara mengubah cara kami mengelola energi. Alert otomatisnya menyelamatkan kami dari kerugian besar."</p>
           <div class="auth-testi__author">
@@ -85,7 +79,6 @@
           </div>
         </div>
 
-        <!-- Live indicator -->
         <div class="auth-live">
           <span class="auth-live__dot"></span>
           <span>148 instalasi sedang dipantau secara real-time</span>
@@ -94,11 +87,9 @@
       </div>
     </div>
 
-    <!-- RIGHT PANEL — FORM -->
     <div class="auth-panel auth-panel--right" data-aos="fade-left" data-aos-duration="800">
       <div class="auth-form-wrap">
 
-        <!-- Tab Toggle -->
         <div class="auth-tabs">
           <button class="auth-tab active" id="tabLogin" onclick="switchTab('login')">
             <i class="bx bx-log-in"></i> Masuk
@@ -109,7 +100,6 @@
           <div class="auth-tabs__indicator" id="tabIndicator"></div>
         </div>
 
-        <!-- ── LOGIN FORM ── -->
         <div class="auth-form" id="formLogin">
           <div class="auth-form__header">
             <h3>Selamat datang kembali 👋</h3>
@@ -184,7 +174,6 @@
           </p>
         </div>
 
-        <!-- ── REGISTER FORM ── -->
         <div class="auth-form" id="formRegister" style="display:none">
           <div class="auth-form__header">
             <h3>Buat akun Nexara 🚀</h3>
@@ -250,7 +239,6 @@
               <span class="auth-field__status"></span>
             </div>
             <span class="auth-field__error"></span>
-            <!-- Password strength -->
             <div class="pw-strength" id="pwStrength" style="display:none">
               <div class="pw-strength__bars">
                 <span></span><span></span><span></span><span></span>
@@ -275,10 +263,9 @@
           <label class="auth-checkbox auth-checkbox--terms">
             <input type="checkbox" id="agreeTerms" />
             <span class="auth-checkbox__box"></span>
-            <span>Saya setuju dengan <a href="#">Syarat & Ketentuan</a> dan <a href="#">Kebijakan Privasi</a> Nexara</span>
+            <span>Saya setuju dengan <a href="nexara/syarat.html">Syarat & Ketentuan</a> dan <a href="nexara/privasi.html">Kebijakan Privasi</a> Nexara</span>
           </label>
 
-          <!-- Alert box -->
           <div class="auth-alert" id="registerAlert" style="display:none"></div>
 
           <button class="auth-submit" id="registerBtn" onclick="handleRegister()">
@@ -296,7 +283,6 @@
           </p>
         </div>
 
-        <!-- SUCCESS STATE -->
         <div class="auth-success" id="authSuccess" style="display:none">
           <div class="auth-success__icon">
             <i class="bx bx-check-circle"></i>
@@ -313,11 +299,9 @@
 
   </div>
 
-  <!-- Libraries JS -->
   <script src="lib/aos/aos.js"></script>
   <script src="lib/gsap/gsap.min.js"></script>
 
-  <!-- App JS -->
   <script src="js/auth.js"></script>
 </body>
 </html>

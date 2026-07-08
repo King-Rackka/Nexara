@@ -15,7 +15,7 @@ let radiationData = null;
 const FALLBACK_PANELS = [
   { id:'INS-001', name:'Panel Surya Bali Selatan',    location:'Denpasar, Bali',              type:'solar', lat:-8.67,  lon:115.21, capacity_kwp:250, panels_count:100, installed_date:'2023-03-15', status:'active',  efficiency:97, output_today:208, co2_saved:124.8, inverter:'normal',  battery:'normal',  temperature:42 },
   { id:'INS-002', name:'Panel Surya Surabaya Barat',  location:'Surabaya, Jawa Timur',         type:'solar', lat:-7.25,  lon:112.75, capacity_kwp:180, panels_count:72,  installed_date:'2023-06-20', status:'active',  efficiency:94, output_today:142, co2_saved:85.2,  inverter:'normal',  battery:'normal',  temperature:39 },
-  { id:'INS-003', name:'Turbin Angin Sidrap',         location:'Sidrap, Sulawesi Selatan',     type:'wind',  lat:-3.95,  lon:119.85, capacity_kwp:320, panels_count:8,   installed_date:'2022-11-10', status:'warning', efficiency:61, output_today:87,  co2_saved:52.2,  inverter:'warning', battery:'normal',  temperature:35 },
+  { id:'INS-003', name:'Turbin Angin Enrekang',       location:'Enrekang, Sulawesi Selatan',     type:'wind',  lat:-3.95,  lon:119.85, capacity_kwp:320, panels_count:8,   installed_date:'2022-11-10', status:'warning', efficiency:61, output_today:87,  co2_saved:52.2,  inverter:'warning', battery:'normal',  temperature:35 },
   { id:'INS-004', name:'Panel Surya Medan Utara',     location:'Medan, Sumatera Utara',        type:'solar', lat:3.58,   lon:98.67,  capacity_kwp:150, panels_count:60,  installed_date:'2024-01-08', status:'active',  efficiency:88, output_today:112, co2_saved:67.2,  inverter:'normal',  battery:'normal',  temperature:41 },
   { id:'INS-005', name:'Panel Surya Makassar',        location:'Makassar, Sulawesi Selatan',   type:'solar', lat:-5.14,  lon:119.43, capacity_kwp:200, panels_count:80,  installed_date:'2023-09-01', status:'error',   efficiency:23, output_today:18,  co2_saved:10.8,  inverter:'error',   battery:'warning', temperature:58 },
   { id:'INS-006', name:'Turbin Angin Bangka',         location:'Bangka, Kep. Bangka Belitung', type:'wind',  lat:-2.13,  lon:106.12, capacity_kwp:280, panels_count:6,   installed_date:'2023-04-22', status:'active',  efficiency:82, output_today:164, co2_saved:98.4,  inverter:'normal',  battery:'normal',  temperature:33 },
@@ -508,37 +508,47 @@ function switchChart(mode, btn) {
 // ── Actions ───────────────────────────────────────────
 function exportReport() {
   if (!currentPanel) return;
-  const content = [
-    `LAPORAN PANEL — ${currentPanel.name}`,
-    `Tanggal: ${new Date().toLocaleDateString('id-ID', { weekday:'long', year:'numeric', month:'long', day:'numeric' })}`,
-    ``,
-    `INFORMASI PANEL`,
-    `Lokasi       : ${currentPanel.location}`,
-    `Tipe         : ${currentPanel.type === 'solar' ? 'Panel Surya' : 'Turbin Angin'}`,
-    `Kapasitas    : ${currentPanel.capacity_kwp} kWp`,
-    `Dipasang     : ${formatDate(currentPanel.installed_date)}`,
-    `Status       : ${currentPanel.status.toUpperCase()}`,
-    ``,
-    `PERFORMA HARI INI`,
-    `Output       : ${currentPanel.output_today} kWh`,
-    `Efisiensi    : ${currentPanel.efficiency}%`,
-    `Temperatur   : ${currentPanel.temperature}°C`,
-    `CO₂ Dihemat  : ${currentPanel.co2_saved} kg`,
-    ``,
-    `STATUS KOMPONEN`,
-    `Inverter     : ${currentPanel.inverter}`,
-    `Baterai      : ${currentPanel.battery}`,
-    `Sensor       : Normal`,
-    ``,
-    `--- Dibuat oleh Nexara Energy Intelligence Platform ---`,
-  ].join('\n');
 
-  const blob = new Blob([content], { type: 'text/plain' });
+  const csvEscape = (val) => {
+    const s = String(val ?? '');
+    return /[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
+  };
+
+  const now = new Date();
+  const rows = [
+    ['Laporan Panel', currentPanel.name],
+    ['Tanggal Export', now.toLocaleDateString('id-ID', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })],
+    [''],
+    ['INFORMASI PANEL'],
+    ['Lokasi', currentPanel.location],
+    ['Tipe', currentPanel.type === 'solar' ? 'Panel Surya' : 'Turbin Angin'],
+    ['Kapasitas (kWp)', currentPanel.capacity_kwp],
+    ['Dipasang', formatDate(currentPanel.installed_date)],
+    ['Status', currentPanel.status.toUpperCase()],
+    [''],
+    ['PERFORMA HARI INI'],
+    ['Output (kWh)', currentPanel.output_today],
+    ['Efisiensi (%)', currentPanel.efficiency],
+    ['Temperatur (°C)', currentPanel.temperature],
+    ['CO2 Dihemat (kg)', currentPanel.co2_saved],
+    [''],
+    ['STATUS KOMPONEN'],
+    ['Inverter', currentPanel.inverter],
+    ['Baterai', currentPanel.battery],
+    ['Sensor', 'Normal'],
+    [''],
+    ['Dibuat oleh', 'Nexara Energy Intelligence Platform'],
+  ];
+
+  const csvContent = rows.map(r => r.map(csvEscape).join(',')).join('\r\n');
+  const blob = new Blob(['\uFEFF' + csvContent], { type: 'text/csv;charset=utf-8;' });
   const url  = URL.createObjectURL(blob);
   const a    = document.createElement('a');
   a.href     = url;
-  a.download = `Laporan_${currentPanel.id}_${new Date().toISOString().split('T')[0]}.txt`;
+  a.download = `Laporan_${currentPanel.id}_${now.toISOString().split('T')[0]}.csv`;
+  document.body.appendChild(a);
   a.click();
+  document.body.removeChild(a);
   URL.revokeObjectURL(url);
 }
 

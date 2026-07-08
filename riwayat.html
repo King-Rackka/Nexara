@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nexara — Riwayat Aktivitas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="lib/boxicons/css/boxicons.min.css" />
+
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/riwayat.css" />
+</head>
+<body>
+
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar__top">
+      <a href="index.html" class="sidebar__logo">
+        <div class="sidebar__logo-icon">
+          <svg width="20" height="20" viewBox="0 0 22 22" fill="none">
+            <path d="M11 2 L20 7 L20 15 L11 20 L2 15 L2 7 Z" stroke="#4ADE80" stroke-width="1.5" fill="none"/>
+            <path d="M11 6 L16 9 L16 15 L11 18 L6 15 L6 9 Z" fill="#4ADE80" opacity="0.25"/>
+            <circle cx="11" cy="11" r="2.5" fill="#4ADE80"/>
+          </svg>
+        </div>
+        <span class="sidebar__logo-text">Nex<em>ara</em></span>
+      </a>
+      <button class="sidebar__collapse" id="sidebarCollapse">
+        <i class="bx bx-chevrons-left"></i>
+      </button>
+    </div>
+
+    <nav class="sidebar__nav">
+      <div class="sidebar__nav-label">Menu Utama</div>
+      <a href="dashboard.html" class="sidebar__link" data-tooltip="Dashboard"><i class="bx bx-home-alt-2"></i><span>Dashboard</span></a>
+      <a href="detail.html"    class="sidebar__link" data-tooltip="Detail Panel"><i class="bx bx-chip"></i><span>Detail Panel</span></a>
+      <a href="riwayat.html"   class="sidebar__link active" data-tooltip="Riwayat"><i class="bx bx-history"></i><span>Riwayat</span></a>
+
+      <div class="sidebar__nav-label" style="margin-top:12px">Lainnya</div>
+      <a href="#" class="sidebar__link" data-tooltip="Peta"><i class="bx bx-map-alt"></i><span>Peta</span></a>
+      <a href="#" class="sidebar__link" data-tooltip="Laporan"><i class="bx bx-bar-chart-alt-2"></i><span>Laporan</span></a>
+      <a href="#" class="sidebar__link" data-tooltip="Pengaturan"><i class="bx bx-cog"></i><span>Pengaturan</span></a>
+    </nav>
+
+    <div class="sidebar__bottom">
+      <div class="sidebar__user">
+        <div class="sidebar__user-avatar" id="sidebarAvatar">--</div>
+        <div class="sidebar__user-info">
+          <strong id="sidebarName">Loading...</strong>
+          <span id="sidebarOrg">--</span>
+        </div>
+      </div>
+      <button class="sidebar__logout" onclick="handleLogout()">
+        <i class="bx bx-log-out"></i><span>Keluar</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- ═══ MAIN ═══ -->
+  <main class="main" id="main">
+
+    <header class="topbar">
+      <div class="topbar__left">
+        <button class="topbar__menu-btn" onclick="toggleMobileSidebar()"><i class="bx bx-menu"></i></button>
+        <nav class="breadcrumb">
+          <a href="dashboard.html"><i class="bx bx-home-alt-2"></i> Dashboard</a>
+          <i class="bx bx-chevron-right"></i>
+          <span>Riwayat Aktivitas</span>
+        </nav>
+      </div>
+      <div class="topbar__right">
+        <div class="topbar__avatar" id="topbarAvatar">--</div>
+      </div>
+    </header>
+
+    <!-- PAGE CONTENT -->
+    <div class="page-content">
+
+      <!-- ── SUMMARY CARDS ── -->
+      <div class="summary-cards" id="summaryCards">
+        <div class="summary-card summary-card--loading">
+          <div class="skeleton skeleton--sm"></div>
+          <div class="skeleton skeleton--lg"></div>
+        </div>
+        <div class="summary-card summary-card--loading">
+          <div class="skeleton skeleton--sm"></div>
+          <div class="skeleton skeleton--lg"></div>
+        </div>
+        <div class="summary-card summary-card--loading">
+          <div class="skeleton skeleton--sm"></div>
+          <div class="skeleton skeleton--lg"></div>
+        </div>
+        <div class="summary-card summary-card--loading">
+          <div class="skeleton skeleton--sm"></div>
+          <div class="skeleton skeleton--lg"></div>
+        </div>
+      </div>
+
+      <!-- ── FILTER BAR ── -->
+      <div class="filter-bar">
+        <div class="filter-group">
+          <label>Rentang Tanggal</label>
+          <div class="filter-daterange">
+            <input type="date" id="dateFrom" />
+            <span>s.d</span>
+            <input type="date" id="dateTo" />
+          </div>
+        </div>
+
+        <div class="filter-group">
+          <label>Tipe Aktivitas</label>
+          <div class="filter-types">
+            <button class="log-filter active" onclick="setTypeFilter('all', this)">Semua</button>
+            <button class="log-filter" onclick="setTypeFilter('anomali', this)">Anomali</button>
+            <button class="log-filter" onclick="setTypeFilter('maintenance', this)">Maintenance</button>
+            <button class="log-filter" onclick="setTypeFilter('laporan', this)">Laporan</button>
+          </div>
+        </div>
+
+        <div class="filter-spacer"></div>
+
+        <button class="btn-export" id="exportBtn">
+          <i class="bx bx-download"></i> Export CSV
+        </button>
+      </div>
+
+      <!-- ── HISTORY TABLE ── -->
+      <div class="history-section">
+        <div class="history-section__header">
+          <div>
+            <h3><i class="bx bx-list-ul"></i> Riwayat Aktivitas Semua Instalasi</h3>
+            <p id="historySubtitle">Memuat riwayat...</p>
+          </div>
+        </div>
+        <div class="log-table-wrap">
+          <table class="log-table">
+            <thead>
+              <tr>
+                <th>Waktu</th>
+                <th>Instalasi</th>
+                <th>Tipe</th>
+                <th>Deskripsi</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="historyTableBody">
+              <tr><td colspan="5" class="log-table__loading">Memuat riwayat...</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="pagination">
+          <span class="pagination__info" id="pageInfo">Halaman 1 dari 1</span>
+          <div class="pagination__controls">
+            <button class="pagination__btn" id="prevPageBtn" onclick="goPrevPage()">
+              <i class="bx bx-chevron-left"></i> Sebelumnya
+            </button>
+            <button class="pagination__btn" id="nextPageBtn" onclick="goNextPage()">
+              Selanjutnya <i class="bx bx-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /page-content -->
+  </main>
+
+  <!-- Mobile overlay -->
+  <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleMobileSidebar()"></div>
+
+  <script src="js/riwayat.js"></script>
+</body>
+</html>

@@ -41,10 +41,6 @@ const PROVINCE_COORDS = {
   "Papua": { x: 919.8, y: 213.1 }
 };
 
-/**
- * Beberapa provinsi punya singkatan umum yang sering dipakai orang
- * (DIY, NTB, NTT, DKI) — dipetakan ke nama resmi di PROVINCE_COORDS.
- */
 const PROVINCE_ALIASES = {
   "DIY": "DI Yogyakarta",
   "D.I. Yogyakarta": "DI Yogyakarta",
@@ -58,13 +54,6 @@ const PROVINCE_ALIASES = {
   "Kepri": "Kepulauan Riau"
 };
 
-/**
- * Cari koordinat provinsi berdasarkan nama lokasi bebas (contoh: "Cikarang, Jawa Barat").
- * Cek alias dulu (DIY, NTB, dll), baru nama resmi — diurutkan dari nama
- * terpanjang biar tidak salah tangkap (misal "Jawa" jangan sampai match
- * duluan sebelum "Jawa Barat" sempat dicek).
- * Kalau tidak ketemu sama sekali, fallback ke Jawa Tengah (tengah peta) sebagai default aman.
- */
 function findProvinceCoord(locationString) {
   if (!locationString) return PROVINCE_COORDS["Jawa Tengah"];
   const loc = locationString.toLowerCase();

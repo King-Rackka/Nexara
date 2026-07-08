@@ -11,14 +11,17 @@ document.addEventListener('DOMContentLoaded', () => {
   // Cek hash URL untuk auto-switch ke register
   if (window.location.hash === '#register') switchTab('register');
 
-  // Cek kalau sudah login, langsung redirect
-  const session = localStorage.getItem('nexara_session');
+  // Cek kalau sudah login, langsung redirect (cek keduanya)
+  const session = localStorage.getItem('nexara_session')
+               || sessionStorage.getItem('nexara_session');
   if (session) {
-    const user = JSON.parse(session);
-    if (user && user.email) {
-      window.location.href = 'dashboard.html';
-      return;
-    }
+    try {
+      const user = JSON.parse(session);
+      if (user && user.email) {
+        window.location.href = 'dashboard.html';
+        return;
+      }
+    } catch {}
   }
 
   // Canvas particles background
@@ -250,9 +253,12 @@ function handleLogin() {
     if (user) {
       // Simpan session
       const session = { email: user.email, nama: user.nama, org: user.org, role: user.role };
-      if (remember) {
-        localStorage.setItem('nexara_session', JSON.stringify(session));
-      } else {
+      // Selalu simpan ke localStorage agar session tidak hilang saat navigate
+      // Remember me = session permanen, tanpa remember = session sampai browser ditutup
+      localStorage.setItem('nexara_session', JSON.stringify(session));
+      if (!remember) {
+        // Tandai sebagai session sementara
+        session._temp = true;
         sessionStorage.setItem('nexara_session', JSON.stringify(session));
       }
       // Redirect ke dashboard

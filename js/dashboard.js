@@ -143,11 +143,6 @@ function renderSummaryCards() {
     </div>
   `).join('');
 
-  // Catatan: sengaja TANPA animasi fade-in di sini.
-  // Sebelumnya pakai GSAP, tapi rAF-nya bisa "macet" kalau browser
-  // idle/tab nggak ada interaksi — animasinya nyangkut di opacity
-  // rendah sampai ada gerakan mouse yang mancing render frame baru.
-  // Card sekarang langsung tampil penuh begitu data siap, tanpa delay.
 }
 
 // ── Weather + Energy API (Open-Meteo) ─────────────────
@@ -180,9 +175,6 @@ async function fetchWeatherAndEnergy() {
     const todayHours = data.hourly.shortwave_radiation.slice(0, 24);
     apiEnergyData = todayHours.map(r => +(r * 0.25 * 0.18).toFixed(1)); // 250kWp * 18% eff
 
-    // Render chart — ditunda 1 frame biar layout udah "settle" dulu,
-    // biar chartCanvas.parentElement.offsetWidth kebaca akurat
-    // (celah ini yang bikin chart kadang blank di HP)
     requestAnimationFrame(() => {
       renderChart('daily');
       document.getElementById('chartLoading').style.display = 'none';

@@ -40,8 +40,8 @@
     },
     {
       "id": "INS-003",
-      "name": "Turbin Angin Sidrap",
-      "location": "Sidrap, Sulawesi Selatan",
+      "name": "Turbin Angin Enrekang",
+      "location": "Enrekang, Sulawesi Selatan",
       "type": "wind",
       "lat": -3.95,
       "lon": 119.85,

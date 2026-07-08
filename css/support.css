@@ -1,9 +1,4 @@
-/* ══════════════════════════════════════════════════════
-   SUPPORT PAGES — Panduan, FAQ, Status, Kontak
-   Dipakai bareng: variables.css (tokens) + index.css (navbar/footer)
-   ══════════════════════════════════════════════════════ */
 
-/* ── Page Header Banner ─────────────────────────────── */
 .page-header {
   padding: 140px 0 56px;
   background: linear-gradient(180deg, var(--clr-dark-bg) 0%, var(--clr-dark-surface) 100%);
@@ -51,9 +46,6 @@
   z-index: 1;
 }
 
-/* ══════════════════════════════════════════════════════
-   PANDUAN PENGGUNA — Guide layout
-   ══════════════════════════════════════════════════════ */
 .guide-layout {
   display: grid;
   grid-template-columns: 260px 1fr;
@@ -170,9 +162,6 @@
 .guide-cta h3 { font-family: var(--font-heading); font-size: 20px; color: #fff; margin-bottom: 8px; }
 .guide-cta p { font-size: 14px; color: #8AB89A; margin-bottom: 18px; }
 
-/* ══════════════════════════════════════════════════════
-   FAQ — Accordion
-   ══════════════════════════════════════════════════════ */
 .faq-search {
   max-width: 480px;
   margin: -28px auto 0;
@@ -256,9 +245,6 @@
 }
 .faq-empty.show { display: block; }
 
-/* ══════════════════════════════════════════════════════
-   STATUS SISTEM
-   ══════════════════════════════════════════════════════ */
 .status-wrap { padding: 56px 0 100px; }
 .status-overview {
   display: flex;
@@ -364,9 +350,6 @@
 }
 .status-subscribe__form input::placeholder { color: #5A8A6A; }
 
-/* ══════════════════════════════════════════════════════
-   KONTAK — Contact form + info
-   ══════════════════════════════════════════════════════ */
 .contact-wrap { padding: 56px 0 100px; }
 .contact-grid {
   display: grid;
@@ -423,9 +406,6 @@
 }
 .contact-success.show { display: flex; }
 
-/* ══════════════════════════════════════════════════════
-   RESPONSIVE
-   ══════════════════════════════════════════════════════ */
 @media (max-width: 900px) {
   .guide-layout { grid-template-columns: 1fr; }
   .guide-toc { position: static; }

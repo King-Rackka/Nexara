@@ -1,10 +1,4 @@
-/* ══════════════════════════════════════════════════════
-   COMPANY PAGES — Tentang Kami, Karir
-   Dipakai bareng: variables.css + index.css + support.css
-   (Syarat & Privasi cukup pakai support.css punya guide-layout)
-   ══════════════════════════════════════════════════════ */
 
-/* ── Mission / Story section ───────────────────────── */
 .mission-section { padding: 72px 0; }
 .mission-grid {
   display: grid;
@@ -42,7 +36,6 @@
   margin-bottom: 0;
 }
 
-/* ── Values cards ───────────────────────────────────── */
 .values-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -62,7 +55,6 @@
 .value-card h3 { font-family: var(--font-heading); font-size: 16px; margin-bottom: 8px; color: var(--clr-text); }
 .value-card p { font-size: 13.5px; color: var(--clr-text-secondary); line-height: 1.6; }
 
-/* ── Timeline ───────────────────────────────────────── */
 .timeline { position: relative; margin-top: 32px; padding-left: 32px; }
 .timeline::before {
   content: '';
@@ -92,7 +84,6 @@
 .timeline-item h4 { font-family: var(--font-heading); font-size: 16px; margin-bottom: 6px; color: var(--clr-text); }
 .timeline-item p { font-size: 13.5px; color: var(--clr-text-secondary); line-height: 1.6; }
 
-/* ── Team ───────────────────────────────────────────── */
 .team-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -110,9 +101,6 @@
 .team-card strong { display: block; font-size: 14px; color: var(--clr-text); margin-bottom: 2px; }
 .team-card span { font-size: 12px; color: var(--clr-text-muted); }
 
-/* ══════════════════════════════════════════════════════
-   KARIR — Careers
-   ══════════════════════════════════════════════════════ */
 .culture-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
