@@ -3,22 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nexara — Dashboard Monitoring</title>
+  <title>Nexara — Peta Instalasi</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="lib/boxicons/css/boxicons.min.css" />
-  <link rel="stylesheet" href="lib/swiper/swiper-bundle.min.css" />
 
   <link rel="stylesheet" href="css/variables.css" />
-  <link rel="stylesheet" href="css/dashboard.css" />
+  <link rel="stylesheet" href="css/peta.css" />
 </head>
 <body>
 
   <aside class="sidebar" id="sidebar">
     <div class="sidebar__top">
-      <a href="#" class="sidebar__logo">
+      <a href="index.html" class="sidebar__logo">
         <div class="sidebar__logo-icon">
           <svg width="20" height="20" viewBox="0 0 22 22" fill="none">
             <path d="M11 2 L20 7 L20 15 L11 20 L2 15 L2 7 Z" stroke="#4ADE80" stroke-width="1.5" fill="none"/>
@@ -28,160 +27,89 @@
         </div>
         <span class="sidebar__logo-text">Nex<em>ara</em></span>
       </a>
-      <button class="sidebar__collapse" id="sidebarCollapse" title="Toggle sidebar">
+      <button class="sidebar__collapse" id="sidebarCollapse">
         <i class="bx bx-chevrons-left"></i>
       </button>
     </div>
 
     <nav class="sidebar__nav">
       <div class="sidebar__nav-label">Menu Utama</div>
-      <a href="dashboard.html" class="sidebar__link active">
-        <i class="bx bx-home-alt-2"></i>
-        <span>Dashboard</span>
-      </a>
-      <a href="detail.html" class="sidebar__link">
-        <i class="bx bx-chip"></i>
-        <span>Detail Panel</span>
-      </a>
-      <a href="riwayat.html" class="sidebar__link">
-        <i class="bx bx-history"></i>
-        <span>Riwayat</span>
-      </a>
+      <a href="dashboard.html" class="sidebar__link" data-tooltip="Dashboard"><i class="bx bx-home-alt-2"></i><span>Dashboard</span></a>
+      <a href="detail.html"    class="sidebar__link" data-tooltip="Detail Panel"><i class="bx bx-chip"></i><span>Detail Panel</span></a>
+      <a href="riwayat.html"   class="sidebar__link" data-tooltip="Riwayat"><i class="bx bx-history"></i><span>Riwayat</span></a>
 
-      <div class="sidebar__nav-label" style="margin-top:16px">Lainnya</div>
-      <a href="peta.html" class="sidebar__link">
-        <i class="bx bx-map-alt"></i>
-        <span>Peta</span>
-      </a>
-      <a href="laporan.html" class="sidebar__link">
-        <i class="bx bx-bar-chart-alt-2"></i>
-        <span>Laporan</span>
-      </a>
-      <a href="pengaturan.html" class="sidebar__link">
-        <i class="bx bx-cog"></i>
-        <span>Pengaturan</span>
-      </a>
+      <div class="sidebar__nav-label" style="margin-top:12px">Lainnya</div>
+      <a href="peta.html"      class="sidebar__link active" data-tooltip="Peta"><i class="bx bx-map-alt"></i><span>Peta</span></a>
+      <a href="laporan.html" class="sidebar__link" data-tooltip="Laporan"><i class="bx bx-bar-chart-alt-2"></i><span>Laporan</span></a>
+      <a href="pengaturan.html" class="sidebar__link" data-tooltip="Pengaturan"><i class="bx bx-cog"></i><span>Pengaturan</span></a>
     </nav>
 
     <div class="sidebar__bottom">
-      <div class="sidebar__user" id="sidebarUser">
+      <div class="sidebar__user">
         <div class="sidebar__user-avatar" id="sidebarAvatar">--</div>
         <div class="sidebar__user-info">
           <strong id="sidebarName">Loading...</strong>
           <span id="sidebarOrg">--</span>
         </div>
       </div>
-      <button class="sidebar__logout" id="logoutBtn" onclick="handleLogout()" title="Keluar">
-        <i class="bx bx-log-out"></i>
-        <span>Keluar</span>
+      <button class="sidebar__logout" onclick="handleLogout()">
+        <i class="bx bx-log-out"></i><span>Keluar</span>
       </button>
     </div>
   </aside>
 
+  <!-- ═══ MAIN ═══ -->
   <main class="main" id="main">
 
     <header class="topbar">
       <div class="topbar__left">
-        <button class="topbar__menu-btn" id="mobileMenuBtn" onclick="toggleMobileSidebar()">
-          <i class="bx bx-menu"></i>
-        </button>
-        <div class="topbar__greeting">
-          <h1 id="greetingText">Selamat datang!</h1>
-          <p id="greetingDate">--</p>
-        </div>
+        <button class="topbar__menu-btn" onclick="toggleMobileSidebar()"><i class="bx bx-menu"></i></button>
+        <nav class="breadcrumb">
+          <a href="dashboard.html"><i class="bx bx-home-alt-2"></i> Dashboard</a>
+          <i class="bx bx-chevron-right"></i>
+          <span>Peta Instalasi</span>
+        </nav>
       </div>
       <div class="topbar__right">
-        <div class="topbar__weather" id="weatherBadge">
-          <i class="bx bx-loader-alt bx-spin"></i>
-          <span>Memuat cuaca...</span>
-        </div>
-
-        <div class="topbar__notif" id="notifBtn" onclick="toggleNotifPanel()">
-          <i class="bx bx-bell"></i>
-          <span class="topbar__notif-badge" id="notifBadge">0</span>
-        </div>
-
         <div class="topbar__avatar" id="topbarAvatar">--</div>
       </div>
     </header>
 
-    <div class="notif-panel" id="notifPanel" style="display:none">
-      <div class="notif-panel__header">
-        <span>Notifikasi</span>
-        <button onclick="markAllRead()" class="notif-panel__clear">Tandai semua dibaca</button>
-      </div>
-      <div class="notif-panel__list" id="notifList">
-        <div class="notif-panel__empty">Memuat notifikasi...</div>
-      </div>
-    </div>
-    <div class="notif-overlay" id="notifOverlay" onclick="toggleNotifPanel()" style="display:none"></div>
-
+    <!-- PAGE CONTENT -->
     <div class="page-content">
 
-      <div class="summary-cards" id="summaryCards">
-        <div class="summary-card summary-card--loading">
-          <div class="skeleton skeleton--sm"></div>
-          <div class="skeleton skeleton--lg"></div>
-          <div class="skeleton skeleton--sm"></div>
+      <!-- ── FILTER BAR ── -->
+      <div class="filter-bar">
+        <div class="filter-group">
+          <label>Status</label>
+          <div class="filter-types">
+            <button class="log-filter active" onclick="setStatusFilter('all', this)">Semua</button>
+            <button class="log-filter" onclick="setStatusFilter('active', this)">Aktif</button>
+            <button class="log-filter" onclick="setStatusFilter('warning', this)">Warning</button>
+            <button class="log-filter" onclick="setStatusFilter('error', this)">Error</button>
+          </div>
         </div>
-        <div class="summary-card summary-card--loading">
-          <div class="skeleton skeleton--sm"></div>
-          <div class="skeleton skeleton--lg"></div>
-          <div class="skeleton skeleton--sm"></div>
+
+        <div class="filter-group">
+          <label>Tipe Instalasi</label>
+          <div class="filter-types">
+            <button class="log-filter active" onclick="setTypeFilter('all', this)">Semua</button>
+            <button class="log-filter" onclick="setTypeFilter('solar', this)">Solar</button>
+            <button class="log-filter" onclick="setTypeFilter('wind', this)">Wind</button>
+          </div>
         </div>
-        <div class="summary-card summary-card--loading">
-          <div class="skeleton skeleton--sm"></div>
-          <div class="skeleton skeleton--lg"></div>
-          <div class="skeleton skeleton--sm"></div>
-        </div>
-        <div class="summary-card summary-card--loading">
-          <div class="skeleton skeleton--sm"></div>
-          <div class="skeleton skeleton--lg"></div>
-          <div class="skeleton skeleton--sm"></div>
-        </div>
+
+        <div class="filter-spacer"></div>
+        <span class="filter-result-count" id="filterResultCount">-- instalasi ditemukan</span>
       </div>
 
-      <!-- ── CHART + MAP ROW ── -->
-      <div class="dashboard-row">
-
-        <!-- Chart -->
-        <div class="chart-card">
-          <div class="chart-card__header">
-            <div>
-              <h3>Produksi Energi</h3>
-              <p id="chartSubtitle">Data radiasi matahari real-time dari Open-Meteo</p>
-            </div>
-            <div class="chart-tabs">
-              <button class="chart-tab active" onclick="switchChart('daily', this)">Harian</button>
-              <button class="chart-tab" onclick="switchChart('weekly', this)">Mingguan</button>
-              <button class="chart-tab" onclick="switchChart('monthly', this)">Bulanan</button>
-            </div>
-          </div>
-          <div class="chart-wrap">
-            <canvas id="energyChart"></canvas>
-            <div class="chart-loading" id="chartLoading">
-              <i class="bx bx-loader-alt bx-spin"></i>
-              <span>Mengambil data dari Open-Meteo...</span>
-            </div>
-          </div>
-          <div class="chart-footer">
-            <div class="chart-legend">
-              <span><em style="background:#4ADE80"></em> Output Energi (kWh)</span>
-              <span><em style="background:#F4A623"></em> Radiasi Matahari (W/m²)</span>
-            </div>
-            <div class="chart-api-badge">
-              <i class="bx bx-wifi"></i> Data: Open-Meteo API
-            </div>
-          </div>
+      <!-- ── FULLSCREEN MAP ── -->
+      <div class="map-card map-card--fullscreen">
+        <div class="map-card__header">
+          <h3><i class="bx bx-map-alt"></i> Peta Sebaran Instalasi</h3>
+          <span class="map-card__count" id="mapCount">-- lokasi</span>
         </div>
-
-        <!-- Map -->
-        <div class="map-card">
-          <div class="map-card__header">
-            <h3><i class="bx bx-map-alt"></i> Peta Instalasi</h3>
-            <span class="map-card__count" id="mapCount">-- lokasi</span>
-          </div>
-          <div class="map-card__body">
+        <div class="map-card__body map-card__body--fullscreen">
             <svg id="indonesiaMap" viewBox="0 0 1000 368" xmlns="http://www.w3.org/2000/svg" class="indonesia-svg">
               <defs>
                 <filter id="mapNodeGlow" x="-100%" y="-100%" width="300%" height="300%">
@@ -263,88 +191,48 @@
               <!-- Map markers dirender oleh JS -->
               <g id="mapMarkers" filter="url(#mapNodeGlow)"></g>
             </svg>
-          </div>
-          <div class="map-card__legend">
-            <span><em style="background:#4CAF50"></em> Aktif</span>
-            <span><em style="background:#F4A623"></em> Warning</span>
-            <span><em style="background:#E53935"></em> Error</span>
-          </div>
+
+        </div>
+        <div class="map-card__legend">
+          <span><em style="background:#4CAF50"></em> Aktif</span>
+          <span><em style="background:#F4A623"></em> Warning</span>
+          <span><em style="background:#E53935"></em> Error</span>
         </div>
 
-      </div>
-
-      <!-- ── PANEL LIST ── -->
-      <div class="panel-section">
-        <div class="panel-section__header">
-          <div>
-            <h3>Daftar Instalasi</h3>
-            <p id="panelSubtitle">Memuat data instalasi...</p>
-          </div>
-          <div class="panel-section__controls">
-            <div class="panel-search">
-              <i class="bx bx-search"></i>
-              <input type="text" id="panelSearch" placeholder="Cari lokasi..." oninput="filterPanels()" />
+        <!-- Panel detail mengambang, muncul saat marker diklik -->
+        <div class="map-detail-panel" id="mapDetailPanel">
+          <button class="map-detail-panel__close" onclick="closeDetailPanel()"><i class="bx bx-x"></i></button>
+          <div class="map-detail-panel__icon" id="detailIcon"><i class="bx bx-sun"></i></div>
+          <div class="map-detail-panel__status" id="detailStatus">Aktif</div>
+          <h4 class="map-detail-panel__name" id="detailName">--</h4>
+          <p class="map-detail-panel__location" id="detailLocation">--</p>
+          <div class="map-detail-panel__stats">
+            <div>
+              <span class="map-detail-panel__stat-label">Output Hari Ini</span>
+              <span class="map-detail-panel__stat-value" id="detailOutput">-- kWh</span>
             </div>
-            <div class="panel-filters" id="panelFilters">
-              <button class="filter-btn active" onclick="setFilter('all', this)">Semua</button>
-              <button class="filter-btn" onclick="setFilter('active', this)">
-                <span class="filter-dot" style="background:#4CAF50"></span> Aktif
-              </button>
-              <button class="filter-btn" onclick="setFilter('warning', this)">
-                <span class="filter-dot" style="background:#F4A623"></span> Warning
-              </button>
-              <button class="filter-btn" onclick="setFilter('error', this)">
-                <span class="filter-dot" style="background:#E53935"></span> Error
-              </button>
+            <div>
+              <span class="map-detail-panel__stat-label">Efisiensi</span>
+              <span class="map-detail-panel__stat-value" id="detailEfficiency">--%</span>
+            </div>
+            <div>
+              <span class="map-detail-panel__stat-label">CO₂ Dihemat</span>
+              <span class="map-detail-panel__stat-value" id="detailCo2">-- kg</span>
             </div>
           </div>
-        </div>
-
-        <!-- Swiper Panel Cards -->
-        <div class="swiper panel-swiper">
-          <div class="swiper-wrapper" id="panelSwiperWrapper">
-            <!-- Cards dirender oleh JS -->
-            <div class="swiper-slide">
-              <div class="panel-card panel-card--loading">
-                <div class="skeleton skeleton--sm"></div>
-                <div class="skeleton skeleton--lg"></div>
-                <div class="skeleton skeleton--md"></div>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-scrollbar panel-scrollbar"></div>
-        </div>
-
-        <!-- Panel Table (mobile fallback & full list) -->
-        <div class="panel-table-wrap">
-          <table class="panel-table" id="panelTable">
-            <thead>
-              <tr>
-                <th>Instalasi</th>
-                <th>Tipe</th>
-                <th>Status</th>
-                <th>Output Hari Ini</th>
-                <th>Efisiensi</th>
-                <th>CO₂ Dihemat</th>
-                <th>Aksi</th>
-              </tr>
-            </thead>
-            <tbody id="panelTableBody">
-              <tr><td colspan="7" class="panel-table__loading">Memuat data...</td></tr>
-            </tbody>
-          </table>
+          <button class="map-detail-panel__btn" id="detailBtn">
+            <i class="bx bx-right-arrow-alt"></i> Lihat Detail Lengkap
+          </button>
         </div>
       </div>
 
-    </div>
+    </div><!-- /page-content -->
   </main>
 
+  <!-- Mobile overlay -->
   <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleMobileSidebar()"></div>
 
-  <script src="lib/swiper/swiper-bundle.min.js"></script>
-  <script src="lib/gsap/gsap.min.js"></script>
-
   <script src="js/province-coords.js"></script>
-  <script src="js/dashboard.js"></script>
+  <script src="js/peta.js"></script>
 </body>
 </html>
