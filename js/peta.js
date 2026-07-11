@@ -1,4 +1,89 @@
-// ─── peta.js ──────────────────────────────────────────
+let topbarAlerts = [];
+
+async function loadTopbarWeather() {
+  const weatherEl = document.getElementById('weatherBadge');
+  if (!weatherEl) return;
+
+  const lat = -8.67, lon = 115.21; // Bali
+  try {
+    const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}` +
+      `&daily=temperature_2m_max,temperature_2m_min&timezone=Asia%2FMakassar&forecast_days=1`;
+    const res  = await fetch(url);
+    const data = await res.json();
+
+    const tempMax = data.daily.temperature_2m_max[0];
+    const tempMin = data.daily.temperature_2m_min[0];
+    weatherEl.innerHTML = `
+      <i class="bx bx-sun" style="color:#F4A623"></i>
+      <span>${tempMin}°–${tempMax}°C · Bali</span>
+    `;
+  } catch (err) {
+    console.warn('Open-Meteo API gagal:', err);
+    weatherEl.innerHTML = `<i class="bx bx-cloud"></i><span>Data cuaca tidak tersedia</span>`;
+  }
+}
+
+async function loadTopbarNotifications() {
+  try {
+    const res  = await fetch('assets/data/panels.json', { cache: 'no-store' });
+    const data = await res.json();
+    topbarAlerts = data.alerts || [];
+  } catch (err) {
+    topbarAlerts = [];
+  }
+  renderTopbarNotifications(topbarAlerts);
+}
+
+function renderTopbarNotifications(alertsData) {
+  const list   = document.getElementById('notifList');
+  const badge  = document.getElementById('notifBadge');
+  const unread = alertsData.filter(a => !a.read).length;
+
+  if (badge) badge.textContent = unread;
+  if (!list) return;
+
+  if (!alertsData.length) {
+    list.innerHTML = '<div class="notif-panel__empty">Tidak ada notifikasi</div>';
+    return;
+  }
+
+  const iconMap = {
+    error:   { icon: 'bx-error-circle', bg: '#FDECEC', color: '#C0392B' },
+    warning: { icon: 'bx-error',        bg: '#FEF3DC', color: '#B8750A' },
+    info:    { icon: 'bx-info-circle',  bg: '#E3F2FD', color: '#1565C0' },
+  };
+
+  list.innerHTML = alertsData.map(a => {
+    const ic   = iconMap[a.type] || iconMap.info;
+    const time = new Date(a.time).toLocaleString('id-ID', { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit' });
+    return `
+      <div class="notif-item ${a.read ? '' : 'unread'}">
+        <div class="notif-item__icon" style="background:${ic.bg}">
+          <i class="bx ${ic.icon}" style="color:${ic.color}"></i>
+        </div>
+        <div class="notif-item__body">
+          <div class="notif-item__msg">${a.message}</div>
+          <div class="notif-item__time">${time}</div>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+function toggleNotifPanel() {
+  const panel   = document.getElementById('notifPanel');
+  const overlay = document.getElementById('notifOverlay');
+  if (!panel || !overlay) return;
+  const isOpen = panel.style.display !== 'none';
+  panel.style.display   = isOpen ? 'none' : 'block';
+  overlay.style.display = isOpen ? 'none' : 'block';
+}
+
+function markAllRead() {
+  topbarAlerts.forEach(a => a.read = true);
+  renderTopbarNotifications(topbarAlerts);
+  toggleNotifPanel();
+}
 
 let allPanels    = [];
 let activeStatus = 'all';
@@ -21,6 +106,11 @@ document.addEventListener('DOMContentLoaded', async () => {
   if (!session) { window.location.href = 'auth.html'; return; }
   const user = JSON.parse(session);
   renderUserInfo(user);
+  renderGreeting(user.nama);
+  updateClock();
+  setInterval(updateClock, 60000);
+  loadTopbarWeather();
+  loadTopbarNotifications();
 
   document.getElementById('sidebarCollapse')?.addEventListener('click', () => {
     document.getElementById('sidebar').classList.toggle('collapsed');
@@ -40,6 +130,21 @@ function renderUserInfo(user) {
   if (el('sidebarOrg'))    el('sidebarOrg').textContent    = user.org  || '--';
 }
 
+function renderGreeting(nama) {
+  const hour = new Date().getHours();
+  const greet = hour < 11 ? 'Selamat pagi' : hour < 15 ? 'Selamat siang' : hour < 18 ? 'Selamat sore' : 'Selamat malam';
+  const el = document.getElementById('greetingText');
+  if (el) el.textContent = `${greet}, ${nama ? nama.split(' ')[0] : 'User'}! 👋`;
+}
+function updateClock() {
+  const el = document.getElementById('greetingDate');
+  if (!el) return;
+  const now  = new Date();
+  const days = ['Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu'];
+  const mons = ['Jan','Feb','Mar','Apr','Mei','Jun','Jul','Ags','Sep','Okt','Nov','Des'];
+  el.textContent = `${days[now.getDay()]}, ${now.getDate()} ${mons[now.getMonth()]} ${now.getFullYear()} · ${now.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' })} WIB`;
+}
+
 async function loadPanels() {
   try {
     const res  = await fetch('assets/data/panels.json', { cache: 'no-store' });
@@ -50,7 +155,6 @@ async function loadPanels() {
   }
 }
 
-// ── Filters ────────────────────────────────────────────
 function setStatusFilter(status, btn) {
   activeStatus = status;
   const group = btn.parentElement;
@@ -78,13 +182,11 @@ function applyFiltersAndRender() {
 
   renderMapMarkers(filtered);
 
-  // Kalau instalasi yang lagi dibuka detailnya kefilter keluar, tutup panelnya
   if (selectedPanelId && !filtered.some(p => p.id === selectedPanelId)) {
     closeDetailPanel();
   }
 }
 
-// ── Render Markers (pola sama seperti dashboard.js, + klik buka panel) ──
 function renderMapMarkers(panels) {
   const mapEl = document.getElementById('mapMarkers');
   if (!mapEl) return;
@@ -126,7 +228,6 @@ function renderMapMarkers(panels) {
   mapEl.innerHTML = markersHTML;
 }
 
-// ── Floating Detail Panel ───────────────────────────────
 function openDetailPanel(id) {
   const p = allPanels.find(x => x.id === id);
   if (!p) return;
@@ -168,7 +269,6 @@ function goToDetail(id) {
   window.location.href = 'detail.html';
 }
 
-// ── Sidebar mobile toggle & logout ─────────────────────
 function toggleMobileSidebar() {
   document.getElementById('sidebar').classList.toggle('mobile-open');
   document.getElementById('sidebarOverlay').classList.toggle('show');

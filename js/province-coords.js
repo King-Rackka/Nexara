@@ -1,9 +1,3 @@
-// ─── province-coords.js ─────────────────────────────────
-// Koordinat pusat tiap provinsi pada peta Indonesia (viewBox 0 0 1000 368)
-// Sumber: simplemaps.com — dipakai untuk naruh marker instalasi
-// secara presisi per-provinsi, BUKAN hasil hitungan lat/lon linear
-// (karena proyeksi peta ini bukan equirectangular murni).
-
 const PROVINCE_COORDS = {
   "Aceh": { x: 82.9, y: 45.8 },
   "Sumatera Utara": { x: 126.7, y: 83.9 },

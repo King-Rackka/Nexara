@@ -40,7 +40,6 @@
 
       <div class="sidebar__nav-label" style="margin-top:12px">Lainnya</div>
       <a href="peta.html" class="sidebar__link" data-tooltip="Peta"><i class="bx bx-map-alt"></i><span>Peta</span></a>
-      <a href="laporan.html" class="sidebar__link" data-tooltip="Laporan"><i class="bx bx-bar-chart-alt-2"></i><span>Laporan</span></a>
       <a href="pengaturan.html" class="sidebar__link" data-tooltip="Pengaturan"><i class="bx bx-cog"></i><span>Pengaturan</span></a>
     </nav>
 
@@ -64,19 +63,39 @@
     <header class="topbar">
       <div class="topbar__left">
         <button class="topbar__menu-btn" onclick="toggleMobileSidebar()"><i class="bx bx-menu"></i></button>
-        <nav class="breadcrumb">
-          <a href="dashboard.html"><i class="bx bx-home-alt-2"></i> Dashboard</a>
-          <i class="bx bx-chevron-right"></i>
-          <span>Riwayat Aktivitas</span>
-        </nav>
+        <div class="topbar__greeting">
+          <h1 id="greetingText">Selamat datang!</h1>
+          <p id="greetingDate">--</p>
+        </div>
       </div>
       <div class="topbar__right">
+        <div class="topbar__weather" id="weatherBadge">
+          <i class="bx bx-loader-alt bx-spin"></i><span>Memuat cuaca...</span>
+        </div>
+        <div class="topbar__notif" id="notifBtn" onclick="toggleNotifPanel()">
+          <i class="bx bx-bell"></i>
+          <span class="topbar__notif-badge" id="notifBadge">0</span>
+        </div>
         <div class="topbar__avatar" id="topbarAvatar">--</div>
       </div>
     </header>
 
+    <div class="notif-panel" id="notifPanel" style="display:none">
+      <div class="notif-panel__header">
+        <span>Notifikasi</span>
+        <button onclick="markAllRead()" class="notif-panel__clear">Tandai semua dibaca</button>
+      </div>
+      <div class="notif-panel__list" id="notifList">
+        <div class="notif-panel__empty">Memuat notifikasi...</div>
+      </div>
+    </div>
+    <div class="notif-overlay" id="notifOverlay" onclick="toggleNotifPanel()" style="display:none"></div>
+
+
+    <!-- PAGE CONTENT -->
     <div class="page-content">
 
+      <!-- ── SUMMARY CARDS ── -->
       <div class="summary-cards" id="summaryCards">
         <div class="summary-card summary-card--loading">
           <div class="skeleton skeleton--sm"></div>
@@ -96,6 +115,7 @@
         </div>
       </div>
 
+      <!-- ── FILTER BAR ── -->
       <div class="filter-bar">
         <div class="filter-group">
           <label>Rentang Tanggal</label>
@@ -161,10 +181,9 @@
         </div>
       </div>
 
-    </div><!-- /page-content -->
+    </div>
   </main>
 
-  <!-- Mobile overlay -->
   <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleMobileSidebar()"></div>
 
   <script src="js/riwayat.js"></script>

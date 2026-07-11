@@ -279,7 +279,7 @@ body {
 .btn-action {
   display: inline-flex; align-items: center; gap: 6px;
   padding: 9px 16px; border-radius: 8px;
-  font-size: 13px; font-weight: 500; cursor: pointer;
+  font-size: 12px; font-weight: 500; cursor: pointer;
   font-family: var(--font-body); transition: all 0.2s; border: none;
   white-space: nowrap;
 }
@@ -543,6 +543,7 @@ body {
 @media (max-width: 480px) {
   .page-content { padding: 12px; gap: 12px; }
   .topbar { padding: 0 12px; height: 54px; }
+  .btn-action { padding: 7px 12px; font-size: 11px; }
   .topbar__weather { display: none; }
   .breadcrumb { font-size: 12px; }
   .panel-header { padding: 14px; }

@@ -409,8 +409,36 @@
 @media (max-width: 900px) {
   .guide-layout { grid-template-columns: 1fr; }
   .guide-toc { position: static; }
+  .faq-wrap { 
+    padding: 40px 0 100px; 
+    max-width: 760px; 
+    margin-left: 16px;
+    margin-right: 16px;
+  }
   .contact-grid { grid-template-columns: 1fr; }
-  .status-stats { grid-template-columns: 1fr; }
+
+  .status-stat { 
+    padding: 16px 10px;
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+  .status-stat__val { font-size: 22px; }
+
+  .status-list {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+
+  .status-history {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+
+  .status-subscribe {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+
 }
 @media (max-width: 640px) {
   .page-header { padding: 120px 0 40px; }
@@ -420,11 +448,38 @@
   .status-subscribe__form { width: 100%; }
   .status-subscribe__form input { flex: 1; min-width: 0; }
 
+  .faq-wrap { 
+    padding: 40px 0 100px; 
+    max-width: 760px; 
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+
   .status-row { align-items: flex-start; padding: 14px 16px; }
   .status-row__name { flex: 1 1 100%; font-size: 13.5px; }
   .status-row__meta { flex: 1 1 100%; justify-content: space-between; }
   .status-row__uptime { margin-right: 0; }
 
-  .status-stat { padding: 16px 10px; }
+  .status-stat { 
+    padding: 16px 10px;
+    margin-left: 16px;
+    margin-right: 16px;
+  }
   .status-stat__val { font-size: 22px; }
+
+  .status-list {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+
+  .status-history {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+
+  .status-subscribe {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+
 }

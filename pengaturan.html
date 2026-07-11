@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nexara — Pengaturan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="lib/boxicons/css/boxicons.min.css" />
+
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/pengaturan.css" />
+</head>
+<body>
+
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar__top">
+      <a href="index.html" class="sidebar__logo">
+        <div class="sidebar__logo-icon">
+          <svg width="20" height="20" viewBox="0 0 22 22" fill="none">
+            <path d="M11 2 L20 7 L20 15 L11 20 L2 15 L2 7 Z" stroke="#4ADE80" stroke-width="1.5" fill="none"/>
+            <path d="M11 6 L16 9 L16 15 L11 18 L6 15 L6 9 Z" fill="#4ADE80" opacity="0.25"/>
+            <circle cx="11" cy="11" r="2.5" fill="#4ADE80"/>
+          </svg>
+        </div>
+        <span class="sidebar__logo-text">Nex<em>ara</em></span>
+      </a>
+      <button class="sidebar__collapse" id="sidebarCollapse">
+        <i class="bx bx-chevrons-left"></i>
+      </button>
+    </div>
+
+    <nav class="sidebar__nav">
+      <div class="sidebar__nav-label">Menu Utama</div>
+      <a href="dashboard.html" class="sidebar__link" data-tooltip="Dashboard"><i class="bx bx-home-alt-2"></i><span>Dashboard</span></a>
+      <a href="detail.html"    class="sidebar__link" data-tooltip="Detail Panel"><i class="bx bx-chip"></i><span>Detail Panel</span></a>
+      <a href="riwayat.html"   class="sidebar__link" data-tooltip="Riwayat"><i class="bx bx-history"></i><span>Riwayat</span></a>
+
+      <div class="sidebar__nav-label" style="margin-top:12px">Lainnya</div>
+      <a href="peta.html" class="sidebar__link" data-tooltip="Peta"><i class="bx bx-map-alt"></i><span>Peta</span></a>
+      <a href="pengaturan.html" class="sidebar__link active" data-tooltip="Pengaturan"><i class="bx bx-cog"></i><span>Pengaturan</span></a>
+    </nav>
+
+    <div class="sidebar__bottom">
+      <div class="sidebar__user">
+        <div class="sidebar__user-avatar" id="sidebarAvatar">--</div>
+        <div class="sidebar__user-info">
+          <strong id="sidebarName">Loading...</strong>
+          <span id="sidebarOrg">--</span>
+        </div>
+      </div>
+      <button class="sidebar__logout" onclick="handleLogout()">
+        <i class="bx bx-log-out"></i><span>Keluar</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- ═══ MAIN ═══ -->
+  <main class="main" id="main">
+
+    <header class="topbar">
+      <div class="topbar__left">
+        <button class="topbar__menu-btn" id="mobileMenuBtn" onclick="toggleMobileSidebar()">
+          <i class="bx bx-menu"></i>
+        </button>
+        <div class="topbar__greeting">
+          <h1 id="greetingText">Selamat datang!</h1>
+          <p id="greetingDate">--</p>
+        </div>
+      </div>
+      <div class="topbar__right">
+        <div class="topbar__weather" id="weatherBadge">
+          <i class="bx bx-loader-alt bx-spin"></i>
+          <span>Memuat cuaca...</span>
+        </div>
+
+        <div class="topbar__notif" id="notifBtn" onclick="toggleNotifPanel()">
+          <i class="bx bx-bell"></i>
+          <span class="topbar__notif-badge" id="notifBadge">0</span>
+        </div>
+
+        <div class="topbar__avatar" id="topbarAvatar">--</div>
+      </div>
+    </header>
+
+    <div class="notif-panel" id="notifPanel" style="display:none">
+      <div class="notif-panel__header">
+        <span>Notifikasi</span>
+        <button onclick="markAllRead()" class="notif-panel__clear">Tandai semua dibaca</button>
+      </div>
+      <div class="notif-panel__list" id="notifList">
+        <div class="notif-panel__empty">Memuat notifikasi...</div>
+      </div>
+    </div>
+    <div class="notif-overlay" id="notifOverlay" onclick="toggleNotifPanel()" style="display:none"></div>
+
+    <div class="page-content">
+
+      <div class="settings-grid">
+      <div class="settings-card">
+        <div class="settings-card__header">
+          <h3><i class="bx bx-user-circle"></i> Profil</h3>
+          <p>Informasi akun kamu di Nexara</p>
+        </div>
+
+        <div class="settings-card__body">
+          <div class="profile-avatar-row">
+            <div class="profile-avatar" id="profileAvatar">--</div>
+            <div>
+              <div class="profile-avatar-name" id="profileDisplayName">Loading...</div>
+              <div class="profile-avatar-role" id="profileDisplayRole">--</div>
+            </div>
+          </div>
+
+          <form id="profileForm" class="settings-form" onsubmit="return false;">
+            <div class="settings-field">
+              <label for="profileNama">Nama Lengkap</label>
+              <input type="text" id="profileNama" placeholder="Nama lengkap kamu" />
+              <span class="settings-field__error" id="profileNamaError"></span>
+            </div>
+
+            <div class="settings-field">
+              <label for="profileOrg">Organisasi / Instansi</label>
+              <input type="text" id="profileOrg" placeholder="Nama organisasi" />
+              <span class="settings-field__error" id="profileOrgError"></span>
+            </div>
+
+            <div class="settings-field">
+              <label for="profileEmail">Email</label>
+              <input type="email" id="profileEmail" disabled />
+              <span class="settings-field__hint"><i class="bx bx-lock-alt"></i> Email tidak dapat diubah karena digunakan sebagai ID login</span>
+            </div>
+
+            <div class="settings-field">
+              <label>Peran</label>
+              <span class="settings-role-badge" id="profileRoleBadge">--</span>
+            </div>
+
+            <div class="settings-form__actions">
+              <span class="settings-save-msg" id="profileSaveMsg"></span>
+              <button type="button" class="settings-btn settings-btn--primary" id="profileSaveBtn" onclick="saveProfile()">
+                <i class="bx bx-save"></i> Simpan Perubahan
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- ── KEAMANAN ── -->
+      <div class="settings-card">
+        <div class="settings-card__header">
+          <h3><i class="bx bx-shield-quarter"></i> Keamanan</h3>
+          <p>Ganti password akun kamu secara berkala untuk keamanan</p>
+        </div>
+
+        <div class="settings-card__body">
+          <form id="securityForm" class="settings-form" onsubmit="return false;">
+            <div class="settings-field">
+              <label for="currentPassword">Password Saat Ini</label>
+              <div class="settings-input-wrap">
+                <input type="password" id="currentPassword" placeholder="Masukkan password saat ini" />
+                <button type="button" class="settings-input__toggle" onclick="togglePwVisibility('currentPassword', this)"><i class="bx bx-hide"></i></button>
+              </div>
+              <span class="settings-field__error" id="currentPasswordError"></span>
+            </div>
+
+            <div class="settings-field">
+              <label for="newPassword">Password Baru</label>
+              <div class="settings-input-wrap">
+                <input type="password" id="newPassword" placeholder="Minimal 8 karakter" />
+                <button type="button" class="settings-input__toggle" onclick="togglePwVisibility('newPassword', this)"><i class="bx bx-hide"></i></button>
+              </div>
+              <span class="settings-field__error" id="newPasswordError"></span>
+            </div>
+
+            <div class="settings-field">
+              <label for="confirmPassword">Konfirmasi Password Baru</label>
+              <div class="settings-input-wrap">
+                <input type="password" id="confirmPassword" placeholder="Ulangi password baru" />
+                <button type="button" class="settings-input__toggle" onclick="togglePwVisibility('confirmPassword', this)"><i class="bx bx-hide"></i></button>
+              </div>
+              <span class="settings-field__error" id="confirmPasswordError"></span>
+            </div>
+
+            <div class="settings-form__actions">
+              <span class="settings-save-msg" id="securitySaveMsg"></span>
+              <button type="button" class="settings-btn settings-btn--primary" id="securitySaveBtn" onclick="changePassword()">
+                <i class="bx bx-lock-alt"></i> Ganti Password
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleMobileSidebar()"></div>
+
+  <script src="js/pengaturan.js"></script>
+</body>
+</html>

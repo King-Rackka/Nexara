@@ -895,7 +895,8 @@ body {
   .summary-card__icon { width: 30px; height: 30px; font-size: 16px; margin-bottom: 6px; }
   .summary-card__label { font-size: 10px; }
   .topbar { padding: 0 12px; height: 54px; }
-  .topbar__greeting h1 { font-size: 14px; }
+  .topbar__greeting h1 { font-size: 12px; }
+  .topbar__greeting p { font-size: 10px; }
   .topbar__weather { display: none; }
   .chart-card__header { flex-direction: column; gap: 8px; }
   .chart-tabs { width: 100%; }

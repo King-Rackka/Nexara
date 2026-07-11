@@ -1,6 +1,3 @@
-// ─── dashboard.js ─────────────────────────────────────
-
-// ── State ─────────────────────────────────────────────
 let allPanels    = [];
 let alerts       = [];
 let chartMode    = 'daily';
@@ -30,14 +27,13 @@ document.addEventListener('DOMContentLoaded', async () => {
   chartCanvas = document.getElementById('energyChart');
   if (chartCanvas) chartCtx = chartCanvas.getContext('2d');
 
-  // Load data paralel
+  // Load  paralel
   await Promise.all([
     loadPanelData(),
     fetchWeatherAndEnergy(),
   ]);
 });
 
-// ── User Info ──────────────────────────────────────────
 function renderUserInfo(user) {
   const initials = user.nama ? user.nama.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase() : '--';
   const el = (id) => document.getElementById(id);
@@ -48,7 +44,6 @@ function renderUserInfo(user) {
   if (el('sidebarOrg'))    el('sidebarOrg').textContent    = user.org  || '--';
 }
 
-// ── Greeting ───────────────────────────────────────────
 function renderGreeting(nama) {
   const hour = new Date().getHours();
   const greet = hour < 11 ? 'Selamat pagi' : hour < 15 ? 'Selamat siang' : hour < 18 ? 'Selamat sore' : 'Selamat malam';
@@ -65,7 +60,6 @@ function updateClock() {
   el.textContent = `${days[now.getDay()]}, ${now.getDate()} ${mons[now.getMonth()]} ${now.getFullYear()} · ${now.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' })} WIB`;
 }
 
-// ── Load Panel Data ────────────────────────────────────
 async function loadPanelData() {
   try {
     const res  = await fetch('assets/data/panels.json');
@@ -90,7 +84,6 @@ async function loadPanelData() {
   }
 }
 
-// ── Summary Cards ──────────────────────────────────────
 function renderSummaryCards() {
   const totalOutput   = allPanels.reduce((s, p) => s + p.output_today, 0);
   const avgEfficiency = Math.round(allPanels.reduce((s, p) => s + p.efficiency, 0) / allPanels.length);
@@ -145,14 +138,11 @@ function renderSummaryCards() {
 
 }
 
-// ── Weather + Energy API (Open-Meteo) ─────────────────
 async function fetchWeatherAndEnergy() {
-  // Pakai koordinat Bali (representatif)
   const lat = -8.67, lon = 115.21;
   const weatherEl = document.getElementById('weatherBadge');
 
   try {
-    // Open-Meteo — ambil radiasi & suhu hari ini
     const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}` +
       `&hourly=shortwave_radiation,temperature_2m&daily=temperature_2m_max,temperature_2m_min` +
       `&timezone=Asia%2FMakassar&forecast_days=7`;
@@ -161,7 +151,6 @@ async function fetchWeatherAndEnergy() {
     const data = await res.json();
     weatherData = data;
 
-    // Tampilkan cuaca di topbar
     if (weatherEl && data.daily) {
       const tempMax = data.daily.temperature_2m_max[0];
       const tempMin = data.daily.temperature_2m_min[0];
@@ -171,9 +160,8 @@ async function fetchWeatherAndEnergy() {
       `;
     }
 
-    // Proses data radiasi → estimasi kWh per jam
     const todayHours = data.hourly.shortwave_radiation.slice(0, 24);
-    apiEnergyData = todayHours.map(r => +(r * 0.25 * 0.18).toFixed(1)); // 250kWp * 18% eff
+    apiEnergyData = todayHours.map(r => +(r * 0.25 * 0.18).toFixed(1)); 
 
     requestAnimationFrame(() => {
       renderChart('daily');
@@ -185,7 +173,6 @@ async function fetchWeatherAndEnergy() {
     if (weatherEl) {
       weatherEl.innerHTML = `<i class="bx bx-cloud"></i><span>Data cuaca tidak tersedia</span>`;
     }
-    // Fallback ke dummy data
     apiEnergyData = generateDummyEnergy('daily');
     requestAnimationFrame(() => {
       renderChart('daily');
@@ -197,12 +184,10 @@ async function fetchWeatherAndEnergy() {
   }
 }
 
-// ── Dummy Energy Generator (fallback) ─────────────────
 function generateDummyEnergy(mode) {
   const count = mode === 'daily' ? 24 : mode === 'weekly' ? 7 : 30;
   return Array.from({ length: count }, (_, i) => {
     if (mode === 'daily') {
-      // Profil surya: rendah pagi/sore, tinggi siang
       const h = i;
       if (h < 6 || h > 18) return 0;
       const mid  = 12;
@@ -213,12 +198,10 @@ function generateDummyEnergy(mode) {
   });
 }
 
-// ── Chart Renderer (Canvas API) ───────────────────────
 function renderChart(mode) {
   if (!chartCtx || !chartCanvas) return;
   chartMode = mode;
 
-  // Siapkan data
   let energyData, radiationData, labels;
 
   if (mode === 'daily' && weatherData?.hourly) {
@@ -248,11 +231,9 @@ function renderChart(mode) {
   const maxVal = Math.max(...energyData, ...radiationData, 1);
   const xStep  = cW / (labels.length - 1 || 1);
 
-  // Helper: data → canvas coords
   const cx = i => pad.left + i * xStep;
   const cy = v => pad.top  + cH - (v / maxVal) * cH;
 
-  // Grid lines
   chartCtx.strokeStyle = 'rgba(0,0,0,0.05)';
   chartCtx.lineWidth   = 1;
   [0, 0.25, 0.5, 0.75, 1].forEach(t => {
@@ -266,7 +247,6 @@ function renderChart(mode) {
     chartCtx.fillText(`${Math.round(maxVal * t)}`, 2, y + 3);
   });
 
-  // X labels (tampilkan setiap N label)
   const step = Math.ceil(labels.length / 8);
   chartCtx.fillStyle = 'rgba(0,0,0,0.4)';
   chartCtx.font = '10px Inter';
@@ -278,13 +258,10 @@ function renderChart(mode) {
   });
   chartCtx.textAlign = 'left';
 
-  // Draw area + line — Radiation (amber)
   drawLineChart(chartCtx, radiationData, cx, cy, '#F4A623', 'rgba(244,166,35,0.08)');
 
-  // Draw area + line — Energy (green)
   drawLineChart(chartCtx, energyData, cx, cy, '#4ADE80', 'rgba(74,222,128,0.15)');
 
-  // Dots for energy
   energyData.forEach((v, i) => {
     if (v === 0) return;
     chartCtx.beginPath();

@@ -3,17 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Nexara — Platform monitoring energi terbarukan berbasis teknologi cerdas. Pantau panel surya dan turbin angin dari satu dashboard terintegrasi." />
-  <title>Nexara — Energy Intelligence Platform</title>
+  <title>NexaGreen — Dampak Nyata Energi Hijau</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="lib/boxicons/css/boxicons.min.css" />
   <link rel="stylesheet" href="lib/aos/aos.css" />
-  <link rel="stylesheet" href="lib/swiper/swiper-bundle.min.css" />
   <link rel="stylesheet" href="css/variables.css" />
-  <link rel="stylesheet" href="css/index.css" />
-  
+  <link rel="stylesheet" href="css/nexagreen.css" />
 </head>
 <body>
 
@@ -29,345 +26,229 @@
         </div>
         <span class="navbar__logo-text">Nex<span>ara</span></span>
       </a>
-
       <nav class="navbar__menu" id="navMenu">
-        <a href="#features" class="navbar__link">Fitur</a>
-        <a href="#how-it-works" class="navbar__link">Cara Kerja</a>
-        <a href="#stats" class="navbar__link">Statistik</a>
-        <a href="nexagreen.html" class="navbar__link">NexaGreen</a>
-        <a href="#testimonials" class="navbar__link">Testimoni</a>
+        <a href="index.html#features" class="navbar__link">Fitur</a>
+        <a href="index.html#how-it-works"class="navbar__link">Cara Kerja</a>
+        <a href="index.html#stats" class="navbar__link">Statistik</a>
+        <a href="nexagreen.html"class="navbar__link active">NexaGreen</a>
+        <a href="index.html#testimonials" class="navbar__link">Testimoni</a>
       </nav>
-
       <div class="navbar__actions">
         <a href="auth.html" class="btn btn-outline navbar__btn-login">Masuk</a>
         <a href="auth.html#register" class="btn btn-primary navbar__btn-register">Daftar Gratis</a>
-        <button class="navbar__hamburger" id="hamburger" aria-label="Toggle menu">
+        <button class="navbar__hamburger" id="hamburger">
           <span></span><span></span><span></span>
         </button>
       </div>
     </div>
   </header>
 
-  <section class="hero" id="hero">
-    <div class="hero__bg-grid"></div>
-    <div class="hero__particles" id="heroParticles"></div>
+  <section class="ng-hero">
+    <div class="ng-hero__particles" id="heroParticles"></div>
+    <div class="ng-hero__bg"></div>
 
-    <div class="container hero__inner">
-      <div class="hero__content">
-        <div class="badge badge-green hero__badge" data-aos="fade-up" data-aos-delay="0">
-          <i class="bx bx-pulse"></i>
-          Platform Monitoring Energi Hijau #1 di Indonesia
+    <div class="container ng-hero__inner">
+      <div class="ng-hero__content" data-aos="fade-right">
+        <div class="ng-badge">
+          <i class="bx bx-leaf"></i> Platform Dampak Lingkungan
         </div>
-
-        <h1 class="hero__title" data-aos="fade-up" data-aos-delay="100">
-          Koneksi <span class="hero__title-typed" id="heroTyped"></span><br/>
-          menuju era energi<br/>
-          <span class="hero__title-accent">berkelanjutan</span>
+        <h1 class="ng-hero__title">
+          Setiap kWh yang<br/>
+          kamu hasilkan,<br/>
+          <span class="ng-hero__title-accent">mengubah dunia</span>
         </h1>
-
-        <p class="hero__desc" data-aos="fade-up" data-aos-delay="200">
-          Nexara mengintegrasikan data dari seluruh instalasi panel surya dan turbin angin kamu dalam satu ekosistem cerdas — real-time, akurat, dan mudah dianalisis.
+        <p class="ng-hero__desc">
+          NexaGreen memvisualisasikan dampak nyata dari energi terbarukan yang dihasilkan seluruh instalasi dalam jaringan Nexara — dalam angka yang benar-benar terasa.
         </p>
-
-        <div class="hero__btns" data-aos="fade-up" data-aos-delay="300">
-          <a href="auth.html#register" class="btn btn-primary hero__btn-main">
-            <i class="bx bx-rocket"></i> Mulai Monitoring
+        <div class="ng-hero__btns">
+          <a href="auth.html#register" class="btn btn-primary">
+            <i class="bx bx-rocket"></i> Mulai Berkontribusi
           </a>
-          <a href="nexagreen.html" class="btn btn-outline hero__btn-demo">
-            <i class="bx bx-play-circle"></i> Lihat NexaGreen
+          <a href="#impact" class="btn btn-outline-white">
+            <i class="bx bx-down-arrow-alt"></i> Lihat Dampak
           </a>
         </div>
+      </div>
 
-        <div class="hero__trust" data-aos="fade-up" data-aos-delay="400">
-          <div class="hero__trust-avatars">
-            <div class="avatar-stack">
-              <span style="background:#1A6B3C">BS</span>
-              <span style="background:#1565C0">SR</span>
-              <span style="background:#6A1B9A">AF</span>
-              <span style="background:#B8750A">DW</span>
-            </div>
+      <div class="ng-hero__visual" data-aos="fade-left" data-aos-delay="200">
+        <div class="globe-wrap">
+          <div class="globe-glow"></div>
+          
+          <div class="pseudo-earth" id="earthContainer">
+            <div class="earth-texture" id="earthTexture"></div>
           </div>
-          <p class="hero__trust-text">
-            Dipercaya <strong>500+</strong> operator energi di Indonesia
+          
+          <div class="globe-badge globe-badge--1">
+            <i class="bx bx-leaf"></i>
+            <span>-1.8k ton CO₂</span>
+          </div>
+          <div class="globe-badge globe-badge--2">
+            <i class="bx bx-sun"></i>
+            <span>905 kWh/hari</span>
+          </div>
+          <div class="globe-badge globe-badge--3">
+            <i class="bx bx-tree"></i>
+            <span>90k pohon</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ng-hero__scroll">
+      <div class="ng-hero__scroll-line"></div>
+    </div>
+  </section>
+
+  <section class="impact-section" id="impact">
+    <div class="container">
+      <div class="section-header text-center" data-aos="fade-up">
+        <span class="section-label">Dampak Nyata</span>
+        <h2 class="section-title">Angka yang <span>benar-benar terasa</span></h2>
+        <p class="section-desc" style="margin:12px auto 0">Setiap instalasi yang terhubung ke Nexara berkontribusi langsung pada angka-angka ini — diperbarui setiap hari.</p>
+      </div>
+
+      <div class="impact-grid">
+        <div class="impact-card" data-aos="fade-up" data-aos-delay="0">
+          <div class="impact-card__icon-wrap">
+            <div class="impact-card__icon">
+              <i class='bx bx-trending-down'></i>
+            </div>
+            <div class="impact-card__ring"></div>
+          </div>
+          <div class="impact-card__counter" id="co2Counter">0</div>
+          <div class="impact-card__unit">ton CO₂</div>
+          <div class="impact-card__label">Berhasil Direduksi</div>
+          <div class="impact-card__desc">Setara emisi yang dihasilkan 390 penerbangan Jakarta–Bali</div>
+        </div>
+
+        <div class="impact-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="impact-card__icon-wrap">
+            <div class="impact-card__icon impact-card__icon--tree">
+              <i class='bx bxs-leaf'></i>
+            </div>
+            <div class="impact-card__ring" style="border-color:#2E7D32"></div>
+          </div>
+          <div class="impact-card__counter" id="treeCounter" style="color:#2E7D32">0</div>
+          <div class="impact-card__unit" style="color:#2E7D32">pohon</div>
+          <div class="impact-card__label">Setara Pohon Ditanam</div>
+          <div class="impact-card__desc">1 pohon dewasa menyerap ~21 kg CO₂ per tahun</div>
+        </div>
+
+        <div class="impact-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="impact-card__icon-wrap">
+            <div class="impact-card__icon impact-card__icon--car">
+              <i class='bx bxs-car'></i>
+            </div>
+            <div class="impact-card__ring" style="border-color:#F4A623"></div>
+          </div>
+          <div class="impact-card__counter" id="carCounter" style="color:#F4A623">0</div>
+          <div class="impact-card__unit" style="color:#F4A623">kendaraan</div>
+          <div class="impact-card__label">Setara Mobil Tidak Jalan</div>
+          <div class="impact-card__desc">Rata-rata mobil bensin emisi ~2.1 ton CO₂ per tahun</div>
+        </div>
+
+        <div class="impact-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="impact-card__icon-wrap">
+            <div class="impact-card__icon impact-card__icon--home">
+              <i class='bx bxs-home'></i>
+            </div>
+            <div class="impact-card__ring" style="border-color:#1565C0"></div>
+          </div>
+          <div class="impact-card__counter" id="homeCounter" style="color:#1565C0">0</div>
+          <div class="impact-card__unit" style="color:#1565C0">rumah</div>
+          <div class="impact-card__label">Rumah yang Bisa Dialiri</div>
+          <div class="impact-card__desc">Rata-rata konsumsi rumah tangga Indonesia ~100 kWh/bulan</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="netzero-section">
+    <div class="container">
+      <div class="netzero-card" data-aos="fade-up">
+        <div class="netzero-card__left">
+          <span class="section-label">Target Nasional</span>
+          <h2 class="section-title">Menuju <span>Net-Zero 2060</span></h2>
+          <p style="font-size:15px;color:var(--clr-text-secondary);line-height:1.7;margin-top:10px">
+            Indonesia berkomitmen mencapai net-zero emisi pada 2060. Nexara dan seluruh instalasi energi terbarukan yang terhubung berkontribusi langsung pada target besar ini.
           </p>
-        </div>
-      </div>
 
-      <div class="hero__visual" data-aos="fade-left" data-aos-delay="200">
-        <div class="hero__dashboard-card">
-          <div class="hdc__header">
-            <div class="hdc__dot dot-red"></div>
-            <div class="hdc__dot dot-yellow"></div>
-            <div class="hdc__dot dot-green"></div>
-            <span class="hdc__title">Live Dashboard</span>
-            <span class="hdc__live"><i class="bx bx-radio-circle-marked"></i> LIVE</span>
-          </div>
-          <div class="hdc__body">
-            <div class="hdc__stats">
-              <div class="hdc__stat">
-                <span class="hdc__stat-val" id="counterKwh">0</span>
-                <span class="hdc__stat-unit">kWh</span>
-                <span class="hdc__stat-lbl">Produksi Hari Ini</span>
-              </div>
-              <div class="hdc__stat">
-                <span class="hdc__stat-val" id="counterEff">0</span>
-                <span class="hdc__stat-unit">%</span>
-                <span class="hdc__stat-lbl">Efisiensi Rata-rata</span>
-              </div>
-              <div class="hdc__stat">
-                <span class="hdc__stat-val" id="counterCo2">0</span>
-                <span class="hdc__stat-unit">kg</span>
-                <span class="hdc__stat-lbl">CO₂ Dihemat</span>
-              </div>
+          <div class="netzero-stats">
+            <div class="netzero-stat">
+              <span class="netzero-stat__val">23%</span>
+              <span class="netzero-stat__lbl">Target EBT 2025</span>
             </div>
-
-            <div class="hdc__chart">
-              <svg viewBox="0 0 280 80" class="hdc__svg" preserveAspectRatio="none">
-                <defs>
-                  <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stop-color="#4ADE80" stop-opacity="0.3"/>
-                    <stop offset="100%" stop-color="#4ADE80" stop-opacity="0"/>
-                  </linearGradient>
-                </defs>
-                <path class="hdc__chart-area" d="M0,60 C20,55 40,45 60,40 C80,35 100,50 120,35 C140,20 160,30 180,20 C200,10 220,25 240,15 C260,5 280,10 280,10 L280,80 L0,80 Z" fill="url(#chartGrad)"/>
-                <path class="hdc__chart-line" d="M0,60 C20,55 40,45 60,40 C80,35 100,50 120,35 C140,20 160,30 180,20 C200,10 220,25 240,15 C260,5 280,10 280,10" fill="none" stroke="#4ADE80" stroke-width="2"/>
-                <circle cx="280" cy="10" r="4" fill="#4ADE80"/>
-              </svg>
-              <div class="hdc__chart-label">7 Hari Terakhir</div>
+            <div class="netzero-stat">
+              <span class="netzero-stat__val">31%</span>
+              <span class="netzero-stat__lbl">Target EBT 2030</span>
             </div>
-
-            <div class="hdc__panels">
-              <div class="hdc__panel-item">
-                <span class="hdc__panel-dot" style="background:#4CAF50"></span>
-                <span class="hdc__panel-name">Bali Selatan</span>
-                <div class="hdc__panel-bar">
-                  <div class="hdc__panel-fill" style="width:97%;background:#4ADE80"></div>
-                </div>
-                <span class="hdc__panel-pct">97%</span>
-              </div>
-              <div class="hdc__panel-item">
-                <span class="hdc__panel-dot" style="background:#4CAF50"></span>
-                <span class="hdc__panel-name">Surabaya Barat</span>
-                <div class="hdc__panel-bar">
-                  <div class="hdc__panel-fill" style="width:94%;background:#4ADE80"></div>
-                </div>
-                <span class="hdc__panel-pct">94%</span>
-              </div>
-              <div class="hdc__panel-item">
-                <span class="hdc__panel-dot" style="background:#F4A623"></span>
-                <span class="hdc__panel-name">Enrekang Wind</span>
-                <div class="hdc__panel-bar">
-                  <div class="hdc__panel-fill" style="width:61%;background:#F4A623"></div>
-                </div>
-                <span class="hdc__panel-pct">61%</span>
-              </div>
+            <div class="netzero-stat">
+              <span class="netzero-stat__val">2060</span>
+              <span class="netzero-stat__lbl">Net-Zero Indonesia</span>
             </div>
           </div>
         </div>
 
-        <div class="hero__float hero__float--tl" data-aos="fade-right" data-aos-delay="500">
-          <i class="bx bx-trending-up" style="color:#4ADE80"></i>
-          <div>
-            <strong>+12%</strong>
-            <span>vs bulan lalu</span>
+        <div class="netzero-card__right">
+          <div class="progress-item" data-aos="fade-left" data-aos-delay="0">
+            <div class="progress-item__header">
+              <span class="progress-item__label">Kontribusi Nexara ke Target EBT 2025</span>
+              <span class="progress-item__pct" id="pct1">0%</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill progress-fill--green" id="bar1" style="width:0%"></div>
+            </div>
+            <div class="progress-item__sub">Target: 23% dari total bauran energi nasional</div>
+          </div>
+
+          <div class="progress-item" data-aos="fade-left" data-aos-delay="100">
+            <div class="progress-item__header">
+              <span class="progress-item__label">Pengurangan Emisi Karbon Nasional</span>
+              <span class="progress-item__pct" id="pct2">0%</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill progress-fill--amber" id="bar2" style="width:0%"></div>
+            </div>
+            <div class="progress-item__sub">Target: 29% pengurangan emisi di 2030</div>
+          </div>
+
+          <div class="progress-item" data-aos="fade-left" data-aos-delay="200">
+            <div class="progress-item__header">
+              <span class="progress-item__label">Instalasi Energi Terbarukan Aktif</span>
+              <span class="progress-item__pct" id="pct3">0%</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill progress-fill--blue" id="bar3" style="width:0%"></div>
+            </div>
+            <div class="progress-item__sub">148 dari target 500 instalasi terdaftar</div>
+          </div>
+
+          <div class="netzero-note">
+            <i class="bx bx-info-circle"></i>
+            Data berdasarkan estimasi kontribusi instalasi terdaftar di Nexara terhadap target nasional ESDM.
           </div>
         </div>
-        <div class="hero__float hero__float--br" data-aos="fade-left" data-aos-delay="600">
-          <i class="bx bx-shield-check" style="color:#4ADE80"></i>
-          <div>
-            <strong>99.9%</strong>
-            <span>Uptime</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="hero__scroll">
-      <span>Scroll untuk melihat lebih</span>
-      <div class="hero__scroll-line"></div>
-    </div>
-  </section>
-
-  <section class="stats-banner" id="stats">
-    <div class="container stats-banner__inner">
-      <div class="stats-banner__item" data-aos="fade-up" data-aos-delay="0">
-        <span class="stats-banner__val">2.4 <span>GWh</span></span>
-        <span class="stats-banner__lbl">Total produksi bulan ini</span>
-      </div>
-      <div class="stats-banner__divider"></div>
-      <div class="stats-banner__item" data-aos="fade-up" data-aos-delay="100">
-        <span class="stats-banner__val">148 <span>lokasi</span></span>
-        <span class="stats-banner__lbl">Instalasi aktif di Indonesia</span>
-      </div>
-      <div class="stats-banner__divider"></div>
-      <div class="stats-banner__item" data-aos="fade-up" data-aos-delay="200">
-        <span class="stats-banner__val">1.8k <span>ton</span></span>
-        <span class="stats-banner__lbl">CO₂ berhasil dihemat</span>
-      </div>
-      <div class="stats-banner__divider"></div>
-      <div class="stats-banner__item" data-aos="fade-up" data-aos-delay="300">
-        <span class="stats-banner__val">500+ <span>user</span></span>
-        <span class="stats-banner__lbl">Operator energi terdaftar</span>
       </div>
     </div>
   </section>
 
-  <section class="features" id="features">
+  <section class="map-section">
     <div class="container">
       <div class="section-header text-center" data-aos="fade-up">
-        <span class="section-label">Fitur Unggulan</span>
-        <h2 class="section-title">Semua yang kamu butuhkan<br/><span>dalam satu platform</span></h2>
-        <p class="section-desc" style="margin:12px auto 0">Nexara dirancang sebagai ekosistem digital terintegrasi yang menghubungkan data, monitoring, analisis, dan pelaporan energi hijau.</p>
+        <span class="section-label">Sebaran Dampak</span>
+        <h2 class="section-title">Jejak hijau di <span>seluruh Nusantara</span></h2>
       </div>
 
-      <div class="features__grid">
-        <div class="features__card" data-aos="fade-up" data-aos-delay="0">
-          <div class="features__icon" style="background:#DCF5E7">
-            <i class="bx bx-map-alt" style="color:#1A6B3C"></i>
-          </div>
-          <h3>Monitoring Multi-Lokasi</h3>
-          <p>Pantau semua instalasi panel surya dan turbin angin dari seluruh Indonesia dalam satu peta interaktif secara real-time.</p>
-        </div>
-
-        <div class="features__card" data-aos="fade-up" data-aos-delay="100">
-          <div class="features__icon" style="background:rgba(74,222,128,0.15)">
-            <i class="bx bx-line-chart" style="color:#4ADE80"></i>
-          </div>
-          <h3>Analisis Performa Real-time</h3>
-          <p>Grafik produksi energi, tren efisiensi, dan prediksi output berbasis data aktual dari setiap instalasi yang terhubung.</p>
-        </div>
-
-        <div class="features__card" data-aos="fade-up" data-aos-delay="200">
-          <div class="features__icon" style="background:#FEF3DC">
-            <i class="bx bx-bell" style="color:#B8750A"></i>
-          </div>
-          <h3>Alert & Notifikasi Otomatis</h3>
-          <p>Sistem deteksi anomali yang langsung memberi notifikasi saat ada penurunan efisiensi atau kerusakan pada instalasi.</p>
-        </div>
-
-        <div class="features__card" data-aos="fade-up" data-aos-delay="0">
-          <div class="features__icon" style="background:#E3F2FD">
-            <i class="bx bx-data" style="color:#1565C0"></i>
-          </div>
-          <h3>Laporan & Ekspor Data</h3>
-          <p>Generate laporan produksi energi harian, mingguan, dan bulanan dalam format PDF atau CSV dengan satu klik.</p>
-        </div>
-
-        <div class="features__card" data-aos="fade-up" data-aos-delay="100">
-          <div class="features__icon" style="background:#F3E5F5">
-            <i class="bx bx-shield" style="color:#6A1B9A"></i>
-          </div>
-          <h3>Keamanan Data Tingkat Tinggi</h3>
-          <p>Data energi kamu terlindungi dengan enkripsi end-to-end dan sistem autentikasi berlapis untuk keamanan maksimal.</p>
-        </div>
-
-        <div class="features__card" data-aos="fade-up" data-aos-delay="200">
-          <div class="features__icon" style="background:#E8F5E9">
-            <i class="bx bx-leaf" style="color:#2E7D32"></i>
-          </div>
-          <h3>Kalkulasi Dampak Lingkungan</h3>
-          <p>Hitung otomatis berapa ton CO₂ yang berhasil direduksi dari setiap kWh energi terbarukan yang diproduksi.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="how-it-works" id="how-it-works">
-    <div class="container">
-      <div class="section-header text-center" data-aos="fade-up">
-        <span class="section-label">Cara Kerja</span>
-        <h2 class="section-title">Mulai dalam <span>3 langkah mudah</span></h2>
-      </div>
-
-      <div class="hiw__steps">
-        <div class="hiw__step" data-aos="fade-up" data-aos-delay="0">
-          <div class="hiw__step-num">01</div>
-          <div class="hiw__step-icon">
-            <i class="bx bx-user-plus"></i>
-          </div>
-          <h3>Daftar & Buat Akun</h3>
-          <p>Buat akun Nexara secara gratis. Isi informasi organisasi dan jenis instalasi energi terbarukan yang kamu miliki.</p>
-        </div>
-
-        <div class="hiw__connector" data-aos="fade-up" data-aos-delay="100">
-          <div class="hiw__connector-line"></div>
-          <i class="bx bx-right-arrow-alt"></i>
-        </div>
-
-        <div class="hiw__step" data-aos="fade-up" data-aos-delay="150">
-          <div class="hiw__step-num">02</div>
-          <div class="hiw__step-icon">
-            <i class="bx bx-plug"></i>
-          </div>
-          <h3>Hubungkan Instalasi</h3>
-          <p>Daftarkan lokasi panel surya atau turbin angin kamu ke dalam sistem Nexara dengan memasukkan data teknis instalasi.</p>
-        </div>
-
-        <div class="hiw__connector" data-aos="fade-up" data-aos-delay="200">
-          <div class="hiw__connector-line"></div>
-          <i class="bx bx-right-arrow-alt"></i>
-        </div>
-
-        <div class="hiw__step" data-aos="fade-up" data-aos-delay="250">
-          <div class="hiw__step-num">03</div>
-          <div class="hiw__step-icon">
-            <i class="bx bx-tachometer"></i>
-          </div>
-          <h3>Pantau & Analisis</h3>
-          <p>Dashboard langsung aktif. Pantau performa real-time, analisis tren, dan terima alert otomatis dari mana saja.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="map-preview">
-    <div class="container">
-      <div class="map-preview__inner" data-aos="fade-up">
-        <div class="map-preview__content">
-          <span class="section-label">Jaringan Nexara</span>
-          <h2 class="section-title">Tersebar di <span>seluruh Nusantara</span></h2>
-          <p class="section-desc">Lebih dari 148 instalasi aktif dari Sabang sampai Merauke terhubung ke platform Nexara secara real-time.</p>
-
-          <div class="map-preview__legend">
-            <div class="map-preview__legend-item">
-              <span class="legend-dot" style="background:#4CAF50"></span>
-              <span>Normal (132 lokasi)</span>
-            </div>
-            <div class="map-preview__legend-item">
-              <span class="legend-dot" style="background:#F4A623"></span>
-              <span>Perlu Perhatian (12 lokasi)</span>
-            </div>
-            <div class="map-preview__legend-item">
-              <span class="legend-dot" style="background:#E53935"></span>
-              <span>Gangguan (4 lokasi)</span>
-            </div>
-          </div>
-
-          <a href="dashboard.html" class="btn btn-primary" style="margin-top:24px">
-            <i class="bx bx-map"></i> Buka Peta Penuh
-          </a>
-        </div>
-
-        <div class="map-preview__map">
-  <div class="map-hud">
-    <span class="map-hud__dot" style="background:#4ADE80"></span>
-    <span class="map-hud__title">Peta Monitoring Nasional</span>
-    <span class="map-hud__live"><i class="bx bx-radio-circle-marked"></i> 148 AKTIF</span>
-  </div>
-
-  <div class="map-svg-wrap">
-    <svg viewBox="0 0 1000 368" class="indonesia-map" xmlns="http://www.w3.org/2000/svg">
-
-      <defs>
-        <filter id="nodeGlow" x="-100%" y="-100%" width="300%" height="300%">
-          <feGaussianBlur stdDeviation="4" result="blur"/>
-          <feMerge>
-            <feMergeNode in="blur"/>
-            <feMergeNode in="SourceGraphic"/>
-          </feMerge>
-        </filter>
-      </defs>
-
+      <div class="map-impact-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="map-impact-card__left">
+            <svg id="indonesiaMap" viewBox="0 0 1000 368" xmlns="http://www.w3.org/2000/svg" class="indonesia-svg">
+              <defs>
+                <filter id="mapNodeGlow" x="-100%" y="-100%" width="300%" height="300%">
+                  <feGaussianBlur stdDeviation="4" result="blur"/>
+                  <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                </filter>
+              </defs>
+              <!-- Map data: simplemaps.com, free for commercial use -->
 <g id="features">
   <path d="M494.2 51.4l0.7 0.1 0.9 0 1.4 0 1.1 0 0.1 0.3 0.1 0.9 0.3 0.8-0.7 0.4-0.2 0.1-0.3 0-0.7-0.2-0.4-0.5-1.1-0.7-0.5-0.6-0.7-0.6z m18 38.9l-0.4-0.4-0.3-0.3-0.2-0.4-0.2-0.6 0-0.5 0.4-0.2 0.3 0.3 0.6 0.4 0.2 0.3 0 0.2-0.3-0.2-0.6-0.4-0.2-0.1 0 0.1 0.1 0.1 0.1 0.2 0.3 0.6 0.4 0.6 0.3 0.3 0.3 0.2 0 0.1-0.4 0-0.4-0.3z m-21.7-21.6l-0.2 0-0.6-0.1-0.2 0.1-0.2 0-0.3 0.2-0.1 0-0.3-0.2-0.1-0.3 0.1-0.3 0.3-0.3 0.3-0.2 0.4 0 0.4 0.1 0.3 0.1 0.3 0.2 0.2 0.2 0 0.2 0 0.3-0.2 0.1-0.1-0.1z m3.3-1.7l-0.1 0.4-0.2 0.5 0 1.2-0.1 0.3-0.3 0.2-0.2-0.1-0.1-0.4-0.1-0.3-1.1-0.5-0.3-0.4-0.2-0.5-0.2-0.5-0.1-0.4 0.2-0.5 0.5-0.2 1.2 0 0.3 0 0.3 0.1 0.3 0.1 0.2 0.2 0 0.3 0 0.5z m2.9-2.3l-0.2-0.4-0.6-0.5-0.2-0.4 0.1-0.5 0.4-0.2 0.5 0.1 0.4 0.3 0.3 0.3 0.3 0.4 0.2 0.4 0.1 0.4 0 0.2 0 0.4-0.1 0.2-0.2-0.1-1-0.6z m-10.7-0.1l-0.3 0-0.3-0.2-0.3-0.2-0.2-0.1-0.2-0.3-0.1-0.2 0-0.2 0.2-0.3 0.1-0.1 0.3-0.2 0.2-0.1 0.2 0 0.2 0.1 0.4 0.3 0.2 0 1.7 0.1 0.3 0.2 0.5 0.7 0.4 0.1 0.2 0 0.4 0.2 0.4 0.1 0.2 0.1 0 0.2 0 0.2-0.4 0.4-0.8-0.1-1.6-0.7-1.7 0z m9.8-6.4l-0.3-0.2-0.5-0.5-0.3-0.2 0.2 0 0.4-0.1 0.1-0.1 0.1 0 0.4 0.2 0.4 0.2 0.4 0.3 0.3 0.3 0.2 0.3-0.1 0.2-0.3 0-0.4-0.1-0.6-0.3z m-0.6-5.1l0 0.5-0.2 0.5-0.7 0.8-0.8 0.1-0.9-0.7-0.5-0.9 0.3-0.9 0.7-0.6 0.3-0.2 0.2 0.2 0.5 0.5 0.9 0.5 0.2 0.2z m4.8 32.4l-1 0.5-0.3 0.6-1.1-0.2-0.9 0.2-0.4 0.6-0.3 0.6-0.8-0.2-0.9-1-0.3-0.6-0.3-0.8-0.3-0.4-0.7-0.8-0.8-0.1-0.6-0.3-0.4 0.7-0.6-0.4-0.7-0.3-0.3 0.6-0.4-0.2-0.5-1-0.6-0.2-0.4 1.1-0.8 0.3-0.4 0.3-0.8 0-0.9-0.2-0.4-0.4 0.4-0.5 0-0.7-0.7 0.6-1.2 0.6-0.8-0.2-0.6-0.3-0.4 0.5-0.3 0.9-0.2 0.9-1.2-0.3-0.4-0.9-1.1-0.2-1.3 0.3-1.6 1.5-0.7 0.5-0.9-0.3-0.6-0.6-0.6-0.6-1.1-0.2-0.6 0.2-0.1 1 0 0.6 0.3 0.6 0 0.6-0.5 0.8-1.8 0.4-1-0.4-0.9 0.4 0.3 1.2 1.2 0.6 0.3 1.1-0.9 0-1.1 0-0.3 0.6-0.4 0.9-0.3 0.8-0.2 0.3 0 0.4-0.1 0.5-0.2 0.7-0.1 0.6-0.2 0.9 0 0.3-0.1 0.3-0.3 0.6-0.2 0.2 0 0.4 0 0.6 0 0.2-0.4 0.3-0.8 0-0.3 0.1-0.1 0.3 0 0.3-0.3 0.9 0 0.8-0.6 0.3 0 0.3-0.5 0-0.3 0.3-0.8 0.4-0.6 0.5-0.3 0-0.3 0.1-0.1 0.5-0.5 0.1-0.3 0.5-0.3 0.8 0 0.3-0.3 0.1 0 0.2-0.1 0.4-0.8 0.6 0 0.6-0.3 0.5-0.6 0-0.4-0.9-0.6-0.2-0.5 0-0.1 0-0.9 0.6-0.9 0-0.5 0.2-0.9 0-0.7 0.1-0.5 0.6 0 0.5-0.1 0.6-0.2 0.3-0.7 0.4-0.3 0-0.5-0.3-0.3 0-0.5-0.3 0-0.1-0.7-0.2-0.3-0.1-0.3 0-0.2-0.2-0.6-0.1-0.7 0-0.5 0-0.7 0.1-0.2-0.7 0-0.8-0.4-0.6-0.3-0.6-0.2-0.4-0.9-0.2-0.1-0.3-0.3-0.6-1.1-0.3-0.3 0-0.9 0.1-0.4 0-0.6 0.2-0.3 0.5-0.2 0.4-0.1 0.2-0.2 0-0.3 0.6-0.6 0-0.3-0.2-0.1-0.6-0.5 0-0.3-0.6-1.5-0.3-1.5-0.3 0-0.2 0-0.4 0-0.1 0.1 0.1 0.4 0.1 0.5-0.1 0.3-0.3 0.1-0.3 0-0.5-0.1-0.4 0-0.5 0.2-0.3 0.7-0.6 0.3-0.3 0.5-0.8 0.4-1.1 0.2-1.4 0-0.6 0-0.2-0.1-0.2 0-0.1 0-0.2 0.1-0.2 0.2-0.2 0.2-0.1 0.2-0.1 1.1-0.1 1.1-0.5 0.2-0.2 0.1-0.4-0.1-0.4 0-0.3 0.1-0.4 0.1-0.4 0.1-0.2 0-0.3-0.1-0.3-0.2-0.1-0.4 0-0.3 0.2-0.3-0.1-0.2-0.4 0-0.2 0-0.6 0-0.2-0.2-0.3-0.1-0.2 0-0.4 0.2-1.1 0.3-0.7 0.6-0.4 1.5-0.2 0.5-0.2 0.2-0.2-0.1-0.3 0-0.4 0.1-0.4 0.3-0.2 0.7 0.1 0.4-0.3 0.8-0.7 0.4-0.1 0.3-0.2 0.7-0.9 0.5-0.2 0.9-0.1 0.4-0.2 0.2-0.3 0-0.4-0.2-0.5-0.3-0.4-0.3-0.3-0.2-0.2-0.3-0.1-0.2-0.1-0.3 0-0.2 0.1-0.4 0.2-0.2 0-0.3-0.3 0-0.4 0.2-0.4 0.1-0.4-0.1-0.2-0.2-0.4 0-0.2 0.1-0.3 0.2 0 0.2-0.1 0.2-0.1 0.2-0.5-0.1-0.4-0.5-0.7-0.1-0.2 0-0.1 0.2-0.1 0.3-0.2 0.1-0.3 0.1-0.2 0-0.2 0.1-0.2 0.3-0.4 0.3-0.3 1.1-0.8 0.3-0.3 0.3-0.7 0.3-0.5 0.3 0.1 0.5 0.8 0.6 0.2 0.6-0.1 1.3-0.5 0.8-0.1 0.3-0.2 0.2-0.3 0.1-0.9 0.1-0.3 0.7-1-0.1-0.1-0.3-0.1-0.3-0.4 0-0.3 0.7-3 0.4-0.9 0.4-0.5 0.2 0.1 0.2 0.1 0.1 0 0.2-0.1 0.2-0.2-0.1-0.2-0.1-0.4-0.3-0.6-0.1-0.2 0-0.2 0-0.4 0-0.2-0.5-1.2-0.1-0.5 0-0.8 0.1-0.8 0.8-2.3 0-0.6-0.3-0.3-0.4-0.2-0.3-0.3 0-0.5 0.2-0.1 0.7-0.4 0.1-0.2 0.4-0.8 0.3-0.9 0.2-1.7 0.1-0.4 0.2-0.4 0.1-0.2 0.4-0.1 0.2-0.1 0.1-0.2 0.9-0.8 0.1 0.1 0.1 0.1 0.2 0.1 0.3 0 0.1-0.2 0.1-0.3 0.7-0.6 0.1-0.6 0-0.7 0.2-0.6 0.3-0.3 0.2 0 0.2 0.2 0.1 0.3 0.1 0.3 0.4 0.1 0.9 0 0.4 0.2 0.3 0.1 0.1 0.2 0.1 0.3 0.1 0.3 0.2 0.3 0.3 0.1 0.3-0.2 0.9-0.9 0.4-0.2 0.2-0.2 0.2-0.2 0.1-0.5 0.2 0.1 0.2 0.1 0.5 0 0.9 0.2 0.3 0.1 0.5-0.2 0.6-0.3 0.5-0.1 0.5 0.6 0.1 0 0.2-0.1 0.1 0.1 0.1 0.1 0.1 0.2 0.5 0.9 0.2 0.1 0.2 0 0.2 0 0.5-0.5 0.2 0 0.2 0.1 0.4-0.1 0.1-0.2 0-0.1-0.1-0.2 0-0.2 0.1-0.3 0.4-0.4 0.2-0.2 0.2 0 0.8 1.3 0.3 0 0.5-0.3 0.5 0.2 0.4 0 0.4-0.1 0.6-0.5 0.4 0 0.7 0.5 0.8 0.2 1.5-0.3 0.8 0 1.1 0.3 3.7-0.1 0.2-0.1 0.3-0.3 0.2 0 0.3 0 0.2 0.2 0.1 0.2 0.1 0.2 0.8 0.5 1.6 0.8 1.1 1.2 0.5 0.3 0.5 0.1 0.7 0.1 0.3 0 0.5 0 0.4 0.1 0.1 0.2-0.2 0.1-0.5 0.5-0.2 0.1-0.2 0-2.7-0.9 0 0.1 0.1 0.2 0 0.1 0.2 0.1 0.2 0.1 0.1 0.1 0.1 0.2-0.1 0.1-0.1 0.2-0.1 0.2 0.3 0.1 0.4 0 0.4 0.1 0.3 0.2 0.2 0.2-0.1 0.3 0 0.2 0.2 0.1 0.2-0.1 0.2-0.1 0.2-0.1 0.2 0.1 1.9 1.8 0.2 0.2 0.7 0.1 0.3 0.2 0.3 0.2-0.1 0.2-0.3 0.3-0.4 0-0.5-0.1-0.7-0.5-0.4-0.1-0.9-0.1 0 0.1 0.5 0.1 0.6 0.2 0.5 0.4 0.3 0.4 0.3 0.1 0.3-0.1 0.3-0.1 0.3 0 0.2 0 0.5 0.4 0.2 0.2 1 1 0.1 0.3 0 0.1-0.1 0.1-0.3 0.1-1.2-0.2 0.3 0.3 0.3 0.3 0.9 0.2 0.8 0.2 0.2 0.2 0 0.3-0.2 0.2-0.6 0.3-0.2 0.2-0.3 0.5-0.3 0.1-1.9 0.2-0.4-0.1-0.9-0.3-0.3-0.1-0.5-0.2-0.2-0.4-0.2-0.5-0.3-0.5-0.1-0.2 0-0.5-0.1-0.1-0.2-0.1-0.4-0.2 0.2 0.4 0.1 0.1 0.1 1.1 0.2 0.3 0.3 0.4 0.2 0.5 0 0.5-0.3 0.3-0.3 0-0.9-0.4-0.4-0.1-2.5 0-1.6-0.3-2.6 0.1-0.7 0.2-0.5 0.8 0.5-0.3 0.6-0.2 0.6 0 1.1 0 0.6 0 0.3 0.3-0.2 0.5-0.1 0.5 0.2 0.5 0.3 0.5 0.3 0.2 0.2 0.1 0.8 0.2 0.2 0.2 0.2 0.1 0.3 0.5 0.3-0.2 0.6 0 0.6 0.1 0.5 0.1 0.1 0.1 0.2-0.1 0.1 0.2 0 0.6-0.1 0.2 0 0.3-0.2 0.1-0.2 0.1-0.2 0.1-0.2 0.2-0.2 0.4-0.1 0.1-0.2 0.2-0.2 0.1 0 0.2-0.1 0.8-0.1 0.2-0.3 0.3-0.2 0-0.4-0.4-0.6-0.3-0.2 0-0.1 0.1-0.1 0.1 0.1 0.2 0.1 0.2 0.2 0.2 1.4 0.8 0.3 0.1 0.4 0.1 0.8 0 0.5 0.1 0.1 0.2-0.1 0.3 0 0.3 0.5 0.6 0.8 0 0.9-0.1 0.8 0.2 0.2 0.2 0.1 0.1 0 0.1 0.2 0.2 0.1 0.2-0.1 0.2-0.2 0.2-0.2 0-0.2 0.2-0.5 0.6-0.2 0.2 0.3 0.1 0.4-0.1 0.4-0.1 0.3-0.1 0.4-0.1 0.4 0.2 0.2 0.3 0 0.2-0.4 0.1-0.7 0.3-0.4 0.1-1.3 0.2 0 0.1 0.4 0 1.5 0.3 1.9 0.1-0.2 0.3-0.5 0.2-0.4 0.1-0.3 0.2-0.8 0.5-0.1 0.2 0.2 0.3 0.8 0.2 0.8 0.1 0.8 0.2 0.6 0.5 0.2 0.4 0.1 0.3 0.1 1.3 0.1 0.4 0.2 0.4 0.2 0.2 0.8 0.7 0.3 0.4 1.9 1.7 0.2 0.2 0.1 0.3z" id="IDKU" name="North Kalimantan">
   </path>
@@ -438,141 +319,273 @@
   <path d="M425.1 105.3l2.9-1.2 0.4-0.1 0.5 0.1 0.4 0.2 1.5 1 0 0.1 0 0.4 0 0.2 1.5 0.3 1.5 0.3 0.3 0.6 0.5 0 0.1 0.6 0.3 0.2 0.6 0 0.3-0.6 0.2 0 0.1-0.2 0.2-0.4 0.3-0.5 0.6-0.2 0.4 0 0.9-0.1 0.3 0 1.1 0.3 0.3 0.6 0.1 0.3 0.9 0.2 0.2 0.4 0.3 0.6 0.4 0.6 0 0.8 0.2 0.7 0.7-0.1 0.5 0 0.7 0 0.6 0.1 0.2 0.2 0.3 0 0.3 0.1 0.7 0.2 0 0.1 0.5 0.3 0.3 0 0.5 0.3 0.3 0 0.7-0.4 0.2-0.3 0.1-0.6 0-0.5 0.5-0.6 0.7-0.1 0.9 0 0.5-0.2 0.9 0 0.9-0.6 0.1 0 0.5 0 0.6 0.2 0.4 0.9 0.6 0 0.3-0.5 0-0.6 0.8-0.6 0.1-0.4 0-0.2 0.3-0.1 0-0.3 0.3-0.8 0.3-0.5 0.5-0.1 0.1-0.5 0.3-0.1 0.3 0 0.6-0.5 0.8-0.4 0.3-0.3 0.5 0 0-0.3 0.6-0.3 0-0.8 0.3-0.9 0-0.3 0.1-0.3 0.3-0.1 0.8 0 0.4-0.3 0-0.2 0-0.6 0-0.4 0.2-0.2 0.3-0.6 0.1-0.3 0-0.3 0.2-0.9 0.1-0.6 0.2-0.7 0.1-0.5 0-0.4 0.2-0.3 0.3-0.8 0.4-0.9 0.3-0.6 1.1 0 0.9 0-0.3-1.1-1.2-0.6-0.3-1.2 0.9-0.4 1 0.4 1.8-0.4 0.5-0.8 0-0.6-0.3-0.6 0-0.6 0.1-1 0.6-0.2 1.1 0.2 0.6 0.6 0.6 0.6 0.9 0.3 0.7-0.5 1.6-1.5 1.3-0.3 1.1 0.2 0.4 0.9 1.2 0.3 0.2-0.9 0.3-0.9 0.4-0.5 0.6 0.3 0.8 0.2 1.2-0.6 0.7-0.6 0 0.7-0.4 0.5 0.4 0.4 0.9 0.2 0.8 0 0.4-0.3 0.8-0.3 0.4-1.1 0.6 0.2 0.5 1 0.4 0.2 0.3-0.6 0.7 0.3 0.6 0.4 0.4-0.7 0.6 0.3 0.8 0.1 0.7 0.8 0.3 0.4 0.3 0.8 0.3 0.6 0.9 1 0.8 0.2 0.3-0.6 0.4-0.6 0.9-0.2 1.1 0.2 0.3-0.6 1-0.5 0.1 0.2 0.1 0.1 0.4 0.9 0.2 0.4 0.2-0.4 0.4 0.3 0.3 0.6 0.3 0.6 0.1 0.6-0.2 0.3-0.7 0.8-0.2 0.2-1.4 0.4-0.4 0.1-0.3 0.4 0 0.4-0.1 0.4-0.4 0.3 0 0.3-0.6 0-1.1-0.3 0.3 0.4 0.8 0.4 0.3 0.4-0.8 0.2-0.7 0-0.6 0-0.8-0.2-0.2 0.1 0.2 0.2 0.2 0.2 0.8 0 0.3 0.1 0.3 0.2 0.2 0.3 0.2 0.2 0.3-0.2 0.1 0 0 0.9 0 0.4-0.2 0.2-0.1 0.1 0 0.3 0.1 0.2 0.1 0.1 0.2 0 0.1-0.1 0 0.1 0.2 0.2 0.2 0.3 0.2 0.4 0.2 0.3 0.4 0.2 0.4 0 0.3 0.2 0.3 0.2 0.3 0.1 0.5 0 0.2 0 0.1 0.2 0 0.3-0.1 0.2 0 0.1 0.2 0.2 1.4 1.6 1.2 0.4 1.7 1.4 0.8 0.4 0.8 0.2 0.3 0.2 0.5 0.5 0.4 0.1 0.2 0.1-0.1 0.3-0.3 0.2-0.1 0.2 0.1 0.1 0.2 0.1 0.5 0 0.2 0.1 0 0.2 0.1 0.5 0 0.1 0.2 0 0.2-0.1 0.3 0.1 0.7 0.4 0.2 0.1 0.9 0.1 0.6 0.3 1.2 1.4 0.8 0.3 0.3 0.2 0.5 0.5 0.5 0.5 0.1 0.4-0.1 0.1-0.1 0.1-0.1 0-0.1 0.2 0.7 0.3 0.2 0.2 0.3 0.4 0.6 1.2 0.3 0 0.2 0 0.2 0 0.1-0.1 0.2-0.3 0.2 0 0.4 0 1 0.4 0.3 0.2 0.1 0.2-0.1 0.2 0 0.3-0.1 0.2 0.1 0.1 0.1 0 0.1 0.2 0 0.2-0.2 0.3-0.6 0.5-0.3 0.5-0.3 0.2-1.5 0.6-0.3 0.3-0.2 0.5-0.2 0.2-0.3 0.2-0.3 0.1-0.3 0-0.2 0-0.2-0.1-0.4-0.2-0.5-0.2-0.2-0.1-0.4-0.2-0.5 0-0.5 0.1-1.1 0.5-0.1 0.1-0.2 0.1-0.2-0.1-0.2-0.1-0.2-0.1-0.4 0-0.8-0.4-0.9 0-0.2 0.1-0.2 0.3-0.1 0.1-0.3 0.1-0.1 0.1-0.3-0.1-0.3-0.3-0.1-0.3-0.3-0.2-0.3-0.2-2.6-0.3-1.2-0.3-0.6-0.4-0.5-0.4-0.5-0.5-0.3-0.6-0.5-1.3-0.3-0.5-0.3-0.2-0.8-0.4-0.1-0.2-0.1-0.1-0.2 0-0.3 0.1-0.1 0.1-0.1 0.2 0.1 0.2 0.1 0.3 0.7 0.8 0.1 0.1 0.7 1 0.1 0.3 0.1 0.8 0.2 0.3 0 0.1 0.2 0.2 0 0.1 0.2 0.1 0.2 0.3 0.1 0.2 0.1 0.3 0 0.5-0.1 0.4-0.2 0.2-0.3 0-0.2 0-0.2 0-0.2-0.2-0.2-0.3-0.2-0.2-0.1-0.1-0.2-0.1-0.2-0.1-0.3 0-0.2 0.1-0.2 0.1-0.1 0-0.1 0.1-0.7 0-0.4 0.1-0.3 0.2-0.5 0.3-0.9 1.1-0.3 0.5 0 1.2-0.2 0.3-0.4 0.4-0.2 0.2 0 0.2-0.2 0.5 0 0.1-1.1 1.3-0.2 0.4 0.1 0.2 0.2 0.5 0 0.2-0.1 0.2-0.3 0.2-0.2 0.1-0.2 0.1-0.3 0.3-0.3 0.8-0.8 1.2 0 0.2 0 0.1 0.1 0.1 0.1 0.1 0 0.4 0 0.4-0.2 0.2-0.5 0.5-0.1 0.2-0.1 0.2 0.1 0.3 0.1 0 0.2 0 0.2 0.1 0.1 0.1-0.2 0.2-0.4 0.2-0.2 0.1-0.1 0.2 0 0.1 0.1 0.1 0 0.2 0 0.2 0 0.2 0 0.2 0.2 0 0.2 0 0 0.1-0.1 0.3 0.2 0.1 0.2 0.1 0.1 0.2 0.2 0.3 0.1 0.4 0 0.3-0.1 0.1 0 0.1-0.2 0.3-0.1 0.2-0.3 0.2-0.1 0.1-0.1 0.1-0.3 0.8-0.1 0.3 0 0.8-0.2 0.4-0.4 0.7 0 0.4 0.2 0.4 0.3 0.5 0.3 0.5 0.2 0.1 0.2-0.1 0 0.3 0 0.5-0.1 0.3-0.4 0.5-0.2 0.3 0 0.2 0.1 0.4 0 0.4-0.2 0.4-0.3 0.4 0 0.1 0.7-0.3 2.4-1.7 0.4-0.2 0.3 0.1 0.2 0.4-0.2 0.2-0.2 0.1-0.2 0.3-0.1 0.1-0.7 0.2-0.2 0.1-0.1 0.3 0.7 0.1 0.2 0.2-0.1 0.8 0 0.3-0.3 0.3 0 0.1-0.1 0.1-0.6 0-0.2 0-0.1 0.1 0 0.2 0.3 0.1 0.4 0 0.2 0.2-0.1 0.3-0.2 0.2-0.3 0.2-0.1 0.2 0.2 0.3-0.2 0.1-0.2-0.1-0.6 0-0.3 0 0 0.2 0.1 0.1 0.2 0.1 0.4 0 1.1 0.3 0.5 0.1 0.3 0 0.1 0.2 0.1 0.3 0 0.3-0.1 0.2-0.1 0.1-0.6 0.1-0.3 0-0.1 0-0.1 0.1-0.3 0.2-0.1 0.1-1-0.3 0.1 0.6-0.7-0.2-0.2 0.5 0.1 0.5-0.2 0.2-0.3 0-0.3-0.1-0.5-0.5-0.2-0.2-0.1 0.3-0.2 0.5-0.3 0.4-0.2 0-0.1-0.1 0-0.3 0-0.6-0.1-0.1-0.5-0.5-0.4-0.2-0.3 0.4-0.2 0.6 0 0.5-0.1 0.5-0.3 0.3-0.8 0.5-0.6 0.6-2 2.8-0.5 0.3-0.1 0.5-0.1 0.4-0.1 0.4-0.3 0.3-0.5 0.2-0.5 0.2-2.1 0.5-0.4 0.1-0.2-0.1-0.1-0.3 0-0.5 0.2-0.4 0.1-0.1-0.3-0.2-0.1 0.1-0.1 0.2-0.2 0.3-0.1-0.3 0-0.6-0.1-0.3-0.8-0.9-0.1-0.5 0.3-1.2-0.3 0-0.2 0.4-0.2 0.5-0.1 1.1 0.1 0.2 0.6 0.6 0.1 0.3 0 0.1 0 0.1-0.1 0.2-0.3 0.3 0 0.1 0.8 0.2 0 0.1 0.1 0 0.1 0 0.1 0.1 0 0.1-0.1 0.1-0.2 0.4-0.2 0.3-0.1 0.2 0.1 0.9-0.1 0.4-0.4 0.2-0.4 0.1-2.2 0.8-0.8 0.5-0.6 0.7 0 0.9 0.1 0.3 0.2 0.2 0.1 0.3 0.1 0.3-0.1 0.5-0.4 0.3-0.4 0.2-1.8 0.5-0.7 0.5-0.9 0.3-0.4 0.1-1.1 0.9-0.2 0.3-0.6 0.3-0.2 0.2 0.4 0.3 0.4 0.1 0.5 0 0.4-0.2 0.2-0.2 0.1-0.1 0.2-0.1 0.4-0.1 0.1 0 0.2 0.1 0.1 0 0.1-0.2 0-0.1 0.5 0 0.4 0.1 0.4 0.2 0.1 0.3-0.3 0.6-0.4 0.5 0.8 0.7 0.3 0.5-0.4 0.9 0.3 1.3-0.1 0.4-0.4 0.5-0.2 0.2-1.4 0.3-0.4 0.3-0.5 0.4-0.4 0.5-0.2 0.3 0.2 0 0.9-0.4 0.7-0.2 0.3 0.3 0.1 0.8 0.4 0.2 0.5-0.1 1.2-0.6 0.4 0 0.2 0 0.1 0.2 0 0.3 0.2 0.3 0.2 0 0.2-0.2 0.4-0.2 0.3-0.1 0.1 0.2 0 0.6-0.6 2.8-0.1-0.1-2-0.6-1.5-0.3-4.6-0.3-0.6-0.1-1.7-0.1-0.4-0.1-0.6-0.3-0.2 0.1-0.2 0.1-0.4 0.3-0.2 0.2-0.4 0.1-0.1 0.1-0.1 0.3-0.1 0.2-0.2 0.1-0.5 0.1-0.1 0-0.1-0.1-0.2-0.3 0-0.2 0-0.1-0.2-1.2-0.5-1.4-0.1-0.4 0.2-1.4 0.2-0.9-0.2-0.2-0.2-0.1-0.6-0.1-0.3-0.2-0.3-0.3-0.2-0.6-0.1-0.3 0.1-0.4 0-0.2 0.1-0.4-0.1-2.4-0.8-2-0.1-0.5-0.1-0.4-0.1-0.2-0.4-0.4-0.1-0.3-0.1-0.3-0.1-0.6-0.1-0.3-0.3-0.1-0.3-0.1-0.9-0.1 0.8-1 0.4-0.4 0.2-0.2 0.3-0.1 0.5-0.1 0.3 0.1 0.2 0 0.3-0.1 0.3-0.3 0.3-0.4 1-1.9 0.1-0.4 0.1-1 0.1-0.3-0.2-2.4-0.4 0.1-0.3 0.1-0.2 0.2-0.2 0-0.1 0-0.1 0-0.1-0.2-0.2-0.2-0.2-0.3-0.4-0.4-0.1-0.1-0.2-0.4-0.1-0.2-0.4-0.4-0.2-0.2-0.3-0.1-0.2-0.1-0.1 0-0.2 0-0.6-0.3-0.7-0.2-0.2-0.1-0.2-0.1-1-0.8-0.1-0.3-0.1-0.2 0.1-0.3-0.1-0.3-0.1-0.3-0.6-0.8-0.1-0.3-0.5-2.3 0-0.8-0.1-0.4-0.1-0.3-1-1.4-0.4-0.7-0.2-0.7-0.1-0.4-0.1-1-0.1-0.3-0.2-0.8 0-0.4 0-1.4 0.2-0.7 0.1-0.4 0.5-0.9 0.1-0.2 0.1-0.2 0.2-1.4 0.1-0.4 0.1-0.2 0-0.1 0-0.1-0.1-0.1-0.1 0-0.6-0.1-0.6-0.2-0.2 0-0.3 0.1-0.4 0-0.3 0-0.5 0.4-1.6 1.8-0.2 0.4-0.1 0.1-0.1 0.1-0.2 0.2-0.6 0.2-0.2 0.1-0.7 0.7-0.1 0.1-0.2 0-0.2-0.3 0-0.2 0-0.3 0.1-0.2-0.1-0.2 0-0.1-0.1-0.2-0.1-0.2 0-0.2 0.1-0.3 0.3-1 0.6-1.5 0.1-0.3-0.1-0.2 0-0.3-0.1-0.2-0.2-0.5-0.5-0.7-0.1-0.2 0-0.2 0-0.5 0-0.2-0.1-0.3-0.1-0.4-0.1-0.2-0.1-0.3 0-0.6 0.1-0.3 0.2-0.7 1.2-2.3 0.1-0.1 0.5-0.4 0.2-0.3 0.2-0.2 0-0.3 0-0.2-0.1-0.2-0.1-0.3-0.1-0.2-0.1-0.9-0.1-0.1-0.2-0.3-0.1-0.2-0.1-0.2-0.1-0.2-0.2-0.1-0.1-0.1-0.2-0.1-0.1 0-0.1-0.2-0.2-0.3-0.1-0.1-0.2-0.1-0.4 0-1.1 0-0.2 0.1-0.1 0.1-0.2 0.3-0.2 0.2-0.4 0.1-1 0.2-1 0.3-0.6 0.4-0.4 0.4-0.4 0.2-5.6 0.7-0.4-0.1-0.3-0.1-1.5-0.2-0.3-0.1-0.3-0.2-0.5-0.3-0.3-0.2-0.3 0-0.9-0.1-0.8 0.1-0.9 0-0.3 0-0.4 0.2-0.2 0.2-0.2 0.3-0.2 0.1-0.3 0.1-0.8 0.1-0.4 0-0.8 0.4-0.3 0.1-1 0.1-0.5 0.2 0.2-0.7 0.1-0.2 0.3-0.3 0.2-0.2 0.4-0.2 0.2-0.1 0.5-0.7 0.7-0.8 0.2-0.3 0.1-0.5 0-0.5 0-0.3 0.2-0.4 0.2-0.4 0.1-0.4-0.1-0.4-0.1-0.2-0.1-0.2-0.2-0.1-0.2 0-0.2 0-0.4 0.2-0.2 0-0.1 0-0.1-0.1-0.1-0.2 0-0.2 0.1-0.4 0-0.2 0-0.3 0-0.2 0.1-0.2 0.3-0.3 0.3-0.2 1-0.4 0.6-0.5 0.2-0.1 0.3-0.2 0.2-0.1 1.9-1.6 0.2-0.2 0.5-0.2 0.5-0.5 0.2-0.1 0.2-0.1 0.2-0.2 0.1-0.3 0-0.4 0-0.4-0.1-0.3-0.2-0.4 0-0.3 0-0.3 0.3-1.6 0-0.3z" id="IDKI" name="Kalimantan Timur">
   </path>
  </g>
+              <g filter="url(#mapNodeGlow)">
+                <!-- Jawa Barat - Dampak Tinggi -->
+                <circle cx="294.6" cy="270.4" r="14" fill="#4ADE80" opacity="0.15"/>
+                <circle cx="294.6" cy="270.4" r="7"  fill="#4ADE80" opacity="0.9"/>
+                <circle cx="294.6" cy="270.4" r="7" fill="none" stroke="#4ADE80" stroke-width="1.5">
+                  <animate attributeName="r" from="7" to="22" dur="2.2s" repeatCount="indefinite"/>
+                  <animate attributeName="opacity" from="0.8" to="0" dur="2.2s" repeatCount="indefinite"/>
+                </circle>
 
-      <line class="map-connector" x1="538.9" y1="205.5" x2="528.9" y2="205.5" stroke="#4ADE80" stroke-width="1.2" opacity="0.35"/>
+                <!-- DI Yogyakarta - Dampak Tinggi -->
+                <circle cx="350.1" cy="290.6" r="9" fill="#4ADE80" opacity="0.15"/>
+                <circle cx="350.1" cy="290.6" r="4.5" fill="#4ADE80" opacity="0.85"/>
 
-      <g class="map-dot-group" filter="url(#nodeGlow)">
-        <circle cx="445.2" cy="299.8" r="8" fill="#4ADE80"/>  
-        <circle cx="384.3" cy="284.9" r="8" fill="#4ADE80"/> 
-        <circle cx="126.7" cy="83.9"  r="8" fill="#4ADE80"/> 
-        <circle cx="262.9" cy="178"   r="8" fill="#4ADE80"/> 
-        <circle cx="350.1" cy="290.6" r="8" fill="#4ADE80"/> 
-      </g>
+                <!-- Bali - Dampak Tinggi -->
+                <circle cx="445.2" cy="299.8" r="9" fill="#4ADE80" opacity="0.15"/>
+                <circle cx="445.2" cy="299.8" r="4.5" fill="#4ADE80" opacity="0.85"/>
 
-      <g class="map-dot-group-warn" filter="url(#nodeGlow)">
-        <circle cx="548.9" cy="205.5" r="7" fill="#F4A623"/> 
-        <circle cx="487.1" cy="307.5" r="7" fill="#F4A623"/> 
-      </g>
+                <!-- Sumatera Utara - Dampak Tinggi -->
+                <circle cx="126.7" cy="83.9" r="11" fill="#4ADE80" opacity="0.15"/>
+                <circle cx="126.7" cy="83.9" r="5.5" fill="#4ADE80" opacity="0.85"/>
+                <circle cx="126.7" cy="83.9" r="5.5" fill="none" stroke="#4ADE80" stroke-width="1.5">
+                  <animate attributeName="r" from="5.5" to="18" dur="2.5s" repeatCount="indefinite"/>
+                  <animate attributeName="opacity" from="0.8" to="0" dur="2.5s" repeatCount="indefinite"/>
+                </circle>
 
-      <circle cx="528.9" cy="205.5" r="7" fill="#E53935" filter="url(#nodeGlow)"/> 
+                <!-- Sumatera Barat - Dampak Tinggi -->
+                <circle cx="160.4" cy="151.3" r="7" fill="#4ADE80" opacity="0.15"/>
+                <circle cx="160.4" cy="151.3" r="3.5" fill="#4ADE80" opacity="0.8"/>
 
-      <text x="160" y="140" font-size="16" fill="#5A8A6A" text-anchor="middle" font-family="Inter">Sumatera</text>
-      <text x="320" y="330" font-size="16" fill="#5A8A6A" text-anchor="middle" font-family="Inter">Jawa</text>
-      <text x="420" y="150" font-size="16" fill="#5A8A6A" text-anchor="middle" font-family="Inter">Kalimantan</text>
-      <text x="560" y="150" font-size="16" fill="#5A8A6A" text-anchor="middle" font-family="Inter">Sulawesi</text>
-      <text x="850" y="230" font-size="16" fill="#5A8A6A" text-anchor="middle" font-family="Inter">Papua</text>
-    </svg>
-  </div>
-</div>
+                <!-- Sulawesi Selatan - Dampak Sedang -->
+                <circle cx="538.9" cy="205.5" r="9" fill="#F4A623" opacity="0.15"/>
+                <circle cx="538.9" cy="205.5" r="4.5" fill="#F4A623" opacity="0.9"/>
+
+                <!-- Kalimantan Timur - Perlu Perhatian -->
+                <circle cx="469.2" cy="125.4" r="6" fill="#E53935" opacity="0.15"/>
+                <circle cx="469.2" cy="125.4" r="3" fill="#E53935" opacity="0.9"/>
+              </g>
+
+              <text x="126.7" y="65"  font-size="11" fill="#4ADE80" text-anchor="middle" font-family="Inter" opacity="0.75">Sumatera</text>
+              <text x="322.3" y="330" font-size="11" fill="#4ADE80" text-anchor="middle" font-family="Inter" opacity="0.75">Jawa</text>
+              <text x="560"   y="150" font-size="11" fill="#4ADE80" text-anchor="middle" font-family="Inter" opacity="0.75">Sulawesi</text>
+              <text x="850"   y="230" font-size="11" fill="#5A8A6A" text-anchor="middle" font-family="Inter" opacity="0.6">Papua</text>
+            </svg>
+
+        </div>
+
+        <div class="map-impact-card__right">
+          <h3>Distribusi Dampak per Wilayah</h3>
+          <div class="region-list">
+            <div class="region-item" data-aos="fade-left" data-aos-delay="0">
+              <div class="region-item__info">
+                <span class="region-dot" style="background:#4ADE80"></span>
+                <span class="region-item__name">Jawa & Bali</span>
+              </div>
+              <div class="region-item__bar-wrap">
+                <div class="region-item__bar">
+                  <div class="region-item__fill" style="width:0%;background:#4ADE80" data-target="68"></div>
+                </div>
+                <span class="region-item__pct">68%</span>
+              </div>
+            </div>
+            <div class="region-item" data-aos="fade-left" data-aos-delay="50">
+              <div class="region-item__info">
+                <span class="region-dot" style="background:#2E7D32"></span>
+                <span class="region-item__name">Sumatera</span>
+              </div>
+              <div class="region-item__bar-wrap">
+                <div class="region-item__bar">
+                  <div class="region-item__fill" style="width:0%;background:#2E7D32" data-target="15"></div>
+                </div>
+                <span class="region-item__pct">15%</span>
+              </div>
+            </div>
+            <div class="region-item" data-aos="fade-left" data-aos-delay="100">
+              <div class="region-item__info">
+                <span class="region-dot" style="background:#F4A623"></span>
+                <span class="region-item__name">Sulawesi</span>
+              </div>
+              <div class="region-item__bar-wrap">
+                <div class="region-item__bar">
+                  <div class="region-item__fill" style="width:0%;background:#F4A623" data-target="10"></div>
+                </div>
+                <span class="region-item__pct">10%</span>
+              </div>
+            </div>
+            <div class="region-item" data-aos="fade-left" data-aos-delay="150">
+              <div class="region-item__info">
+                <span class="region-dot" style="background:#1565C0"></span>
+                <span class="region-item__name">Wilayah Lainnya</span>
+              </div>
+              <div class="region-item__bar-wrap">
+                <div class="region-item__bar">
+                  <div class="region-item__fill" style="width:0%;background:#1565C0" data-target="7"></div>
+                </div>
+                <span class="region-item__pct">7%</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="map-legend">
+            <span><em style="background:#4ADE80;border-radius:50%;display:inline-block;width:8px;height:8px"></em> Dampak Tinggi</span>
+            <span><em style="background:#F4A623;border-radius:50%;display:inline-block;width:8px;height:8px"></em> Dampak Sedang</span>
+            <span><em style="background:#E53935;border-radius:50%;display:inline-block;width:8px;height:8px"></em> Perlu Perhatian</span>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section class="testimonials" id="testimonials">
+  <section class="milestone-section">
     <div class="container">
       <div class="section-header text-center" data-aos="fade-up">
-        <span class="section-label">Testimoni</span>
-        <h2 class="section-title">Dipercaya para <span>profesional energi</span></h2>
+        <span class="section-label">Perjalanan Kami</span>
+        <h2 class="section-title">Target & <span>Milestone</span></h2>
+        <p class="section-desc" style="margin:12px auto 0">Pencapaian yang sudah diraih dan target yang sedang kami kejar bersama.</p>
       </div>
 
-      <div class="swiper testi-swiper" data-aos="fade-up" data-aos-delay="100">
-        <div class="swiper-wrapper">
+      <div class="milestone-timeline">
+        <div class="timeline-line"></div>
 
-          <div class="swiper-slide">
-            <div class="testi__card">
-              <div class="testi__stars">
-                <i class="bx bxs-star"></i><i class="bx bxs-star"></i><i class="bx bxs-star"></i>
-                <i class="bx bxs-star"></i><i class="bx bxs-star"></i>
-              </div>
-              <p class="testi__text">"Nexara benar-benar mengubah cara kami mengelola 20+ instalasi panel surya. Sekarang semua terpantau dari satu layar, alert otomatis membuat respons kami jauh lebih cepat."</p>
-              <div class="testi__author">
-                <div class="testi__avatar" style="background:#1A6B3C">BS</div>
-                <div>
-                  <strong>Budi Santoso</strong>
-                  <span>Energy Manager, PT Surya Hijau Nusantara</span>
-                </div>
-              </div>
-            </div>
+        <div class="milestone-item milestone-item--done" data-aos="fade-right" data-aos-delay="0">
+          <div class="milestone-item__dot"><i class="bx bx-check"></i></div>
+          <div class="milestone-item__card">
+            <div class="milestone-item__date">Q1 2023</div>
+            <h3>🚀 Nexara Diluncurkan</h3>
+            <p>Platform monitoring energi terbarukan pertama di Indonesia resmi diluncurkan dengan 10 instalasi awal.</p>
+            <div class="milestone-item__badge done">Tercapai</div>
           </div>
-
-          <div class="swiper-slide">
-            <div class="testi__card">
-              <div class="testi__stars">
-                <i class="bx bxs-star"></i><i class="bx bxs-star"></i><i class="bx bxs-star"></i>
-                <i class="bx bxs-star"></i><i class="bx bxs-star"></i>
-              </div>
-              <p class="testi__text">"Data yang akurat dan visualisasi yang sangat jelas dari Nexara sangat membantu evaluasi kebijakan energi nasional. Laporan otomatisnya menghemat waktu kami 80%."</p>
-              <div class="testi__author">
-                <div class="testi__avatar" style="background:#1565C0">SR</div>
-                <div>
-                  <strong>Siti Rahayu</strong>
-                  <span>Analis Kebijakan Energi, Kementerian ESDM</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="swiper-slide">
-            <div class="testi__card">
-              <div class="testi__stars">
-                <i class="bx bxs-star"></i><i class="bx bxs-star"></i><i class="bx bxs-star"></i>
-                <i class="bx bxs-star"></i><i class="bx bxs-star"></i>
-              </div>
-              <p class="testi__text">"Sebagai peneliti, akses ke data historis yang terstruktur dari Nexara sangat berharga. Grafik interaktifnya mempermudah analisis tren efisiensi surya di iklim tropis."</p>
-              <div class="testi__author">
-                <div class="testi__avatar" style="background:#6A1B9A">AF</div>
-                <div>
-                  <strong>Dr. Ahmad Fauzi</strong>
-                  <span>Peneliti Energi Terbarukan, ITB</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="swiper-slide">
-            <div class="testi__card">
-              <div class="testi__stars">
-                <i class="bx bxs-star"></i><i class="bx bxs-star"></i><i class="bx bxs-star"></i>
-                <i class="bx bxs-star"></i><i class="bx bxs-star"></i>
-              </div>
-              <p class="testi__text">"Platform yang sangat intuitif! Tim kami bisa langsung pakai tanpa training panjang. Fitur alert Nexara menyelamatkan kami dari kerugian besar akibat kerusakan panel yang tidak terdeteksi."</p>
-              <div class="testi__author">
-                <div class="testi__avatar" style="background:#B8750A">DW</div>
-                <div>
-                  <strong>Dewi Wulandari</strong>
-                  <span>Operations Lead, Green Power Indonesia</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
         </div>
-        <div class="swiper-pagination testi-pagination"></div>
-        <div class="swiper-button-prev testi-prev"></div>
-        <div class="swiper-button-next testi-next"></div>
+
+        <div class="milestone-item milestone-item--done milestone-item--right" data-aos="fade-left" data-aos-delay="100">
+          <div class="milestone-item__dot"><i class="bx bx-check"></i></div>
+          <div class="milestone-item__card">
+            <div class="milestone-item__date">Q3 2023</div>
+            <h3>🌿 100 Instalasi Aktif</h3>
+            <p>Nexara berhasil menghubungkan 100 instalasi panel surya dan turbin angin dari 8 provinsi di Indonesia.</p>
+            <div class="milestone-item__badge done">Tercapai</div>
+          </div>
+        </div>
+
+        <div class="milestone-item milestone-item--done" data-aos="fade-right" data-aos-delay="150">
+          <div class="milestone-item__dot"><i class="bx bx-check"></i></div>
+          <div class="milestone-item__card">
+            <div class="milestone-item__date">Q1 2024</div>
+            <h3>⚡ 1 GWh Produksi</h3>
+            <p>Total produksi kumulatif seluruh instalasi melampaui 1 GWh — milestone energi pertama Nexara.</p>
+            <div class="milestone-item__badge done">Tercapai</div>
+          </div>
+        </div>
+
+        <div class="milestone-item milestone-item--current milestone-item--right" data-aos="fade-left" data-aos-delay="200">
+          <div class="milestone-item__dot milestone-item__dot--current"><i class="bx bx-loader-alt bx-spin"></i></div>
+          <div class="milestone-item__card milestone-item__card--current">
+            <div class="milestone-item__date">2026</div>
+            <h3>🏆 148 Instalasi & 2.4 GWh</h3>
+            <p>Saat ini: 148 instalasi aktif dengan total produksi 2.4 GWh per bulan. Terus bertumbuh!</p>
+            <div class="milestone-item__badge current">Sedang Berjalan</div>
+          </div>
+        </div>
+
+        <div class="milestone-item" data-aos="fade-right" data-aos-delay="250">
+          <div class="milestone-item__dot milestone-item__dot--future"><i class="bx bx-target-lock"></i></div>
+          <div class="milestone-item__card milestone-item__card--future">
+            <div class="milestone-item__date">2027</div>
+            <h3>🎯 500 Instalasi</h3>
+            <p>Target: 500 instalasi aktif di seluruh Indonesia, mencakup semua provinsi dengan produksi 10 GWh/bulan.</p>
+            <div class="milestone-item__badge future">Target</div>
+          </div>
+        </div>
+
+        <div class="milestone-item milestone-item--right" data-aos="fade-left" data-aos-delay="300">
+          <div class="milestone-item__dot milestone-item__dot--future"><i class="bx bx-world"></i></div>
+          <div class="milestone-item__card milestone-item__card--future">
+            <div class="milestone-item__date">2030</div>
+            <h3>🌍 Net-Zero Contribution</h3>
+            <p>Nexara berkontribusi pada 1% target pengurangan emisi nasional Indonesia menuju net-zero 2060.</p>
+            <div class="milestone-item__badge future">Visi</div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="cta-section">
+  <section class="tips-section">
     <div class="container">
-      <div class="cta-section__inner" data-aos="fade-up">
-        <div class="cta-section__glow"></div>
-        <span class="section-label" style="color:#4ADE80">Mulai Sekarang</span>
-        <h2 class="cta-section__title">Siap bergabung dengan<br/>ekosistem energi hijau?</h2>
-        <p class="cta-section__desc">Daftar gratis, tidak perlu kartu kredit. Mulai pantau instalasi energi terbarukan kamu dalam hitungan menit.</p>
-        <div class="cta-section__btns">
-          <a href="auth.html#register" class="btn btn-primary cta-section__btn-main">
-            <i class="bx bx-rocket"></i> Daftar Gratis Sekarang
-          </a>
-          <a href="auth.html#login" class="btn btn-ghost">
-            <i class="bx bx-play-circle"></i> Masuk ke Dashboard
+      <div class="section-header text-center" data-aos="fade-up">
+        <span class="section-label">Aksi Nyata</span>
+        <h2 class="section-title">Tips <span>Hemat Energi</span></h2>
+        <p class="section-desc" style="margin:12px auto 0">Kontribusi dimulai dari hal kecil. Ini langkah praktis yang bisa kamu lakukan hari ini.</p>
+      </div>
+
+      <div class="tips-grid">
+        <div class="tips-card" data-aos="fade-up" data-aos-delay="0">
+          <div class="tips-card__icon" style="background:#DCF5E7;color:#1A6B3C"><i class="bx bx-sun"></i></div>
+          <h3>Maksimalkan Cahaya Alami</h3>
+          <p>Buka tirai di siang hari, gunakan cat dinding terang, and atur tata letak ruangan untuk memaksimalkan cahaya matahari masuk.</p>
+          <div class="tips-card__impact">
+            <i class="bx bx-leaf"></i> Hemat hingga <strong>15%</strong> listrik/bulan
+          </div>
+        </div>
+
+        <div class="tips-card" data-aos="fade-up" data-aos-delay="80">
+          <div class="tips-card__icon" style="background:#E3F2FD;color:#1565C0"><i class="bx bx-devices"></i></div>
+          <h3>Cabut Perangkat Standby</h3>
+          <p>Charger, TV, dan perangkat elektronik yang tidak digunakan tetap mengkonsumsi listrik saat dalam mode standby.</p>
+          <div class="tips-card__impact">
+            <i class="bx bx-leaf"></i> Hemat hingga <strong>10%</strong> listrik/bulan
+          </div>
+        </div>
+
+        <div class="tips-card" data-aos="fade-up" data-aos-delay="160">
+          <div class="tips-card__icon" style="background:#F3E5F5;color:#6A1B9A"><i class="bx bx-wind"></i></div>
+          <h3>Atur AC dengan Bijak</h3>
+          <p>Set AC di 24-26°C, bersihkan filter setiap 2 minggu, dan gunakan mode auto. AC adalah konsumen listrik terbesar di rumah.</p>
+          <div class="tips-card__impact">
+            <i class="bx bx-leaf"></i> Hemat hingga <strong>25%</strong> listrik/bulan
+          </div>
+        </div>
+
+        <div class="tips-card" data-aos="fade-up" data-aos-delay="0">
+          <div class="tips-card__icon" style="background:#FEF3DC;color:#B8750A"><i class="bx bx-bulb"></i></div>
+          <h3>Ganti ke LED</h3>
+          <p>Lampu LED menggunakan 75% lebih sedikit energi dibanding lampu pijar biasa dan umurnya 25x lebih panjang.</p>
+          <div class="tips-card__impact">
+            <i class="bx bx-leaf"></i> Hemat hingga <strong>20%</strong> listrik/bulan
+          </div>
+        </div>
+
+        <div class="tips-card" data-aos="fade-up" data-aos-delay="80">
+          <div class="tips-card__icon" style="background:#E8F5E9;color:#2E7D32"><i class="bx bx-transfer"></i></div>
+          <h3>Cuci di Air Dingin</h3>
+          <p>90% energi mesin cuci digunakan untuk memanaskan air. Cuci dengan air dingin sama bersihnya dan jauh lebih hemat.</p>
+          <div class="tips-card__impact">
+            <i class="bx bx-leaf"></i> Hemat hingga <strong>8%</strong> listrik/bulan
+          </div>
+        </div>
+
+        <div class="tips-card tips-card--highlight" data-aos="fade-up" data-aos-delay="160">
+          <div class="tips-card__icon" style="background:rgba(74,222,128,0.2);color:#4ADE80"><i class="bx bx-solar-panel"></i></div>
+          <h3>Pasang Panel Surya</h3>
+          <p>Investasi terbaik jangka panjang. Hubungkan ke Nexara dan mulai pantau produksi energi hijau kamu sendiri secara real-time.</p>
+          <div class="tips-card__impact">
+            <i class="bx bx-leaf"></i> Hemat hingga <strong>80%</strong> tagihan listrik
+          </div>
+          <a href="auth.html#register" class="tips-card__cta">
+            Mulai Sekarang <i class="bx bx-right-arrow-alt"></i>
           </a>
         </div>
-        <p class="cta-section__note">
-          <i class="bx bx-check-circle"></i> Gratis selamanya untuk 1 instalasi
-          <i class="bx bx-check-circle"></i> Setup dalam 5 menit
-          <i class="bx bx-check-circle"></i> Tanpa kartu kredit
-        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="ng-cta">
+    <div class="container">
+      <div class="ng-cta__inner" data-aos="fade-up">
+        <div class="ng-cta__glow"></div>
+        <span class="section-label" style="color:#4ADE80">Bergabung Sekarang</span>
+        <h2>Jadilah bagian dari<br/>gerakan energi hijau Indonesia</h2>
+        <p>Setiap instalasi yang terhubung ke Nexara adalah satu langkah lebih dekat menuju Indonesia yang bebas karbon.</p>
+        <div class="ng-cta__btns">
+          <a href="auth.html#register" class="btn btn-primary">
+            <i class="bx bx-rocket"></i> Daftar Gratis
+          </a>
+          <a href="index.html" class="btn btn-ghost">
+            <i class="bx bx-home"></i> Kembali ke Beranda
+          </a>
+        </div>
       </div>
     </div>
   </section>
@@ -630,13 +643,9 @@
   </footer>
 
   <script src="lib/aos/aos.js"></script>
-  <script src="lib/typed/dist/typed.umd.js"></script>
-  <script src="lib/swiper/swiper-bundle.min.js"></script>
   <script src="lib/gsap/gsap.min.js"></script>
   <script src="lib/gsap/ScrollTrigger.min.js"></script>
-  <script src="lib/jquery/jquery-3.7.1.min.js"></script>
 
-  <script src="js/main.js"></script>
-  <script src="js/index.js"></script>
+  <script src="js/nexagreen.js"></script>
 </body>
 </html>
