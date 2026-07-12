@@ -14,7 +14,8 @@ body {
 
 .sidebar {
   width: 240px;
-  min-height: 100vh;
+  height: 100vh;
+  height: 100dvh;
   background: var(--clr-dark-bg);
   border-right: 1px solid #1E3A2A;
   display: flex;

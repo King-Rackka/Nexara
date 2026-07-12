@@ -853,11 +853,13 @@
   .hdc__stat-val { font-size: 16px; }
   .hero__float { display: none; }
 
+
   .stats-banner__inner {
     grid-template-columns: repeat(2, 1fr);
     display: grid;
     gap: var(--space-lg);
   }
+  
   .stats-banner__divider { display: none; }
 
   .features__grid { grid-template-columns: 1fr; }
