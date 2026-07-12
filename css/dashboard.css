@@ -13,6 +13,7 @@ body {
 .sidebar {
   width: 240px;
   height: 100vh;
+  height: 100dvh;
   background: var(--clr-dark-bg);
   border-right: 1px solid #1E3A2A;
   display: flex;
@@ -115,10 +116,10 @@ body {
 }
 
 .sidebar__bottom {
-  margin-top: auto;    /* Mendorong area ini ke paling bawah layout flex */
+  margin-top: auto;   
   padding: 16px;
-  background: var(--clr-dark-bg); /* Beri background agar tidak transparan saat ditumpuk */
-  border-top: 1px solid rgba(255, 255, 255, 0.05); /* Opsional: pembatas visual tipis */
+  background: var(--clr-dark-bg); 
+  border-top: 1px solid rgba(255, 255, 255, 0.05); 
 }
 
 .sidebar__user {
