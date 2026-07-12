@@ -12,7 +12,7 @@ body {
 
 .sidebar {
   width: 240px;
-  min-height: 100vh;
+  height: 100vh;
   background: var(--clr-dark-bg);
   border-right: 1px solid #1E3A2A;
   display: flex;
@@ -115,13 +115,12 @@ body {
 }
 
 .sidebar__bottom {
-  padding: 12px 10px;
-  border-top: 1px solid #1E3A2A;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  flex-shrink: 0;
+  margin-top: auto;    /* Mendorong area ini ke paling bawah layout flex */
+  padding: 16px;
+  background: var(--clr-dark-bg); /* Beri background agar tidak transparan saat ditumpuk */
+  border-top: 1px solid rgba(255, 255, 255, 0.05); /* Opsional: pembatas visual tipis */
 }
+
 .sidebar__user {
   display: flex;
   align-items: center;

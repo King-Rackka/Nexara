@@ -847,7 +847,7 @@
 
   .hero { padding: 100px 0 60px; }
   .hero__title { font-size: 28px; }
-  .hero__btn-main, .hero__btn-demo { padding: 11px 18px; font-size: 14px; }
+  .hero__btn-main, .hero__btn-demo { padding: 11px 18px; font-size: 12px; }
 
   .hdc__stats { grid-template-columns: repeat(3,1fr); gap: 8px; }
   .hdc__stat-val { font-size: 16px; }

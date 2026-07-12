@@ -478,22 +478,7 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   cursor: grab;
 }
 
-  .navbar__menu { display: none; }
-  .navbar__btn-login { display: none; }
-  .navbar__hamburger { display: flex; }
-  .navbar__menu.open {
-    display: flex;
-    flex-direction: column;
-    position: fixed;
-    top: 68px; left: 0; right: 0;
-    background: var(--clr-bg);
-    padding: var(--space-lg);
-    border-bottom: 1px solid var(--clr-border);
-    gap: var(--space-md);
-    z-index: 999;
-    box-shadow: var(--shadow-md);
-  }
-  .navbar__menu.open .navbar__link { font-size: 16px; padding: 8px 0; }
+  
 
   .impact-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
   .impact-card { padding: 20px 14px; }
@@ -505,7 +490,5 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   .ng-cta__inner { padding: 36px 20px; }
   .section-header { margin-bottom: 32px; }
 
-  .footer__links { grid-template-columns: repeat(2,1fr); }
-  .footer__bottom { flex-direction: column; text-align: center; }
-  .footer__bottom-links { flex-wrap: wrap; justify-content: center; }
+  
 }
