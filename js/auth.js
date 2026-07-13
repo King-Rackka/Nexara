@@ -35,6 +35,11 @@ document.addEventListener('DOMContentLoaded', () => {
   if (regPw) {
     regPw.addEventListener('input', () => checkPasswordStrength(regPw.value));
   }
+
+  // Tutup modal lupa password pakai tombol Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeForgotModal();
+  });
 });
 
 // ── Tab Switcher ───────────────────────────────────────
@@ -115,7 +120,7 @@ function showAlert(alertId, msg, type = 'error') {
 }
 
 function clearAlerts() {
-  ['loginAlert', 'registerAlert'].forEach(id => {
+  ['loginAlert', 'registerAlert', 'forgotAlert', 'forgotResetAlert'].forEach(id => {
     const el = document.getElementById(id);
     if (el) { el.style.display = 'none'; el.textContent = ''; }
   });
@@ -361,7 +366,138 @@ function handleSocialLogin(provider) {
   showAlert('loginAlert', `Login dengan ${provider} belum tersedia di versi demo ini.`, 'error');
 }
 
-// ── Canvas Background Animation ───────────────────────
+let forgotVerifiedEmail = null; // email yang lolos verifikasi step 1
+
+function openForgotModal() {
+  const overlay = document.getElementById('forgotOverlay');
+  if (!overlay) return;
+
+  // Reset ke step 1 tiap kali dibuka
+  document.getElementById('forgotStepEmail').style.display   = 'block';
+  document.getElementById('forgotStepReset').style.display   = 'none';
+  document.getElementById('forgotStepSuccess').style.display = 'none';
+
+  const emailInput = document.getElementById('forgotEmail');
+  if (emailInput) emailInput.value = '';
+  const newPw = document.getElementById('forgotNewPw');
+  const confirmPw = document.getElementById('forgotConfirmPw');
+  if (newPw) newPw.value = '';
+  if (confirmPw) confirmPw.value = '';
+
+  setFieldState('forgotEmailField', 'none');
+  setFieldState('forgotNewPwField', 'none');
+  setFieldState('forgotConfirmPwField', 'none');
+  clearAlerts();
+  forgotVerifiedEmail = null;
+
+  overlay.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+
+function closeForgotModal(e) {
+  // Kalau dipanggil dari klik overlay, hanya tutup kalau yang diklik overlay-nya sendiri
+  if (e && e.target && e.target.id !== 'forgotOverlay') return;
+  const overlay = document.getElementById('forgotOverlay');
+  if (overlay) overlay.style.display = 'none';
+  document.body.style.overflow = '';
+}
+
+function handleForgotEmailSubmit() {
+  clearAlerts();
+  const email = document.getElementById('forgotEmail')?.value?.trim();
+
+  if (!email) {
+    setFieldState('forgotEmailField', 'invalid', 'Email tidak boleh kosong');
+    return;
+  }
+  if (!validateEmail(email)) {
+    setFieldState('forgotEmailField', 'invalid', 'Format email tidak valid');
+    return;
+  }
+
+  setLoading('forgotEmailBtn', true);
+
+  setTimeout(() => {
+    const users = JSON.parse(localStorage.getItem('nexara_users') || '[]');
+    const user  = users.find(u => u.email === email);
+
+    setLoading('forgotEmailBtn', false);
+
+    if (!user) {
+      setFieldState('forgotEmailField', 'invalid', 'Email ini belum terdaftar di Nexara');
+      showAlert('forgotAlert', 'Email tidak ditemukan. Periksa kembali atau daftar akun baru.');
+      return;
+    }
+
+    setFieldState('forgotEmailField', 'valid');
+    forgotVerifiedEmail = email;
+
+    // Pindah ke step 2
+    document.getElementById('forgotVerifiedEmail').textContent = email;
+    document.getElementById('forgotStepEmail').style.display = 'none';
+    document.getElementById('forgotStepReset').style.display = 'block';
+
+    if (typeof gsap !== 'undefined') {
+      gsap.fromTo('#forgotStepReset', { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.3 });
+    }
+  }, 900);
+}
+
+function handleResetPassword() {
+  if (!forgotVerifiedEmail) return;
+  clearAlerts();
+
+  const newPw     = document.getElementById('forgotNewPw')?.value;
+  const confirmPw = document.getElementById('forgotConfirmPw')?.value;
+  let valid = true;
+
+  if (!newPw || !validatePassword(newPw)) {
+    setFieldState('forgotNewPwField', 'invalid', 'Password minimal 8 karakter');
+    valid = false;
+  } else {
+    setFieldState('forgotNewPwField', 'valid');
+  }
+
+  if (!confirmPw || confirmPw !== newPw) {
+    setFieldState('forgotConfirmPwField', 'invalid', 'Password tidak cocok');
+    valid = false;
+  } else {
+    setFieldState('forgotConfirmPwField', 'valid');
+  }
+
+  if (!valid) return;
+
+  setLoading('forgotResetBtn', true);
+
+  setTimeout(() => {
+    const users = JSON.parse(localStorage.getItem('nexara_users') || '[]');
+    const idx   = users.findIndex(u => u.email === forgotVerifiedEmail);
+
+    if (idx === -1) {
+      setLoading('forgotResetBtn', false);
+      showAlert('forgotResetAlert', 'Terjadi kesalahan, akun tidak ditemukan. Coba lagi.');
+      return;
+    }
+
+    users[idx].password = btoa(newPw);
+    localStorage.setItem('nexara_users', JSON.stringify(users));
+
+    setLoading('forgotResetBtn', false);
+
+    document.getElementById('forgotStepReset').style.display   = 'none';
+    document.getElementById('forgotStepSuccess').style.display = 'block';
+
+    if (typeof gsap !== 'undefined') {
+      gsap.fromTo('#forgotStepSuccess', { opacity: 0, scale: 0.95 }, { opacity: 1, scale: 1, duration: 0.35 });
+    }
+
+    const loginEmailInput = document.getElementById('loginEmail');
+    if (loginEmailInput) loginEmailInput.value = forgotVerifiedEmail;
+
+    forgotVerifiedEmail = null;
+  }, 900);
+}
+
 function initCanvas() {
   const canvas = document.getElementById('authCanvas');
   if (!canvas) return;

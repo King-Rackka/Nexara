@@ -153,7 +153,7 @@
               <span class="auth-checkbox__box"></span>
               <span>Ingat saya</span>
             </label>
-            <a href="#" class="auth-form__forgot">Lupa password?</a>
+            <a href="#" class="auth-form__forgot" onclick="openForgotModal(); return false;">Lupa password?</a>
           </div>
 
           <!-- Alert box -->
@@ -297,6 +297,87 @@
       </div>
     </div>
 
+  </div>
+
+  <!-- ── FORGOT PASSWORD MODAL ── -->
+  <div class="modal-overlay" id="forgotOverlay" onclick="closeForgotModal(event)" style="display:none">
+    <div class="modal-box" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeForgotModal()"><i class="bx bx-x"></i></button>
+
+      <!-- Step 1: verifikasi email -->
+      <div id="forgotStepEmail">
+        <div class="modal-icon"><i class="bx bx-lock-open-alt"></i></div>
+        <h3>Lupa Password?</h3>
+        <p class="modal-desc">Masukkan email akun Nexara kamu. Kami akan verifikasi lalu kamu bisa langsung bikin password baru.</p>
+
+        <div class="auth-field" id="forgotEmailField">
+          <label for="forgotEmail"><i class="bx bx-envelope"></i> Email</label>
+          <div class="auth-input-wrap">
+            <input type="email" id="forgotEmail" placeholder="email@perusahaan.com" autocomplete="email" />
+            <span class="auth-input__icon"><i class="bx bx-envelope"></i></span>
+            <span class="auth-field__status"></span>
+          </div>
+          <span class="auth-field__error"></span>
+        </div>
+
+        <div class="auth-alert" id="forgotAlert" style="display:none"></div>
+
+        <button class="auth-submit" id="forgotEmailBtn" onclick="handleForgotEmailSubmit()">
+          <span class="auth-submit__text"><i class="bx bx-search-alt"></i> Verifikasi Email</span>
+          <span class="auth-submit__loader" style="display:none"><i class="bx bx-loader-alt bx-spin"></i> Memeriksa...</span>
+        </button>
+      </div>
+
+      <!-- Step 2: set password baru -->
+      <div id="forgotStepReset" style="display:none">
+        <div class="modal-icon"><i class="bx bx-key"></i></div>
+        <h3>Buat Password Baru</h3>
+        <p class="modal-desc">Email terverifikasi. Masukkan password baru untuk akun <strong id="forgotVerifiedEmail"></strong>.</p>
+
+        <div class="auth-field" id="forgotNewPwField">
+          <label for="forgotNewPw"><i class="bx bx-lock-alt"></i> Password Baru</label>
+          <div class="auth-input-wrap">
+            <input type="password" id="forgotNewPw" placeholder="Minimal 8 karakter" autocomplete="new-password" />
+            <span class="auth-input__icon"><i class="bx bx-lock-alt"></i></span>
+            <button type="button" class="auth-toggle-pw" onclick="togglePassword('forgotNewPw', this)">
+              <i class="bx bx-hide"></i>
+            </button>
+            <span class="auth-field__status"></span>
+          </div>
+          <span class="auth-field__error"></span>
+        </div>
+
+        <div class="auth-field" id="forgotConfirmPwField">
+          <label for="forgotConfirmPw"><i class="bx bx-lock-open-alt"></i> Konfirmasi Password</label>
+          <div class="auth-input-wrap">
+            <input type="password" id="forgotConfirmPw" placeholder="Ulangi password baru" autocomplete="new-password" />
+            <span class="auth-input__icon"><i class="bx bx-lock-open-alt"></i></span>
+            <button type="button" class="auth-toggle-pw" onclick="togglePassword('forgotConfirmPw', this)">
+              <i class="bx bx-hide"></i>
+            </button>
+            <span class="auth-field__status"></span>
+          </div>
+          <span class="auth-field__error"></span>
+        </div>
+
+        <div class="auth-alert" id="forgotResetAlert" style="display:none"></div>
+
+        <button class="auth-submit" id="forgotResetBtn" onclick="handleResetPassword()">
+          <span class="auth-submit__text"><i class="bx bx-check"></i> Simpan Password Baru</span>
+          <span class="auth-submit__loader" style="display:none"><i class="bx bx-loader-alt bx-spin"></i> Menyimpan...</span>
+        </button>
+      </div>
+
+      <div id="forgotStepSuccess" style="display:none">
+        <div class="modal-icon modal-icon--success"><i class="bx bx-check-circle"></i></div>
+        <h3>Password Berhasil Diubah!</h3>
+        <p class="modal-desc">Silakan masuk kembali menggunakan password baru kamu.</p>
+        <button class="auth-submit" onclick="closeForgotModal()">
+          <span class="auth-submit__text"><i class="bx bx-log-in"></i> Kembali ke Halaman Masuk</span>
+        </button>
+      </div>
+
+    </div>
   </div>
 
   <script src="lib/aos/aos.js"></script>

@@ -139,7 +139,7 @@ function renderSummaryCards() {
 }
 
 async function fetchWeatherAndEnergy() {
-  const lat = -8.67, lon = 115.21;
+  const lat = -6.40, lon = 106.82;
   const weatherEl = document.getElementById('weatherBadge');
 
   try {
@@ -156,7 +156,7 @@ async function fetchWeatherAndEnergy() {
       const tempMin = data.daily.temperature_2m_min[0];
       weatherEl.innerHTML = `
         <i class="bx bx-sun" style="color:#F4A623"></i>
-        <span>${tempMin}°–${tempMax}°C · Bali</span>
+        <span>${tempMin}°–${tempMax}°C · Jawa Barat</span>
       `;
     }
 

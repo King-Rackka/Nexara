@@ -14,7 +14,7 @@ async function loadTopbarWeather() {
   const weatherEl = document.getElementById('weatherBadge');
   if (!weatherEl) return;
 
-  const lat = -8.67, lon = 115.21; // Bali
+  const lat = -6.40, lon = 106.82;
   try {
     const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}` +
       `&daily=temperature_2m_max,temperature_2m_min&timezone=Asia%2FMakassar&forecast_days=1`;
@@ -25,7 +25,7 @@ async function loadTopbarWeather() {
     const tempMin = data.daily.temperature_2m_min[0];
     weatherEl.innerHTML = `
       <i class="bx bx-sun" style="color:#F4A623"></i>
-      <span>${tempMin}°–${tempMax}°C · Bali</span>
+      <span>${tempMin}°–${tempMax}°C · Jawa Barat</span>
     `;
   } catch (err) {
     console.warn('Open-Meteo API gagal:', err);
