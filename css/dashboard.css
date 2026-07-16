@@ -43,14 +43,12 @@ body {
 .sidebar__logo {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 2px;
   text-decoration: none;
   flex-shrink: 0;
 }
 .sidebar__logo-icon {
-  width: 32px; height: 32px;
-  background: #132A1A;
-  border: 1px solid #1E3A2A;
+  width: 40px; height: 40px;
   border-radius: 6px;
   display: flex; align-items: center; justify-content: center;
   flex-shrink: 0;

@@ -53,7 +53,7 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
 }
 .navbar__logo-icon {
   width: 34px; height: 34px;
-  background: var(--clr-dark-bg);
+  
   border-radius: var(--radius-sm);
   display: flex; align-items: center; justify-content: center;
 }

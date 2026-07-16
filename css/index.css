@@ -24,12 +24,11 @@
 .navbar__logo {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 2px;
   flex-shrink: 0;
 }
 .navbar__logo-icon {
-  width: 34px; height: 34px;
-  background: var(--clr-dark-bg);
+  width: 48px; height: 48px;
   border-radius: var(--radius-sm);
   display: flex; align-items: center; justify-content: center;
 }
