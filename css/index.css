@@ -979,21 +979,22 @@ html, body {
 .current-divider {
   position: relative;
   height: 1px;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: visible;
   background: linear-gradient(90deg, transparent, var(--clr-border-strong) 20%, var(--clr-border-strong) 80%, transparent);
 }
 .current-divider::after {
   content: '';
   position: absolute;
-  top: -3px; left: -120px;
-  width: 120px; height: 7px;
-  background: linear-gradient(90deg, transparent, var(--clr-accent), transparent);
-  filter: blur(3px);
+  top: -60px; left: -200px;
+  width: 180px; height: 90px;
+  background: linear-gradient(40deg, transparent, var(--clr-accent), transparent);
+  filter: blur(7px);
   animation: currentFlow 4.5s linear infinite;
   animation-delay: inherit;
 }
 @keyframes currentFlow {
-  0%   { left: -120px; opacity: 0; }
+  0%   { left: -180px; opacity: 0; }
   10%  { opacity: 1; }
   90%  { opacity: 1; }
   100% { left: 100%; opacity: 0; }

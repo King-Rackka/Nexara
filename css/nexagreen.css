@@ -1,9 +1,7 @@
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { font-size: 16px; scroll-behavior: smooth; }
-body { font-family: var(--font-body); background: var(--clr-bg); color: var(--clr-text); overflow-x: hidden; }
-img { max-width: 100%; display: block; }
-a { text-decoration: none; color: inherit; }
-button { cursor: pointer; font-family: inherit; border: none; background: none; }
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
 
 .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 .text-center { text-align: center; }
@@ -481,9 +479,6 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   box-shadow: 0 0 40px rgba(74, 222, 128, 0.2);
   cursor: grab;
 }
-
-  
-
   .impact-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
   .impact-card { padding: 20px 14px; }
   .impact-card__counter { font-size: 26px; }
@@ -493,8 +488,6 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
   .map-impact-card { padding: 20px; }
   .ng-cta__inner { padding: 36px 20px; }
   .section-header { margin-bottom: 32px; }
-
-  
 }
 
 .dark-zone { --clr-primary-dark: #2FA968; }
