@@ -1,6 +1,3 @@
-// ─── detail.js ────────────────────────────────────────
-
-// ── State ─────────────────────────────────────────────
 let currentPanel  = null;
 let allPanels     = [];
 let allLogs       = [];
@@ -11,7 +8,6 @@ let chartCtx      = null;
 let energyData    = null;
 let radiationData = null;
 
-// ── Fallback data (sama seperti dashboard) ─────────────
 const FALLBACK_PANELS = [
   { id:'INS-001', name:'Panel Surya Bali Selatan',    location:'Denpasar, Bali',              type:'solar', lat:-8.67,  lon:115.21, capacity_kwp:250, panels_count:100, installed_date:'2023-03-15', status:'active',  efficiency:97, output_today:208, co2_saved:124.8, inverter:'normal',  battery:'normal',  temperature:42 },
   { id:'INS-002', name:'Panel Surya Surabaya Barat',  location:'Surabaya, Jawa Timur',         type:'solar', lat:-7.25,  lon:112.75, capacity_kwp:180, panels_count:72,  installed_date:'2023-06-20', status:'active',  efficiency:94, output_today:142, co2_saved:85.2,  inverter:'normal',  battery:'normal',  temperature:39 },
@@ -23,7 +19,6 @@ const FALLBACK_PANELS = [
   { id:'INS-008', name:'Panel Surya Lombok',          location:'Mataram, NTB',                 type:'solar', lat:-8.58,  lon:116.10, capacity_kwp:175, panels_count:70,  installed_date:'2023-12-05', status:'warning', efficiency:68, output_today:76,  co2_saved:45.6,  inverter:'normal',  battery:'warning', temperature:47 },
 ];
 
-// ── Init ──────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', async () => {
 
   // Auth guard
@@ -74,7 +69,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   if (maintDate) maintDate.value = today;
 });
 
-// ── Load Panels ───────────────────────────────────────
 async function loadPanels() {
   try {
     const res = await fetch('assets/data/panels.json');
@@ -86,7 +80,6 @@ async function loadPanels() {
   }
 }
 
-// ── User Info ─────────────────────────────────────────
 function renderUserInfo(user) {
   const initials = user.nama ? user.nama.split(' ').map(w => w[0]).join('').slice(0,2).toUpperCase() : '--';
   const el = id => document.getElementById(id);
@@ -96,7 +89,6 @@ function renderUserInfo(user) {
   if (el('sidebarOrg'))    el('sidebarOrg').textContent    = user.org  || '--';
 }
 
-// ── Panel Header ──────────────────────────────────────
 function renderPanelHeader(p) {
   const statusMap = {
     active:  { label: 'Aktif',   cls: 'status-active' },
@@ -125,7 +117,6 @@ function renderPanelHeader(p) {
   }
 }
 
-// ── Metric Cards ──────────────────────────────────────
 function renderMetricCards(p) {
   const statusColor = { active: 'var(--clr-success)', warning: 'var(--clr-warning)', error: 'var(--clr-danger)' };
   const tempStatus  = p.temperature > 55 ? 'err' : p.temperature > 45 ? 'warn' : 'ok';
@@ -182,7 +173,6 @@ function renderMetricCards(p) {
   }
 }
 
-// ── Komponen Status ───────────────────────────────────
 function renderKomponen(p) {
   const komponen = [
     { name: 'Inverter', desc: 'Konverter DC ke AC', icon: 'bx-chip', iconBg: '#DCF5E7', iconColor: '#1A6B3C', status: p.inverter },
@@ -229,7 +219,6 @@ function renderKomponen(p) {
   }
 }
 
-// ── Gallery (Fancybox) ────────────────────────────────
 function renderGallery(p) {
   const grid = document.getElementById('galleryGrid');
   if (!grid) return;
@@ -289,7 +278,6 @@ function renderGallery(p) {
   }
 }
 
-// ── Log Aktivitas ─────────────────────────────────────
 function renderLogs(p) {
   // Generate log dummy berdasarkan status panel
   const baseDate = new Date('2026-07-05');
@@ -364,7 +352,6 @@ function setLogFilter(filter, btn) {
   renderLogTable(filtered);
 }
 
-// ── Weather + Chart ───────────────────────────────────
 async function fetchWeatherAndChart(p) {
   const weatherEl = document.getElementById('weatherBadge');
   try {
@@ -416,7 +403,6 @@ function generateDummy(mode, p) {
   return Array.from({ length: count }, () => +(60 + Math.random() * 80 * eff).toFixed(1));
 }
 
-// ── Chart Canvas ──────────────────────────────────────
 function renderChart(mode) {
   if (!chartCtx || !chartCanvas) return;
   chartMode = mode;
@@ -505,7 +491,6 @@ function switchChart(mode, btn) {
   renderChart(mode);
 }
 
-// ── Actions ───────────────────────────────────────────
 function exportReport() {
   if (!currentPanel) return;
 
@@ -599,7 +584,6 @@ function showToast(msg) {
   setTimeout(() => { toast.style.opacity = '0'; toast.style.transition = 'opacity 0.3s'; setTimeout(() => toast.remove(), 300); }, 3000);
 }
 
-// ── Mobile Sidebar ────────────────────────────────────
 function toggleMobileSidebar() {
   const sidebar = document.getElementById('sidebar');
   const overlay = document.getElementById('sidebarOverlay');
@@ -607,14 +591,12 @@ function toggleMobileSidebar() {
   overlay.classList.toggle('show');
 }
 
-// ── Logout ────────────────────────────────────────────
 function handleLogout() {
   localStorage.removeItem('nexara_session');
   sessionStorage.removeItem('nexara_session');
   window.location.href = 'auth.html';
 }
 
-// ── Helpers ───────────────────────────────────────────
 function formatDate(dateStr) {
   if (!dateStr) return '--';
   const d = new Date(dateStr);

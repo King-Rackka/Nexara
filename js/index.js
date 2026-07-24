@@ -1,8 +1,44 @@
-// ─── index.js — Homepage Scripts ──────────────────────
-
 document.addEventListener('DOMContentLoaded', () => {
 
-  // ── 1. Typed.js Hero Text ──────────────────────
+  function splitText(el) {
+    const mode = el.getAttribute('data-split') || 'chars';
+    const text = el.textContent;
+    el.textContent = '';
+    if (mode === 'words') {
+      text.split(' ').forEach((word, i, arr) => {
+        const span = document.createElement('span');
+        span.className = 'split-word';
+        span.textContent = word + (i < arr.length - 1 ? '\u00A0' : '');
+        el.appendChild(span);
+      });
+    } else {
+      [...text].forEach(ch => {
+        const span = document.createElement('span');
+        span.className = 'split-char';
+        span.textContent = ch === ' ' ? '\u00A0' : ch;
+        el.appendChild(span);
+      });
+    }
+    return el.querySelectorAll(mode === 'words' ? '.split-word' : '.split-char');
+  }
+
+  document.querySelectorAll('.split-line').forEach(el => {
+    const units = splitText(el);
+    const baseDelay = parseInt(el.getAttribute('data-split-delay') || '0', 10) / 1000;
+    if (typeof gsap !== 'undefined') {
+      gsap.set(units, { opacity: 0, y: 18 });
+      gsap.to(units, {
+        opacity: 1, y: 0,
+        duration: 0.6,
+        delay: baseDelay,
+        stagger: 0.035,
+        ease: 'power3.out',
+      });
+    } else {
+      units.forEach(u => { u.style.opacity = 1; });
+    }
+  });
+
   if (typeof Typed !== 'undefined') {
     new Typed('#heroTyped', {
       strings: ['cerdas', 'hijau', 'pintar', 'masa depan'],
@@ -15,7 +51,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ── 2. Particles ───────────────────────────────
   const container = document.getElementById('heroParticles');
   if (container) {
     for (let i = 0; i < 20; i++) {
@@ -34,7 +69,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // ── 3. Counter Animation ───────────────────────
   function animateCounter(el, target, duration = 2000) {
     if (!el) return;
     const start     = performance.now();
@@ -64,7 +98,6 @@ document.addEventListener('DOMContentLoaded', () => {
     obs.observe(heroSection);
   }
 
-  // ── 4. GSAP Animations (opsional, tidak block render) ──
   if (typeof gsap !== 'undefined') {
     gsap.from('.hero__dashboard-card', {
       y: 40, opacity: 0, duration: 1, delay: 0.5, ease: 'power3.out',
@@ -86,7 +119,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // ── 5. Swiper Testimonials ─────────────────────
   if (typeof Swiper !== 'undefined') {
     new Swiper('.testi-swiper', {
       slidesPerView: 1,
@@ -102,7 +134,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ── 6. Navbar active link on scroll ───────────────
   const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('.navbar__link');
   window.addEventListener('scroll', () => {
@@ -112,6 +143,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     navLinks.forEach(link => {
       link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+    });
+  });
+
+  const glowCards = document.querySelectorAll('.hiw__step, .features__card');
+  glowCards.forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      card.style.setProperty('--mx', `${e.clientX - rect.left}px`);
+      card.style.setProperty('--my', `${e.clientY - rect.top}px`);
     });
   });
 

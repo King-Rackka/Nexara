@@ -1,19 +1,82 @@
-// ─── nexagreen.js ─────────────────────────────────────
-
 document.addEventListener('DOMContentLoaded', () => {
 
-  // ── AOS Init ───────────────────────────────────────
+  function splitText(el) {
+    const mode = el.getAttribute('data-split') || 'chars';
+    const text = el.textContent;
+    el.textContent = '';
+    if (mode === 'words') {
+      text.split(' ').forEach((word, i, arr) => {
+        const span = document.createElement('span');
+        span.className = 'split-word';
+        span.textContent = word + (i < arr.length - 1 ? '\u00A0' : '');
+        el.appendChild(span);
+      });
+    } else {
+      [...text].forEach(ch => {
+        const span = document.createElement('span');
+        span.className = 'split-char';
+        span.textContent = ch === ' ' ? '\u00A0' : ch;
+        el.appendChild(span);
+      });
+    }
+    return el.querySelectorAll(mode === 'words' ? '.split-word' : '.split-char');
+  }
+
+  document.querySelectorAll('.split-line').forEach(el => {
+    const units = splitText(el);
+    const baseDelay = parseInt(el.getAttribute('data-split-delay') || '0', 10) / 1000;
+    if (typeof gsap !== 'undefined') {
+      gsap.set(units, { opacity: 0, y: 18 });
+      gsap.to(units, {
+        opacity: 1, y: 0,
+        duration: 0.6,
+        delay: baseDelay + 0.1,
+        stagger: 0.035,
+        ease: 'power3.out',
+      });
+    } else {
+      units.forEach(u => { u.style.opacity = 1; });
+    }
+  });
+
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const spotlightEls = document.querySelectorAll(
+    '.impact-card, .tips-card, .milestone-item__card, .netzero-card, .map-impact-card'
+  );
+  spotlightEls.forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      card.style.setProperty('--mx', `${(x / rect.width) * 100}%`);
+      card.style.setProperty('--my', `${(y / rect.height) * 100}%`);
+    });
+  });
+
+  if (!reduceMotion) {
+    const tiltEls = document.querySelectorAll('.impact-card, .tips-card');
+    tiltEls.forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const px = (e.clientX - rect.left) / rect.width - 0.5;
+        const py = (e.clientY - rect.top) / rect.height - 0.5;
+        card.style.transform = `perspective(700px) rotateX(${(-py * 8).toFixed(2)}deg) rotateY(${(px * 8).toFixed(2)}deg) translateY(-4px)`;
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = '';
+      });
+    });
+  }
+
   if (typeof AOS !== 'undefined') {
     AOS.init({ duration: 600, once: true, offset: 60, easing: 'ease-out-cubic' });
   }
 
-  // ── Navbar scroll ──────────────────────────────────
   const navbar = document.getElementById('navbar');
   window.addEventListener('scroll', () => {
     if (navbar) navbar.classList.toggle('scrolled', window.scrollY > 40);
   });
 
-  // ── Hamburger ─────────────────────────────────────
   const hamburger = document.getElementById('hamburger');
   const navMenu   = document.getElementById('navMenu');
   if (hamburger && navMenu) {
@@ -23,7 +86,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ── Particles ─────────────────────────────────────
   const particleContainer = document.getElementById('heroParticles');
   if (particleContainer) {
     for (let i = 0; i < 25; i++) {
@@ -43,7 +105,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // ── INTERACTIVE DRAG & ROTATE EARTH (PURE VANILLA JS — CORS & GSAP SAFE) ──
   const earthContainer = document.getElementById('earthContainer');
   const earthTexture = document.getElementById('earthTexture');
 
@@ -57,33 +118,26 @@ document.addEventListener('DOMContentLoaded', () => {
     let lastMoveX = 0;
     let lastMoveTime = 0;
 
-    // Menggunakan requestAnimationFrame bawaan browser (Ganti GSAP Ticker agar anti-eror)
     function updateEarthLoop() {
       if (!isDragging) {
         if (Math.abs(velocity) > 0.05) {
-          // Momentum: bumi terus "meluncur" pelan setelah dilepas, lalu melambat
           targetX += velocity;
           autoSpinX = targetX;
-          velocity *= 0.95; // gesekan/deceleration
+          velocity *= 0.95; 
         } else {
-          // Bumi berputar otomatis ke kiri pelan-pelan
           autoSpinX -= 0.5;
           targetX = autoSpinX;
         }
 
-        // Reset posisi jika sudah berputar sejauh ukuran tekstur agar looping seamless
         if (autoSpinX < -960) autoSpinX += 960;
         if (autoSpinX > 0) autoSpinX -= 960;
       }
 
-      // Terapkan posisi background secara langsung ke elemen DOM
       earthTexture.style.backgroundPositionX = targetX + 'px';
 
-      // Lakukan terus berulang di setiap frame browser
       requestAnimationFrame(updateEarthLoop);
     }
 
-    // Jalankan loop pertama kali
     requestAnimationFrame(updateEarthLoop);
 
     function dragStart(clientX) {
@@ -101,10 +155,9 @@ document.addEventListener('DOMContentLoaded', () => {
       targetX = currentX + deltaX;
       autoSpinX = targetX;
 
-      // Hitung kecepatan sesaat buat momentum pas dilepas nanti
       const now = performance.now();
       const dt  = now - lastMoveTime;
-      if (dt > 0) velocity = (clientX - lastMoveX) / dt * 16; // dinormalisasi ke ~60fps
+      if (dt > 0) velocity = (clientX - lastMoveX) / dt * 16; 
       lastMoveX = clientX;
       lastMoveTime = now;
     }
@@ -113,12 +166,10 @@ document.addEventListener('DOMContentLoaded', () => {
       isDragging = false;
     }
 
-    // ── Mouse (desktop) ──
     earthContainer.addEventListener('mousedown', (e) => dragStart(e.clientX));
     window.addEventListener('mousemove', (e) => dragMove(e.clientX));
     window.addEventListener('mouseup', dragEnd);
 
-    // ── Touch (mobile/tablet) ──
     earthContainer.addEventListener('touchstart', (e) => {
       dragStart(e.touches[0].clientX);
     }, { passive: true });
@@ -128,13 +179,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { passive: true });
     window.addEventListener('touchend', dragEnd);
 
-    // Mencegah glitch seleksi gambar bawaan browser saat di-drag
     earthContainer.addEventListener('dragstart', (e) => e.preventDefault());
   }
 
-  // ── GSAP Entrance Fallback Animations ───────────────────────
-  // Dibungkus try-catch agar jika library GSAP panitia gagal dimuat, 
-  // script di bawahnya (counter & progress bar) tetap WAJIB jalan normal.
   try {
     if (typeof gsap !== 'undefined') {
       gsap.from('.ng-hero__content > *', {
@@ -192,13 +239,11 @@ document.addEventListener('DOMContentLoaded', () => {
           opacity: 0, duration: 0.6, stagger: 0.15, ease: 'power2.out',
         });
       } else {
-        // Jalankan manual jika ScrollTrigger bermasalah
         startCounters();
         animateProgressBars();
         animateRegionBars();
       }
     } else {
-      // Jalankan manual jika GSAP murni tidak ada
       startCounters();
       animateProgressBars();
       animateRegionBars();
@@ -211,7 +256,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-// ── Counter Animation ─────────────────────────────────
 let countersDone = false;
 function startCounters() {
   if (countersDone) return;
@@ -251,7 +295,6 @@ function animateCounter(id, target, decimals = 0, duration = 2500) {
   requestAnimationFrame(update);
 }
 
-// ── Progress Bars ─────────────────────────────────────
 let progressDone = false;
 function animateProgressBars() {
   if (progressDone) return;
@@ -285,7 +328,6 @@ function animateNumber(el, target, suffix = '', duration = 1500) {
   requestAnimationFrame(update);
 }
 
-// ── Region Bars ───────────────────────────────────────
 let regionDone = false;
 function animateRegionBars() {
   if (regionDone) return;
@@ -298,7 +340,6 @@ function animateRegionBars() {
   });
 }
 
-// ── Smooth scroll anchor links ─────────────────────────
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
     const target = document.querySelector(a.getAttribute('href'));

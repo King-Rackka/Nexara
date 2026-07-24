@@ -4,10 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Nexara — Platform monitoring energi terbarukan berbasis teknologi cerdas. Pantau panel surya dan turbin angin dari satu dashboard terintegrasi." />
-  <title>Nexara — Energy Intelligence Platform</title>
+  <title>Nexara</title>
+  <meta name="description" content="NexaGreen memvisualisasikan dampak nyata dari energi terbarukan yang dihasilkan seluruh instalasi dalam jaringan Nexara — dalam angka yang benar-benar terasa." />
+  <link rel="icon" type="image/png" href="assets/images/logo-nexara.png"/>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="lib/boxicons/css/boxicons.min.css" />
   <link rel="stylesheet" href="lib/aos/aos.css" />
   <link rel="stylesheet" href="lib/swiper/swiper-bundle.min.css" />
@@ -44,21 +46,19 @@
     </div>
   </header>
 
+  <div class="dark-zone">
+
   <section class="hero" id="hero">
     <div class="hero__bg-grid"></div>
     <div class="hero__particles" id="heroParticles"></div>
 
     <div class="container hero__inner">
-      <div class="hero__content">
-        <div class="badge badge-green hero__badge" data-aos="fade-up" data-aos-delay="0">
-          <i class="bx bx-pulse"></i>
-          Platform Monitoring Energi Hijau #1 di Indonesia
-        </div>
+      <div class="hero__content" style="margin-top: 30px;" data-aos="fade-right" data-aos-delay="100">
 
-        <h1 class="hero__title" data-aos="fade-up" data-aos-delay="100">
-          Koneksi <span class="hero__title-typed" id="heroTyped"></span><br/>
-          menuju era energi<br/>
-          <span class="hero__title-accent">berkelanjutan</span>
+        <h1 class="hero__title">
+          <span class="split-line" data-split="chars">Koneksi</span> <span class="hero__title-typed" id="heroTyped"></span><br/>
+          <span class="split-line" data-split="words" data-split-delay="400">menuju era energi</span><br/>
+          <span class="hero__title-accent split-line" data-split="chars" data-split-delay="700">berkelanjutan</span>
         </h1>
 
         <p class="hero__desc" data-aos="fade-up" data-aos-delay="200">
@@ -179,6 +179,27 @@
     </div>
   </section>
 
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__track">
+      <span>Panel Surya</span><span class="marquee__dot">●</span>
+      <span>Turbin Angin</span><span class="marquee__dot">●</span>
+      <span>Grid Pintar</span><span class="marquee__dot">●</span>
+      <span>Penyimpanan Baterai</span><span class="marquee__dot">●</span>
+      <span>Net-Zero</span><span class="marquee__dot">●</span>
+      <span>Monitoring Real-time</span><span class="marquee__dot">●</span>
+      <span>Reduksi Karbon</span><span class="marquee__dot">●</span>
+      <span>Panel Surya</span><span class="marquee__dot">●</span>
+      <span>Turbin Angin</span><span class="marquee__dot">●</span>
+      <span>Grid Pintar</span><span class="marquee__dot">●</span>
+      <span>Penyimpanan Baterai</span><span class="marquee__dot">●</span>
+      <span>Net-Zero</span><span class="marquee__dot">●</span>
+      <span>Monitoring Real-time</span><span class="marquee__dot">●</span>
+      <span>Reduksi Karbon</span><span class="marquee__dot">●</span>
+    </div>
+  </div>
+
+  <div class="current-divider" aria-hidden="true"></div>
+
   <section class="stats-banner" id="stats">
     <div class="container stats-banner__inner">
       <div class="stats-banner__item" data-aos="fade-up" data-aos-delay="0">
@@ -263,11 +284,12 @@
     </div>
   </section>
 
+  <div class="current-divider" aria-hidden="true"></div>
   <section class="how-it-works" id="how-it-works">
     <div class="container">
       <div class="section-header text-center" data-aos="fade-up">
         <span class="section-label">Cara Kerja</span>
-        <h2 class="section-title">Mulai dalam <span>3 langkah mudah</span></h2>
+        <h2 class="section-title">Mulai dalam <span>4 langkah mudah</span></h2>
       </div>
 
       <div class="hiw__steps">
@@ -288,10 +310,10 @@
         <div class="hiw__step" data-aos="fade-up" data-aos-delay="150">
           <div class="hiw__step-num">02</div>
           <div class="hiw__step-icon">
-            <i class="bx bx-plug"></i>
+            <i class="bx bx-chart"></i>
           </div>
-          <h3>Hubungkan Instalasi</h3>
-          <p>Daftarkan lokasi panel surya atau turbin angin kamu ke dalam sistem Nexara dengan memasukkan data teknis instalasi.</p>
+          <h3>Lihat Dashboard</h3>
+          <p>Dashboard langsung aktif. Pantau performa real-time, analisis tren, dan terima alert otomatis dari mana saja.</p>
         </div>
 
         <div class="hiw__connector" data-aos="fade-up" data-aos-delay="200">
@@ -304,13 +326,28 @@
           <div class="hiw__step-icon">
             <i class="bx bx-tachometer"></i>
           </div>
-          <h3>Pantau & Analisis</h3>
-          <p>Dashboard langsung aktif. Pantau performa real-time, analisis tren, dan terima alert otomatis dari mana saja.</p>
+          <h3>Cek Detail Panel</h3>
+          <p>Periksa informasi spesifik tentang setiap panel surya atau turbin angin seperti data produksi dan kondisi teknis</p>
+        </div>
+
+        <div class="hiw__connector" data-aos="fade-up" data-aos-delay="300">
+          <div class="hiw__connector-line"></div>
+          <i class="bx bx-right-arrow-alt"></i>
+        </div>
+
+        <div class="hiw__step" data-aos="fade-up" data-aos-delay="350">
+          <div class="hiw__step-num">04</div>
+          <div class="hiw__step-icon">
+            <i class="bx bx-data"></i>
+          </div>
+          <h3>Export Laporan</h3>
+          <p>Unduh data riwayat aktivitas seluruh instalasi dalam format CSV. Laporan siap pakai untuk analisis atau pelaporan ke manajemen.</p>
         </div>
       </div>
     </div>
   </section>
 
+  <div class="current-divider" aria-hidden="true"></div>
   <section class="map-preview">
     <div class="container">
       <div class="map-preview__inner" data-aos="fade-up">
@@ -458,6 +495,7 @@
     </div>
   </section>
 
+  <div class="current-divider" aria-hidden="true"></div>
   <section class="testimonials" id="testimonials">
     <div class="container">
       <div class="section-header text-center" data-aos="fade-up">
@@ -544,6 +582,7 @@
     </div>
   </section>
 
+  <div class="current-divider" aria-hidden="true"></div>
   <section class="cta-section">
     <div class="container">
       <div class="cta-section__inner" data-aos="fade-up">
@@ -567,6 +606,8 @@
       </div>
     </div>
   </section>
+
+  </div><!-- /.dark-zone -->
 
   <footer class="footer">
     <div class="container">
@@ -613,6 +654,7 @@
   </footer>
 
   <script src="lib/aos/aos.js"></script>
+  <script src="lib/aos/dist/aos.js"></script>
   <script src="lib/typed/dist/typed.umd.js"></script>
   <script src="lib/swiper/swiper-bundle.min.js"></script>
   <script src="lib/gsap/gsap.min.js"></script>

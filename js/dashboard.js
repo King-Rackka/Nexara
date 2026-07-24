@@ -7,7 +7,6 @@ let chartCtx     = null;
 let weatherData  = null;
 let apiEnergyData = null;
 
-// ── Init ──────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', async () => {
 
   // Auth guard

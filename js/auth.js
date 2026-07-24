@@ -1,6 +1,3 @@
-// ─── auth.js — Authentication Logic ───────────────────
-
-// ── Init ──────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
 
   // AOS
@@ -42,7 +39,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-// ── Tab Switcher ───────────────────────────────────────
 function switchTab(tab) {
   const loginForm    = document.getElementById('formLogin');
   const registerForm = document.getElementById('formRegister');
@@ -136,7 +132,6 @@ function setLoading(btnId, loading) {
   if (loader) loader.style.display = loading ? 'flex' : 'none';
 }
 
-// ── Real-time Validation Setup ────────────────────────
 function setupValidation() {
   // Login
   const loginEmail = document.getElementById('loginEmail');
@@ -182,7 +177,6 @@ function setupValidation() {
   });
 }
 
-// ── Password Strength ─────────────────────────────────
 function checkPasswordStrength(pw) {
   const wrapper = document.getElementById('pwStrength');
   const label   = document.getElementById('pwStrengthLabel');
@@ -210,7 +204,6 @@ function checkPasswordStrength(pw) {
   }
 }
 
-// ── Toggle Password Visibility ────────────────────────
 function togglePassword(inputId, btn) {
   const input = document.getElementById(inputId);
   if (!input) return;
@@ -220,7 +213,6 @@ function togglePassword(inputId, btn) {
   if (icon) icon.className = isHidden ? 'bx bx-show' : 'bx bx-hide';
 }
 
-// ── LOGIN ─────────────────────────────────────────────
 function handleLogin() {
   clearAlerts();
   const email = document.getElementById('loginEmail')?.value?.trim();
@@ -258,8 +250,7 @@ function handleLogin() {
     if (user) {
       // Simpan session
       const session = { email: user.email, nama: user.nama, org: user.org, role: user.role };
-      // Selalu simpan ke localStorage agar session tidak hilang saat navigate
-      // Remember me = session permanen, tanpa remember = session sampai browser ditutup
+
       localStorage.setItem('nexara_session', JSON.stringify(session));
       if (!remember) {
         // Tandai sebagai session sementara
@@ -276,7 +267,6 @@ function handleLogin() {
   }, 1200);
 }
 
-// ── REGISTER ──────────────────────────────────────────
 function handleRegister() {
   clearAlerts();
   const nama    = document.getElementById('regNama')?.value?.trim();

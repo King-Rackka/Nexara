@@ -1,17 +1,12 @@
-// ─── support.js — Panduan, FAQ, Status, Kontak ────────
-
-// ── FAQ Accordion ──────────────────────────────────────
 function toggleFaq(el) {
   const item = el.closest('.faq-item');
   const wasOpen = item.classList.contains('open');
-  // Tutup semua item lain di kategori yang sama (biar rapi, 1 kebuka per waktu)
   item.parentElement.querySelectorAll('.faq-item.open').forEach(other => {
     if (other !== item) other.classList.remove('open');
   });
   item.classList.toggle('open', !wasOpen);
 }
 
-// ── FAQ Search Filter ──────────────────────────────────
 function filterFaq(query) {
   const q = query.trim().toLowerCase();
   const items = document.querySelectorAll('.faq-item');
@@ -35,7 +30,6 @@ function filterFaq(query) {
   if (emptyEl) emptyEl.classList.toggle('show', totalVisible === 0);
 }
 
-// ── Guide TOC active state on scroll ───────────────────
 document.addEventListener('DOMContentLoaded', () => {
   const tocLinks = document.querySelectorAll('.guide-toc a');
   const sections = document.querySelectorAll('.guide-section');
@@ -52,7 +46,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-// ── Contact form (demo, tanpa backend) ─────────────────
 function handleContactSubmit(e) {
   e.preventDefault();
   const btn = e.target.querySelector('button[type="submit"]');
@@ -73,7 +66,6 @@ function handleContactSubmit(e) {
   return false;
 }
 
-// ── Status page subscribe (demo) ───────────────────────
 function handleSubscribe(e) {
   e.preventDefault();
   const btn = e.target.querySelector('button');
