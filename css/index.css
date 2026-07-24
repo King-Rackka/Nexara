@@ -1,8 +1,3 @@
-html, body {
-  overflow-x: hidden;
-  max-width: 100%;
-}
-
 .navbar {
   position: fixed;
   top: 0; left: 0; right: 0;
@@ -979,7 +974,6 @@ html, body {
 .current-divider {
   position: relative;
   height: 1px;
-  overflow: hidden;
   background: linear-gradient(90deg, transparent, var(--clr-border-strong) 20%, var(--clr-border-strong) 80%, transparent);
 }
 .current-divider::after {
