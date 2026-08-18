@@ -494,43 +494,35 @@ function switchChart(mode, btn) {
 function exportReport() {
   if (!currentPanel) return;
 
-  const csvEscape = (val) => {
-    const s = String(val ?? '');
-    return /[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
-  };
-
+  const pad = (n) => String(n).padStart(2, '0');
   const now = new Date();
+  const exportedAt = `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())} ${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
+  const cap = (s) => (s ? String(s).charAt(0).toUpperCase() + String(s).slice(1).toLowerCase() : '');
+
+  const header = ['Kategori', 'Metrik', 'Nilai', 'Satuan'];
   const rows = [
-    ['Laporan Panel', currentPanel.name],
-    ['Tanggal Export', now.toLocaleDateString('id-ID', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })],
-    [''],
-    ['INFORMASI PANEL'],
-    ['Lokasi', currentPanel.location],
-    ['Tipe', currentPanel.type === 'solar' ? 'Panel Surya' : 'Turbin Angin'],
-    ['Kapasitas (kWp)', currentPanel.capacity_kwp],
-    ['Dipasang', formatDate(currentPanel.installed_date)],
-    ['Status', currentPanel.status.toUpperCase()],
-    [''],
-    ['PERFORMA HARI INI'],
-    ['Output (kWh)', currentPanel.output_today],
-    ['Efisiensi (%)', currentPanel.efficiency],
-    ['Temperatur (°C)', currentPanel.temperature],
-    ['CO2 Dihemat (kg)', currentPanel.co2_saved],
-    [''],
-    ['STATUS KOMPONEN'],
-    ['Inverter', currentPanel.inverter],
-    ['Baterai', currentPanel.battery],
-    ['Sensor', 'Normal'],
-    [''],
-    ['Dibuat oleh', 'Nexara Energy Intelligence Platform'],
+    ['Metadata', 'ID Panel', currentPanel.id, ''],
+    ['Metadata', 'Nama Panel', currentPanel.name, ''],
+    ['Metadata', 'Tanggal Export', exportedAt, ''],
+    ['Informasi Panel', 'Lokasi', currentPanel.location, ''],
+    ['Informasi Panel', 'Tipe', currentPanel.type === 'solar' ? 'Panel Surya' : 'Turbin Angin', ''],
+    ['Informasi Panel', 'Kapasitas', currentPanel.capacity_kwp, 'kWp'],
+    ['Informasi Panel', 'Tanggal Dipasang', formatDate(currentPanel.installed_date), ''],
+    ['Informasi Panel', 'Status', currentPanel.status.toUpperCase(), ''],
+    ['Performa Hari Ini', 'Output', currentPanel.output_today, 'kWh'],
+    ['Performa Hari Ini', 'Efisiensi', currentPanel.efficiency, '%'],
+    ['Performa Hari Ini', 'Temperatur', currentPanel.temperature, 'C'],
+    ['Performa Hari Ini', 'CO2 Dihemat', currentPanel.co2_saved, 'kg'],
+    ['Status Komponen', 'Inverter', cap(currentPanel.inverter), ''],
+    ['Status Komponen', 'Baterai', cap(currentPanel.battery), ''],
+    ['Status Komponen', 'Sensor', 'Normal', ''],
   ];
 
-  const csvContent = rows.map(r => r.map(csvEscape).join(',')).join('\r\n');
-  const blob = new Blob(['\uFEFF' + csvContent], { type: 'text/csv;charset=utf-8;' });
+  const blob = buildXLSX('Laporan Panel', header, rows);
   const url  = URL.createObjectURL(blob);
   const a    = document.createElement('a');
   a.href     = url;
-  a.download = `Laporan_${currentPanel.id}_${now.toISOString().split('T')[0]}.csv`;
+  a.download = `Laporan_${currentPanel.id}_${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}.xlsx`;
   document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);

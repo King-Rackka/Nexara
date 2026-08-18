@@ -350,30 +350,27 @@ function goNextPage() {
 function exportCSV() {
   if (!filtered.length) { alert('Tidak ada data untuk diekspor pada filter ini.'); return; }
 
-  const header = ['Tanggal', 'Waktu', 'Instalasi', 'Lokasi', 'Tipe', 'Deskripsi', 'Status', 'Energi (kWh)'];
+  const pad = (n) => String(n).padStart(2, '0');
+  const toISOTimestamp = (d) =>
+    `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())} ${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}`;
+
+  const header = ['Timestamp', 'Instalasi', 'Lokasi', 'Tipe', 'Deskripsi', 'Status', 'Energi (kWh)'];
   const rows = filtered.map(h => [
-    h.date.toLocaleDateString('id-ID'),
-    h.date.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' }),
+    toISOTimestamp(h.date),
     h.installName,
     h.installLocation,
     h.type,
     h.desc,
     h.status,
-    h.output ?? '',
+    h.output ?? 0,
   ]);
 
-  const csvEscape = (val) => {
-    const s = String(val ?? '');
-    return /[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
-  };
-
-  const csvContent = [header, ...rows].map(r => r.map(csvEscape).join(',')).join('\r\n');
-  const blob = new Blob(['\uFEFF' + csvContent], { type: 'text/csv;charset=utf-8;' });
+  const blob = buildXLSX('Riwayat Aktivitas', header, rows);
   const url  = URL.createObjectURL(blob);
   const a    = document.createElement('a');
   const dateStr = toInputDate(TODAY);
   a.href = url;
-  a.download = `Nexara_Riwayat_${dateStr}.csv`;
+  a.download = `Nexara_Riwayat_${dateStr}.xlsx`;
   document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);
